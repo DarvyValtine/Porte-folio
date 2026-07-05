@@ -1,25 +1,25 @@
-import Image from "next/image"
-import { ExternalLink } from "lucide-react"
-import { PageHeader } from "@/components/page-header"
-import { getPressItems } from "@/lib/queries"
+import Image from "next/image";
+import { ExternalLink } from "lucide-react";
+import { PageHeader } from "@/components/page-header";
+import { getPressItems } from "@/lib/queries";
 
 export const metadata = {
   title: "Presse & médias — Dr. Grace Estia",
   description: "Interventions, interviews et apparitions médiatiques.",
-}
+};
 
-export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic";
 
 function formatDate(d: Date | string | null) {
-  if (!d) return ""
+  if (!d) return "";
   return new Date(d).toLocaleDateString("fr-FR", {
     month: "long",
     year: "numeric",
-  })
+  });
 }
 
 export default async function PressePage() {
-  const items = await getPressItems()
+  const items = await getPressItems();
 
   return (
     <>
@@ -84,5 +84,5 @@ export default async function PressePage() {
         )}
       </section>
     </>
-  )
+  );
 }

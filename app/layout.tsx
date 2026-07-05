@@ -11,7 +11,7 @@ const fraunces = Fraunces({
 })
 
 export const metadata: Metadata = {
-  title: 'Dr. Leïla Hassani — Psychologue clinicienne & militante',
+  title: 'Dr. Grace Estia — Psychologue clinicienne & militante',
   description:
     "Psychologue clinicienne et militante pour les droits humains, les droits des femmes et des enfants, et la santé sexuelle et reproductive. Consultations, publications et engagements.",
   generator: 'v0.app',

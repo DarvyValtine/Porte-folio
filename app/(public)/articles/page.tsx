@@ -3,7 +3,7 @@ import { ArticleCard } from "@/components/article-card"
 import { getPublishedArticles } from "@/lib/queries"
 
 export const metadata = {
-  title: "Articles & publications — Dr. Leïla Hassani",
+  title: "Articles & publications — Dr. Grace Estia",
   description:
     "Articles, tribunes et réflexions sur la psychologie, les droits humains et la santé.",
 }

@@ -13,8 +13,6 @@ export function middleware(request: NextRequest) {
   return NextResponse.next()
 }
 
-// Note: this is a fast cookie-presence check only (edge-safe). The real
-// session is verified server-side in app/admin/layout.tsx.
 export const config = {
   matcher: ["/admin/:path*"],
 }

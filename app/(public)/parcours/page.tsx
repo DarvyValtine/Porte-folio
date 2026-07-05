@@ -2,9 +2,9 @@ import { GraduationCap, Award, Briefcase, BookOpen, Globe } from "lucide-react"
 import { PageHeader } from "@/components/page-header"
 
 export const metadata = {
-  title: "Parcours — Dr. Leïla Hassani",
+  title: "Parcours — Dr. Grace Estia",
   description:
-    "Formation, expériences professionnelles, engagements et distinctions de Dr. Leïla Hassani.",
+    "Formation, expériences professionnelles, engagements et distinctions de Dr. Grace Estia.",
 }
 
 const experiences = [

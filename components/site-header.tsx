@@ -1,42 +1,25 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { useState, useEffect } from "react"
-import { Menu, X } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { navLinks, site } from "@/lib/site"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { navLinks, site } from "@/lib/site";
 
 export function SiteHeader() {
-  const pathname = usePathname()
-  const [open, setOpen] = useState(false)
-
-  // Fallback for environments where next/navigation types are unavailable.
-  // Use the real usePathname if available, otherwise derive from window.location.
-  function usePathnameFallback() {
-    const [p, setP] = useState<string>(typeof window !== "undefined" ? window.location.pathname : "/")
-    useEffect(() => {
-      if (typeof window !== "undefined") {
-        const onLocationChange = () => setP(window.location.pathname)
-        // update on mount
-        setP(window.location.pathname)
-        window.addEventListener("popstate", onLocationChange)
-        window.addEventListener("pushstate", onLocationChange as any)
-        return () => {
-          window.removeEventListener("popstate", onLocationChange)
-          window.removeEventListener("pushstate", onLocationChange as any)
-        }
-      }
-    }, [])
-    return p
-  }
-
-  const pathname = usePathnameFallback()
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-        <Link href="/" className="flex flex-col leading-none" onClick={() => setOpen(false)}>
+        <Link
+          href="/"
+          className="flex flex-col leading-none"
+          onClick={() => setOpen(false)}
+        >
           <span className="font-serif text-lg font-semibold tracking-tight text-foreground">
             {site.name}
           </span>
@@ -50,7 +33,7 @@ export function SiteHeader() {
             const active =
               link.href === "/"
                 ? pathname === "/"
-                : pathname.startsWith(link.href)
+                : pathname.startsWith(link.href);
             return (
               <Link
                 key={link.href}
@@ -64,17 +47,14 @@ export function SiteHeader() {
               >
                 {link.label}
               </Link>
-            )
+            );
           })}
         </nav>
 
         <div className="hidden lg:block">
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Prendre rendez-vous
-          </Link>
+          <Button asChild size="sm" className="rounded-full">
+            <Link href="/rdv">Prendre rendez-vous</Link>
+          </Button>
         </div>
 
         <button
@@ -105,5 +85,5 @@ export function SiteHeader() {
         </div>
       )}
     </header>
-  )
+  );
 }

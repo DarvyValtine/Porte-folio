@@ -1,5 +1,5 @@
 export const site = {
-  name: "Dr. Leïla Hassani",
+  name: "Dr. Grace Estia",
   role: "Psychologue clinicienne",
   tagline:
     "Psychologue clinicienne et militante pour les droits humains, les droits des femmes et des enfants, et la santé sexuelle et reproductive.",
@@ -10,7 +10,7 @@ export const site = {
     linkedin: "https://www.linkedin.com",
     instagram: "https://www.instagram.com",
   },
-}
+};
 
 export const navLinks = [
   { href: "/", label: "Accueil" },
@@ -19,5 +19,5 @@ export const navLinks = [
   { href: "/articles", label: "Articles" },
   { href: "/presse", label: "Presse" },
   { href: "/galerie", label: "Galerie" },
-  { href: "/contact", label: "Rendez-vous" },
-]
+  { href: "/contact", label: "Contact" },
+];

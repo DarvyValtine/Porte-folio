@@ -6,9 +6,9 @@ import { PageHeader } from "@/components/page-header"
 import { site } from "@/lib/site"
 
 export const metadata = {
-  title: "À propos — Dr. Leïla Hassani",
+  title: "À propos — Dr. Grace Estia",
   description:
-    "Découvrez le parcours et les valeurs de Dr. Leïla Hassani, psychologue clinicienne et militante.",
+    "Découvrez le parcours et les valeurs de Dr. Grace Estia, psychologue clinicienne et militante.",
 }
 
 const values = [

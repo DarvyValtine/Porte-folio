@@ -3,7 +3,7 @@ import { PageHeader } from "@/components/page-header"
 import { getGalleryItems } from "@/lib/queries"
 
 export const metadata = {
-  title: "Galerie — Dr. Leïla Hassani",
+  title: "Galerie — Dr. Grace Estia",
   description: "Photos d'événements, conférences et engagements.",
 }
 
