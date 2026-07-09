@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { FileUpload } from "@/components/admin/file-upload"
 import { createPressItem } from "@/lib/actions/press"
 
 export function PressForm() {
@@ -39,10 +40,7 @@ export function PressForm() {
           <Input id="publishedDate" name="publishedDate" type="date" />
         </div>
       </div>
-      <div className="space-y-1.5">
-        <Label htmlFor="coverImage">Image (URL, optionnel)</Label>
-        <Input id="coverImage" name="coverImage" placeholder="https://..." />
-      </div>
+      <FileUpload name="coverImage" label="Image (optionnel)" />
       <div className="space-y-1.5">
         <Label htmlFor="excerpt">Résumé</Label>
         <Textarea id="excerpt" name="excerpt" rows={2} />

@@ -6,9 +6,9 @@ import { PageHeader } from "@/components/page-header"
 import { site } from "@/lib/site"
 
 export const metadata = {
-  title: "À propos — Dr. Grace Estia",
+  title: "À propos — Grace Estia Otilibili",
   description:
-    "Découvrez le parcours et les valeurs de Dr. Grace Estia, psychologue clinicienne et militante.",
+    "Découvrez le parcours et les valeurs de Grace Estia Otilibili, psychologue clinicienne et militante.",
 }
 
 const values = [
@@ -31,15 +31,15 @@ export default function AboutPage() {
     <>
       <PageHeader
         eyebrow="À propos"
-        title="Au service du soin et de la justice sociale"
-        description="Psychologue clinicienne de formation, j'ai consacré ma carrière à accompagner les personnes en souffrance tout en défendant les droits de celles et ceux que la société rend invisibles."
+        title="Au service des droits de l'enfant et de la justice sociale"
+        description="Psychologue clinicienne de formation, j'ai consacré ma carrière à la protection des enfants vulnérables et à la défense de leurs droits, sur le terrain au Congo et au-delà."
       />
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
         <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
           <div className="relative overflow-hidden rounded-[2rem] border border-border/60 shadow-lg shadow-primary/5">
             <Image
-              src="/images/about-portrait.png"
+              src="/images/about-portrait.jpeg"
               alt="Portrait en situation"
               width={680}
               height={820}
@@ -48,17 +48,19 @@ export default function AboutPage() {
           </div>
           <div className="space-y-5 leading-relaxed text-muted-foreground">
             <p>
-              Mon engagement est né d&apos;une conviction simple : la santé
-              mentale est un droit, pas un privilège. Au fil des années, j&apos;ai
-              travaillé auprès de femmes victimes de violences, d&apos;enfants en
-              situation de vulnérabilité et de communautés marginalisées.
+              Mon engagement est né d&apos;une conviction simple : chaque enfant,
+              chaque femme, chaque personne vulnérable a droit à la protection,
+              à la dignité et à une chance de se reconstruire. Depuis 2019, je
+              travaille sur le terrain au Congo auprès d&apos;enfants en situation
+              de rue, de mineurs incarcérés et de communautés marginalisées.
             </p>
             <p>
-              En cabinet, j&apos;accompagne mes patients dans un cadre
-              chaleureux et confidentiel. En dehors, je collabore avec des ONG,
-              des institutions et des médias pour faire avancer les droits
-              humains, les droits des femmes et des enfants, ainsi que
-              l&apos;accès à la santé sexuelle et reproductive.
+              Au sein du REIPER puis de l&apos;ACBEF, j&apos;ai coordonné des
+              projets, animé des lignes d&apos;écoute d&apos;urgence, formé des
+              acteurs sociaux et porté des actions de plaidoyer pour les droits
+              des enfants et la santé sexuelle et reproductive. Mon approche
+              conjugue la rigueur de la psychologie clinique avec un engagement
+              militant de longue date.
             </p>
             <figure className="rounded-2xl border border-primary/20 bg-primary/5 p-6">
               <Quote className="h-6 w-6 text-primary" />
@@ -74,7 +76,7 @@ export default function AboutPage() {
       <section className="border-y border-border/60 bg-secondary/30">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
           <h2 className="mb-10 font-serif text-3xl font-semibold tracking-tight text-foreground text-balance sm:text-4xl">
-            Mes valeurs
+            Mes engagements
           </h2>
           <div className="grid gap-6 md:grid-cols-3">
             {values.map((v) => (

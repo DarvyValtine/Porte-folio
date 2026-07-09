@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { FileUpload } from "@/components/admin/file-upload"
 import { createGalleryItem, type ActionState } from "@/lib/actions/gallery"
 
 export function GalleryForm() {
@@ -19,10 +20,7 @@ export function GalleryForm() {
 
   return (
     <form ref={formRef} action={formAction} className="space-y-4">
-      <div className="space-y-1.5">
-        <Label htmlFor="imageUrl">URL de l&apos;image</Label>
-        <Input id="imageUrl" name="imageUrl" required placeholder="https://..." />
-      </div>
+      <FileUpload name="imageUrl" label="Image" />
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-1.5">
           <Label htmlFor="title">Titre (optionnel)</Label>

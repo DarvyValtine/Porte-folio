@@ -13,7 +13,7 @@ export function Hero() {
             Psychologue · Militante
           </span>
           <h1 className="font-serif text-4xl font-semibold leading-[1.1] tracking-tight text-foreground text-balance sm:text-5xl lg:text-6xl">
-            Soigner les blessures, défendre les droits.
+            Protéger les droits, restaurer l&apos;espoir.
           </h1>
           <p className="max-w-md text-lg leading-relaxed text-muted-foreground text-pretty">
             {site.tagline}
@@ -35,7 +35,7 @@ export function Hero() {
           <div className="absolute -right-6 -top-6 hidden h-40 w-40 rounded-full bg-accent/50 blur-2xl md:block" />
           <div className="relative overflow-hidden rounded-[2rem] border border-border/60 shadow-xl shadow-primary/5">
             <Image
-              src="/images/portrait-hero.png"
+              src="/images/portrait-hero.jpeg"
               alt="Portrait de la psychologue"
               width={720}
               height={860}

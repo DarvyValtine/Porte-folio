@@ -4,7 +4,7 @@ import { PageHeader } from "@/components/page-header"
 import { getPressItems } from "@/lib/queries"
 
 export const metadata = {
-  title: "Presse & médias — Dr. Grace Estia",
+  title: "Presse & médias — Grace Estia Otilibili",
   description: "Interventions, interviews et apparitions médiatiques.",
 }
 

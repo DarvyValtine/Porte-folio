@@ -4,8 +4,8 @@ import { PageHeader } from "@/components/page-header";
 import { getPressItems } from "@/lib/queries";
 
 export const metadata = {
-  title: "Presse & médias — Dr. Grace Estia",
-  description: "Interventions, interviews et apparitions médiatiques.",
+  title: "Contact — Grace Estia Otilibili",
+  description: "Contacter Grace Estia Otilibili pour une consultation, une intervention ou une collaboration.",
 };
 
 export const dynamic = "force-dynamic";

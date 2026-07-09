@@ -4,9 +4,9 @@ import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const stats = [
-  { value: "15+", label: "années de pratique clinique" },
-  { value: "30+", label: "conférences & interventions" },
-  { value: "12", label: "publications & tribunes" },
+  { value: "6+", label: "années de terrain au Congo" },
+  { value: "4+", label: "projets de protection de l'enfance" },
+  { value: "3", label: "publications & articles de presse" },
 ]
 
 export function IntroSplit() {
@@ -15,7 +15,7 @@ export function IntroSplit() {
       <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div className="relative order-2 overflow-hidden rounded-[2rem] border border-border/60 shadow-lg shadow-primary/5 lg:order-1">
           <Image
-            src="/images/engagement.png"
+            src="/images/engagement.jpg"
             alt="Atelier communautaire de soutien"
             width={720}
             height={560}
@@ -27,13 +27,13 @@ export function IntroSplit() {
             Mon approche
           </p>
           <h2 className="font-serif text-3xl font-semibold tracking-tight text-foreground text-balance sm:text-4xl">
-            Une écoute bienveillante, un engagement sans compromis
+            Un engagement de terrain au service des enfants
           </h2>
           <p className="leading-relaxed text-muted-foreground text-pretty">
             Je conjugue la rigueur de la psychologie clinique avec un engagement
-            militant de longue date. Mon travail consiste à offrir un espace
-            sûr, à restaurer la confiance, et à porter la voix de celles et ceux
-            que l&apos;on n&apos;entend pas assez.
+            militant de longue date. Mon travail consiste à protéger les enfants
+            vulnérables, à restaurer leur dignité, et à porter leur voix auprès
+            des institutions et de la société.
           </p>
           <div className="grid grid-cols-3 gap-4">
             {stats.map((s) => (
