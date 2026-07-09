@@ -1,23 +1,23 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import {
-  LayoutDashboard,
-  Newspaper,
-  Images,
-  Megaphone,
-  Mail,
-  Plus,
-  ExternalLink,
-  LogOut,
-  PanelLeftClose,
-  PanelLeft,
-} from "lucide-react";
-import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { authClient } from "@/lib/auth-client";
+import { cn } from "@/lib/utils";
+import {
+  ExternalLink,
+  Images,
+  LayoutDashboard,
+  LogOut,
+  Mail,
+  Megaphone,
+  Newspaper,
+  PanelLeft,
+  PanelLeftClose,
+  Plus,
+} from "lucide-react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
 
 const links = [
   {
@@ -140,16 +140,14 @@ export function AdminSidebar() {
               {!collapsed && (
                 <>
                   <span className="flex-1 truncate">{link.label}</span>
-                  {link.badge &&
-                    pendingCount !== null &&
-                    pendingCount > 0 && (
-                      <Badge
-                        variant={active ? "default" : "secondary"}
-                        className="h-5 min-w-5 px-1.5 text-[0.65rem]"
-                      >
-                        {pendingCount}
-                      </Badge>
-                    )}
+                  {link.badge && pendingCount !== null && pendingCount > 0 && (
+                    <Badge
+                      variant={active ? "default" : "secondary"}
+                      className="h-5 min-w-5 px-1.5 text-[0.65rem]"
+                    >
+                      {pendingCount}
+                    </Badge>
+                  )}
                 </>
               )}
             </Comp>

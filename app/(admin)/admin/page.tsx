@@ -1,11 +1,16 @@
-import Link from "next/link"
-import { Newspaper, Images, Megaphone, Mail, ArrowRight } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { db } from "@/lib/db"
-import { articles, galleryItems, pressItems, appointments } from "@/lib/db/schema"
-import { desc, eq, sql } from "drizzle-orm"
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { db } from "@/lib/db";
+import {
+  appointments,
+  articles,
+  galleryItems,
+  pressItems,
+} from "@/lib/db/schema";
+import { desc, eq, sql } from "drizzle-orm";
+import { ArrowRight, Images, Mail, Megaphone, Newspaper } from "lucide-react";
+import Link from "next/link";
 
 export default async function AdminDashboardPage() {
   const [
@@ -50,14 +55,14 @@ export default async function AdminDashboardPage() {
       .from(appointments)
       .orderBy(desc(appointments.createdAt))
       .limit(3),
-  ])
+  ]);
 
-  const articlesCount = Number(articlesCountRaw)
-  const publishedCount = Number(publishedCountRaw)
-  const galleryCount = Number(galleryCountRaw)
-  const pressCount = Number(pressCountRaw)
-  const appointmentsCount = Number(appointmentsCountRaw)
-  const pendingMessages = Number(pendingMessagesRaw)
+  const articlesCount = Number(articlesCountRaw);
+  const publishedCount = Number(publishedCountRaw);
+  const galleryCount = Number(galleryCountRaw);
+  const pressCount = Number(pressCountRaw);
+  const appointmentsCount = Number(appointmentsCountRaw);
+  const pendingMessages = Number(pendingMessagesRaw);
 
   const cards = [
     {
@@ -99,7 +104,7 @@ export default async function AdminDashboardPage() {
       color: "text-chart-1",
       bg: "bg-chart-1/10",
     },
-  ]
+  ];
 
   return (
     <div className="space-y-8">
@@ -225,16 +230,16 @@ export default async function AdminDashboardPage() {
                         a.status === "pending"
                           ? "default"
                           : a.status === "contacted"
-                          ? "outline"
-                          : "secondary"
+                            ? "outline"
+                            : "secondary"
                       }
                       className="shrink-0"
                     >
                       {a.status === "pending"
                         ? "En attente"
                         : a.status === "contacted"
-                        ? "Contacté"
-                        : "Clôturé"}
+                          ? "Contacté"
+                          : "Clôturé"}
                     </Badge>
                   </div>
                 ))}
@@ -244,5 +249,5 @@ export default async function AdminDashboardPage() {
         </Card>
       </div>
     </div>
-  )
+  );
 }
