@@ -1,21 +1,25 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { useState } from "react"
-import { Menu, X } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { navLinks, site } from "@/lib/site"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { navLinks, site } from "@/lib/site";
 
 export function SiteHeader() {
-  const pathname = usePathname()
-  const [open, setOpen] = useState(false)
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-        <Link href="/" className="flex flex-col leading-none" onClick={() => setOpen(false)}>
+        <Link
+          href="/"
+          className="flex flex-col leading-none"
+          onClick={() => setOpen(false)}
+        >
           <span className="font-serif text-lg font-semibold tracking-tight text-foreground">
             {site.name}
           </span>
@@ -29,7 +33,7 @@ export function SiteHeader() {
             const active =
               link.href === "/"
                 ? pathname === "/"
-                : pathname.startsWith(link.href)
+                : pathname.startsWith(link.href);
             return (
               <Link
                 key={link.href}
@@ -43,13 +47,13 @@ export function SiteHeader() {
               >
                 {link.label}
               </Link>
-            )
+            );
           })}
         </nav>
 
         <div className="hidden lg:block">
           <Button asChild size="sm" className="rounded-full">
-            <Link href="/contact">Prendre rendez-vous</Link>
+            <Link href="/rdv">Prendre rendez-vous</Link>
           </Button>
         </div>
 
@@ -81,5 +85,5 @@ export function SiteHeader() {
         </div>
       )}
     </header>
-  )
+  );
 }

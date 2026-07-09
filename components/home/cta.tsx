@@ -20,7 +20,7 @@ export function HomeCta() {
           variant="secondary"
           className="mt-8 rounded-full"
         >
-          <Link href="/contact">
+          <Link href="/rdv">
             Demander un rendez-vous
             <ArrowRight className="h-4 w-4" />
           </Link>

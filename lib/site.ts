@@ -10,7 +10,7 @@ export const site = {
     linkedin: "https://www.linkedin.com",
     instagram: "https://www.instagram.com",
   },
-}
+};
 
 export const navLinks = [
   { href: "/", label: "Accueil" },
@@ -19,5 +19,4 @@ export const navLinks = [
   { href: "/articles", label: "Articles" },
   { href: "/presse", label: "Presse" },
   { href: "/galerie", label: "Galerie" },
-  { href: "/contact", label: "Rendez-vous" },
-]
+];
