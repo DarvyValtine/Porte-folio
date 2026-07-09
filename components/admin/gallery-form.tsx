@@ -1,11 +1,11 @@
 "use client"
 
-import { useActionState, useRef, useEffect, useState } from "react"
-import Image from "next/image"
+import { useActionState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { ImageUpload } from "@/components/admin/image-upload"
 import { createGalleryItem, type ActionState } from "@/lib/actions/gallery"
 import { toast } from "sonner"
 
@@ -15,40 +15,17 @@ export function GalleryForm() {
     createGalleryItem,
     undefined
   )
-  const [imagePreview, setImagePreview] = useState("")
 
   useEffect(() => {
     if (!pending && state === undefined) {
       formRef.current?.reset()
-      setImagePreview("")
       toast.success("Photo ajoutée")
     }
   }, [pending, state])
 
   return (
     <form ref={formRef} action={formAction} className="space-y-4">
-      <div className="space-y-1.5">
-        <Label htmlFor="imageUrl">URL de l&apos;image *</Label>
-        <Input
-          id="imageUrl"
-          name="imageUrl"
-          required
-          placeholder="https://..."
-          onChange={(e) => setImagePreview(e.target.value)}
-        />
-      </div>
-
-      {imagePreview && (
-        <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-muted">
-          <Image
-            src={imagePreview}
-            alt="Aperçu"
-            fill
-            className="object-cover"
-            onError={() => setImagePreview("")}
-          />
-        </div>
-      )}
+      <ImageUpload name="imageUrl" label="Image *" required />
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-1.5">

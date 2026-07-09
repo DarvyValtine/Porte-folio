@@ -35,8 +35,11 @@ export async function createArticle(_prev: ActionState, formData: FormData): Pro
   if (!title) return { error: "Le titre est requis." }
   if (!content) return { error: "Le contenu est requis." }
 
+  const coverImage = String(formData.get("coverImage") || "").trim() || null
   const slugInput = String(formData.get("slug") || "").trim()
   const slug = slugify(slugInput || title)
+
+  console.log("[createArticle] coverImage reçu:", coverImage)
 
   const existing = await db.select().from(articles).where(eq(articles.slug, slug)).limit(1)
   if (existing.length > 0) {
@@ -49,10 +52,12 @@ export async function createArticle(_prev: ActionState, formData: FormData): Pro
     slug,
     excerpt: String(formData.get("excerpt") || "").trim() || null,
     content,
-    coverImage: String(formData.get("coverImage") || "").trim() || null,
+    coverImage,
     category: String(formData.get("category") || "").trim() || null,
     published: formData.get("published") === "on",
   })
+
+  console.log("[createArticle] sauvegardé avec coverImage:", coverImage)
 
   revalidatePath("/admin/articles")
   revalidatePath("/articles")
@@ -71,8 +76,11 @@ export async function updateArticle(
   if (!title) return { error: "Le titre est requis." }
   if (!content) return { error: "Le contenu est requis." }
 
+  const coverImage = String(formData.get("coverImage") || "").trim() || null
   const slugInput = String(formData.get("slug") || "").trim()
   const slug = slugify(slugInput || title)
+
+  console.log("[updateArticle] id:", id, "coverImage reçu:", coverImage)
 
   const existing = await db.select().from(articles).where(eq(articles.slug, slug)).limit(1)
   if (existing.length > 0 && existing[0].id !== id) {
@@ -86,7 +94,7 @@ export async function updateArticle(
       slug,
       excerpt: String(formData.get("excerpt") || "").trim() || null,
       content,
-      coverImage: String(formData.get("coverImage") || "").trim() || null,
+      coverImage,
       category: String(formData.get("category") || "").trim() || null,
       published: formData.get("published") === "on",
       updatedAt: new Date(),

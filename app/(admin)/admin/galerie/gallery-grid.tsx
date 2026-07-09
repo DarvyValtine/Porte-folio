@@ -1,7 +1,7 @@
 "use client"
 
-import Image from "next/image"
 import { useRouter } from "next/navigation"
+import { SafeImage } from "@/components/safe-image"
 import { DeleteButton } from "@/components/admin/delete-button"
 import { deleteGalleryItem } from "@/lib/actions/gallery"
 import { toast } from "sonner"
@@ -32,11 +32,10 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
           className="overflow-hidden rounded-xl border border-border/60 bg-card"
         >
           <div className="relative aspect-[4/3] bg-muted">
-            <Image
+            <SafeImage
               src={item.imageUrl}
               alt={item.title || ""}
-              fill
-              className="object-cover"
+              className="h-full w-full object-cover"
             />
           </div>
           <div className="flex items-start justify-between gap-2 p-3">

@@ -1,14 +1,35 @@
 import "server-only"
+import fs from "fs/promises"
+import path from "path"
 import { db } from "@/lib/db"
 import { articles, pressItems, galleryItems } from "@/lib/db/schema"
 import { desc, eq, and } from "drizzle-orm"
 
+async function localFileExists(url: string | null) {
+  if (!url || !url.startsWith("/uploads/")) return true
+  try {
+    await fs.access(path.join(process.cwd(), "public", url))
+    return true
+  } catch {
+    return false
+  }
+}
+
 export async function getPublishedArticles() {
-  return db
+  const rows = await db
     .select()
     .from(articles)
     .where(eq(articles.published, true))
     .orderBy(desc(articles.createdAt))
+
+  return Promise.all(
+    rows.map(async (a) => {
+      const exists = await localFileExists(a.coverImage)
+      const result = exists ? a.coverImage : null
+      console.log("[getPublishedArticles] id:", a.id, "coverImage DB:", a.coverImage, "existe:", exists, "→ retourne:", result)
+      return { ...a, coverImage: result }
+    })
+  )
 }
 
 export async function getArticleBySlug(slug: string) {
@@ -17,16 +38,39 @@ export async function getArticleBySlug(slug: string) {
     .from(articles)
     .where(and(eq(articles.slug, slug), eq(articles.published, true)))
     .limit(1)
-  return rows[0] ?? null
+
+  if (!rows[0]) {
+    console.log("[getArticleBySlug] slug:", slug, "→ non trouvé")
+    return null
+  }
+
+  const exists = await localFileExists(rows[0].coverImage)
+  const result = exists ? rows[0].coverImage : null
+  console.log("[getArticleBySlug] slug:", slug, "coverImage DB:", rows[0].coverImage, "existe:", exists, "→ retourne:", result)
+  return { ...rows[0], coverImage: result }
 }
 
 export async function getPressItems() {
-  return db.select().from(pressItems).orderBy(desc(pressItems.publishedDate))
+  const rows = await db.select().from(pressItems).orderBy(desc(pressItems.publishedDate))
+
+  return Promise.all(
+    rows.map(async (p) => ({
+      ...p,
+      coverImage: (await localFileExists(p.coverImage)) ? p.coverImage : null,
+    }))
+  )
 }
 
 export async function getGalleryItems() {
-  return db
+  const rows = await db
     .select()
     .from(galleryItems)
     .orderBy(galleryItems.sortOrder, desc(galleryItems.createdAt))
+
+  return Promise.all(
+    rows.map(async (g) => ({
+      ...g,
+      imageUrl: (await localFileExists(g.imageUrl)) ? g.imageUrl : "",
+    }))
+  )
 }

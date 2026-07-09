@@ -1,6 +1,6 @@
-import Image from "next/image"
 import { ExternalLink } from "lucide-react"
 import { PageHeader } from "@/components/page-header"
+import { SafeImage } from "@/components/safe-image"
 import { getPressItems } from "@/lib/queries"
 
 export const metadata = {
@@ -46,14 +46,15 @@ export default async function PressePage() {
                 rel="noopener noreferrer"
                 className="group flex gap-5 rounded-2xl border border-border/60 bg-card p-5 transition-shadow hover:shadow-md hover:shadow-primary/5"
               >
-                <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl bg-muted">
-                  <Image
-                    src={item.coverImage || "/images/office.png"}
-                    alt={item.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+                {item.coverImage && (
+                  <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl bg-muted">
+                    <SafeImage
+                      src={item.coverImage}
+                      alt={item.title}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                )}
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2 text-xs uppercase tracking-[0.12em] text-primary">
                     <span>{item.outlet}</span>

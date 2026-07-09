@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { ImageUpload } from "@/components/admin/image-upload"
 import { createPressItem, type ActionState } from "@/lib/actions/press"
 import { toast } from "sonner"
 
@@ -46,10 +47,7 @@ export function PressForm() {
         </div>
       </div>
 
-      <div className="space-y-1.5">
-        <Label htmlFor="coverImage">URL de l&apos;image de couverture</Label>
-        <Input id="coverImage" name="coverImage" placeholder="https://..." />
-      </div>
+      <ImageUpload name="coverImage" label="Image de couverture" />
 
       <div className="space-y-1.5">
         <Label htmlFor="excerpt">Extrait</Label>

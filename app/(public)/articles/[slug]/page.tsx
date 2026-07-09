@@ -1,8 +1,8 @@
-import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArrowLeft } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
+import { SafeImage } from "@/components/safe-image"
 import { getArticleBySlug } from "@/lib/queries"
 
 export const dynamic = "force-dynamic"
@@ -56,12 +56,12 @@ export default async function ArticleDetailPage({
 
       {article.coverImage && (
         <div className="mt-8 overflow-hidden rounded-2xl border border-border/60">
-          <Image
-            src={article.coverImage || "/placeholder.svg"}
+          <SafeImage
+            src={article.coverImage}
             alt={article.title}
+            className="h-full w-full object-cover"
             width={900}
             height={560}
-            className="h-full w-full object-cover"
           />
         </div>
       )}
