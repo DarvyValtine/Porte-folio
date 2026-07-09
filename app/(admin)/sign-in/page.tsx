@@ -1,53 +1,71 @@
-"use client"
+"use client";
 
-import { useState, Suspense } from "react"
-import { useRouter, useSearchParams } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { authClient } from "@/lib/auth-client"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { authClient } from "@/lib/auth-client";
+import { useSearchParams } from "next/navigation";
+import { Suspense, useState } from "react";
 
 function SignInForm() {
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  const redirectTo = searchParams.get("redirect") || "/admin"
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirect") || "/admin";
 
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState<string | null>(null)
-  const [loading, setLoading] = useState(false)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    setError(null)
-    setLoading(true)
-
-    const { error: signInError } = await authClient.signIn.email({
-      email,
-      password,
-    })
-
-    setLoading(false)
-
-    if (signInError) {
-      setError("Identifiants incorrects. Vérifiez votre email et votre mot de passe.")
-      return
+  async function handleSubmit() {
+    if (!email.trim() || !password) {
+      setError("Veuillez remplir tous les champs.");
+      return;
     }
 
-    router.push(redirectTo)
-    router.refresh()
+    setError(null);
+    setLoading(true);
+
+    try {
+      const { error: signInError } = await authClient.signIn.email({
+        email,
+        password,
+      });
+
+      if (signInError) {
+        setError(
+          "Identifiants incorrects. Vérifiez votre email et votre mot de passe.",
+        );
+        setLoading(false);
+        return;
+      }
+
+      window.location.href = redirectTo;
+    } catch {
+      setError("Une erreur est survenue. Veuillez réessayer.");
+      setLoading(false);
+    }
   }
 
   return (
-    <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center bg-secondary/30 px-4">
+    <div className="flex min-h-screen items-center justify-center bg-secondary/30 px-4">
       <Card className="w-full max-w-sm border-border/60">
         <CardHeader>
-          <CardTitle className="font-serif text-xl">Espace administration</CardTitle>
-          <CardDescription>Connectez-vous pour gérer le contenu du site.</CardDescription>
+          <CardTitle className="font-serif text-xl">
+            Espace administration
+          </CardTitle>
+          <CardDescription>
+            Connectez-vous pour gérer le contenu du site.
+          </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="space-y-4">
             <div className="space-y-1.5">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -71,14 +89,18 @@ function SignInForm() {
               />
             </div>
             {error && <p className="text-sm text-destructive">{error}</p>}
-            <Button type="submit" className="w-full" disabled={loading}>
+            <Button
+              className="w-full"
+              disabled={loading}
+              onClick={handleSubmit}
+            >
               {loading ? "Connexion..." : "Se connecter"}
             </Button>
-          </form>
+          </div>
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }
 
 export default function SignInPage() {
@@ -86,5 +108,5 @@ export default function SignInPage() {
     <Suspense fallback={null}>
       <SignInForm />
     </Suspense>
-  )
+  );
 }

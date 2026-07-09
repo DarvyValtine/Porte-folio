@@ -10,6 +10,8 @@ import { auth } from "@/lib/auth"
 
 export type ActionState = { error?: string } | undefined
 
+type SimpleResult = { success: boolean; error?: string }
+
 async function requireUserId() {
   const session = await auth.api.getSession({ headers: await headers() })
   if (!session) throw new Error("Non autorisé")
@@ -97,16 +99,18 @@ export async function updateArticle(
   redirect("/admin/articles")
 }
 
-export async function deleteArticle(id: number) {
+export async function deleteArticle(id: number): Promise<SimpleResult> {
   await requireUserId()
   await db.delete(articles).where(eq(articles.id, id))
   revalidatePath("/admin/articles")
   revalidatePath("/articles")
+  return { success: true }
 }
 
-export async function toggleArticlePublished(id: number, published: boolean) {
+export async function toggleArticlePublished(id: number, published: boolean): Promise<SimpleResult> {
   await requireUserId()
   await db.update(articles).set({ published, updatedAt: new Date() }).where(eq(articles.id, id))
   revalidatePath("/admin/articles")
   revalidatePath("/articles")
+  return { success: true }
 }

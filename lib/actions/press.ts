@@ -9,6 +9,8 @@ import { auth } from "@/lib/auth"
 
 export type ActionState = { error?: string } | undefined
 
+type SimpleResult = { success: boolean; error?: string }
+
 async function requireUserId() {
   const session = await auth.api.getSession({ headers: await headers() })
   if (!session) throw new Error("Non autorisé")
@@ -38,9 +40,10 @@ export async function createPressItem(_prev: ActionState, formData: FormData): P
   return undefined
 }
 
-export async function deletePressItem(id: number) {
+export async function deletePressItem(id: number): Promise<SimpleResult> {
   await requireUserId()
   await db.delete(pressItems).where(eq(pressItems.id, id))
   revalidatePath("/admin/presse")
   revalidatePath("/presse")
+  return { success: true }
 }

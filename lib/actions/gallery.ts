@@ -9,6 +9,8 @@ import { auth } from "@/lib/auth"
 
 export type ActionState = { error?: string } | undefined
 
+type SimpleResult = { success: boolean; error?: string }
+
 async function requireUserId() {
   const session = await auth.api.getSession({ headers: await headers() })
   if (!session) throw new Error("Non autorisé")
@@ -34,9 +36,10 @@ export async function createGalleryItem(_prev: ActionState, formData: FormData):
   return undefined
 }
 
-export async function deleteGalleryItem(id: number) {
+export async function deleteGalleryItem(id: number): Promise<SimpleResult> {
   await requireUserId()
   await db.delete(galleryItems).where(eq(galleryItems.id, id))
   revalidatePath("/admin/galerie")
   revalidatePath("/galerie")
+  return { success: true }
 }

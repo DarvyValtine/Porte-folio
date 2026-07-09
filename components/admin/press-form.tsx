@@ -5,15 +5,20 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { createPressItem } from "@/lib/actions/press"
+import { createPressItem, type ActionState } from "@/lib/actions/press"
+import { toast } from "sonner"
 
 export function PressForm() {
-  const [state, formAction, pending] = useActionState(createPressItem, undefined)
   const formRef = useRef<HTMLFormElement>(null)
+  const [state, formAction, pending] = useActionState<ActionState>(
+    createPressItem,
+    undefined
+  )
 
   useEffect(() => {
-    if (!pending && !state?.error) {
+    if (!pending && state === undefined) {
       formRef.current?.reset()
+      toast.success("Article de presse ajouté")
     }
   }, [pending, state])
 
@@ -21,17 +26,18 @@ export function PressForm() {
     <form ref={formRef} action={formAction} className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-1.5">
-          <Label htmlFor="title">Titre</Label>
-          <Input id="title" name="title" required />
+          <Label htmlFor="title">Titre *</Label>
+          <Input id="title" name="title" required placeholder="Titre de l'article" />
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="outlet">Média / publication</Label>
-          <Input id="outlet" name="outlet" placeholder="Le Monde, RFI..." />
+          <Label htmlFor="outlet">Média / Publication</Label>
+          <Input id="outlet" name="outlet" placeholder="Ex: Le Monde, RFI..." />
         </div>
       </div>
+
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-1.5">
-          <Label htmlFor="url">Lien vers l&apos;article</Label>
+          <Label htmlFor="url">URL de l&apos;article</Label>
           <Input id="url" name="url" placeholder="https://..." />
         </div>
         <div className="space-y-1.5">
@@ -39,17 +45,23 @@ export function PressForm() {
           <Input id="publishedDate" name="publishedDate" type="date" />
         </div>
       </div>
+
       <div className="space-y-1.5">
-        <Label htmlFor="coverImage">Image (URL, optionnel)</Label>
+        <Label htmlFor="coverImage">URL de l&apos;image de couverture</Label>
         <Input id="coverImage" name="coverImage" placeholder="https://..." />
       </div>
+
       <div className="space-y-1.5">
-        <Label htmlFor="excerpt">Résumé</Label>
-        <Textarea id="excerpt" name="excerpt" rows={2} />
+        <Label htmlFor="excerpt">Extrait</Label>
+        <Textarea id="excerpt" name="excerpt" rows={2} placeholder="Résumé de l'article" />
       </div>
-      {state?.error && <p className="text-sm text-destructive">{state.error}</p>}
+
+      {state?.error && (
+        <p className="text-sm text-destructive">{state.error}</p>
+      )}
+
       <Button type="submit" disabled={pending}>
-        {pending ? "Ajout..." : "Ajouter l'article de presse"}
+        {pending ? "Ajout..." : "Ajouter l'article"}
       </Button>
     </form>
   )

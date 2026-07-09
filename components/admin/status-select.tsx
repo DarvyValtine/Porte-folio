@@ -22,7 +22,7 @@ export function StatusSelect({
 }: {
   id: number
   status: string
-  onChange: (id: number, status: "pending" | "contacted" | "closed") => Promise<void>
+  onChange: (id: number, status: "pending" | "contacted" | "closed") => Promise<{ success: boolean; error?: string }>
 }) {
   const [pending, startTransition] = useTransition()
 
@@ -31,8 +31,8 @@ export function StatusSelect({
       value={status}
       disabled={pending}
       onValueChange={(value) =>
-        startTransition(() => {
-          onChange(id, value as "pending" | "contacted" | "closed")
+        startTransition(async () => {
+          await onChange(id, value as "pending" | "contacted" | "closed")
         })
       }
     >

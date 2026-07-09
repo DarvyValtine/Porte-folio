@@ -2,13 +2,14 @@
 
 import { useTransition } from "react"
 import { Badge } from "@/components/ui/badge"
+import { toast } from "sonner"
 
 export function PublishToggle({
   published,
   onToggle,
 }: {
   published: boolean
-  onToggle: (next: boolean) => Promise<void>
+  onToggle: (next: boolean) => Promise<{ success: boolean; error?: string }>
 }) {
   const [pending, startTransition] = useTransition()
 
@@ -16,11 +17,17 @@ export function PublishToggle({
     <button
       type="button"
       disabled={pending}
-      onClick={() => startTransition(() => onToggle(!published))}
-      className="disabled:opacity-50"
+      onClick={() =>
+        startTransition(async () => {
+          const result = await onToggle(!published)
+          if (result.success) {
+            toast.success(published ? "Passé en brouillon" : "Publié")
+          }
+        })
+      }
     >
-      <Badge variant={published ? "default" : "outline"} className="cursor-pointer">
-        {published ? "Publié" : "Brouillon"}
+      <Badge variant={published ? "default" : "secondary"} className="cursor-pointer">
+        {pending ? "..." : published ? "Publié" : "Brouillon"}
       </Badge>
     </button>
   )
