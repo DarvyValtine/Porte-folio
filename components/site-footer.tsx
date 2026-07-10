@@ -1,13 +1,18 @@
-import Link from "next/link"
-import { Mail, Phone, MapPin } from "lucide-react"
-import { navLinks, site } from "@/lib/site"
+import Link from "next/link";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { navLinks, site } from "@/lib/site";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border/60 bg-secondary/40">
+    <footer
+      className="border-t border-border/60 bg-secondary/40"
+      aria-label="Pied de page du site"
+    >
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
         <div className="space-y-3">
-          <p className="font-serif text-xl font-semibold text-foreground">{site.name}</p>
+          <p className="font-serif text-xl font-semibold text-foreground">
+            {site.name}
+          </p>
           <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
             {site.tagline}
           </p>
@@ -57,15 +62,12 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-border/60">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 py-5 text-xs text-muted-foreground sm:flex-row sm:px-6">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-2 px-4 py-5 text-xs text-muted-foreground sm:flex-row sm:px-6">
           <p>
             © {new Date().getFullYear()} {site.name}. Tous droits réservés.
           </p>
-          <Link href="/sign-in" className="hover:text-foreground">
-            Espace administration
-          </Link>
         </div>
       </div>
     </footer>
-  )
+  );
 }
