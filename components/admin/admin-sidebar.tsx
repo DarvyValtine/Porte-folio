@@ -4,11 +4,11 @@ import { Badge } from "@/components/ui/badge";
 import { authClient } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 import {
+  CalendarDays,
   ExternalLink,
   Images,
   LayoutDashboard,
   LogOut,
-  Mail,
   Megaphone,
   Newspaper,
   PanelLeft,
@@ -29,7 +29,12 @@ const links = [
   { href: "/admin/articles", label: "Articles", icon: Newspaper },
   { href: "/admin/galerie", label: "Galerie", icon: Images },
   { href: "/admin/presse", label: "Presse", icon: Megaphone },
-  { href: "/admin/rdv", label: "Mes rendez-vous", icon: Mail, badge: true },
+  {
+    href: "/admin/rdv",
+    label: "Mes rendez-vous",
+    icon: CalendarDays,
+    badge: true,
+  },
   { href: "/admin/articles/new", label: "Nouvel article", icon: Plus },
   { href: "/", label: "Voir le site", icon: ExternalLink, external: true },
 ];
