@@ -1,32 +1,32 @@
-import { HeartHandshake, Scale, Users, ShieldCheck } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
+import { HeartHandshake, Scale, Users, PhoneCall } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 const areas = [
   {
     icon: HeartHandshake,
-    title: "Accompagnement clinique",
+    title: "Protection de l'enfance",
     description:
-      "Thérapies individuelles pour adultes et adolescents : traumatismes, anxiété, deuil et reconstruction de soi.",
+      "Accompagnement et prise en charge des enfants en situation de rue, mineurs incarcérés et enfants vulnérables.",
   },
   {
     icon: Scale,
-    title: "Droits humains",
+    title: "Droits humains & plaidoyer",
     description:
-      "Engagement auprès d'ONG et d'institutions pour la défense de la dignité et des droits fondamentaux.",
+      "Engagement auprès d'ONG et d'institutions pour la défense des droits des enfants et des femmes.",
   },
   {
     icon: Users,
-    title: "Femmes & enfants",
-    description:
-      "Protection et soutien psychologique des femmes et des enfants en situation de vulnérabilité.",
-  },
-  {
-    icon: ShieldCheck,
     title: "Santé sexuelle & reproductive",
     description:
-      "Sensibilisation, formation et plaidoyer pour l'accès à des soins respectueux et éclairés.",
+      "Sensibilisation, animation de groupes de parole et plaidoyer pour l'accès à des soins respectueux.",
   },
-]
+  {
+    icon: PhoneCall,
+    title: "Écoute sociale & urgence",
+    description:
+      "Gestion de lignes d'appel d'urgence et dispositifs d'aide psychosociale pour les personnes en détresse.",
+  },
+];
 
 export function FocusAreas() {
   return (
@@ -62,5 +62,5 @@ export function FocusAreas() {
         </div>
       </div>
     </section>
-  )
+  );
 }
