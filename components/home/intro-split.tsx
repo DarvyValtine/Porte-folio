@@ -19,6 +19,7 @@ export function IntroSplit() {
             alt="Atelier communautaire de soutien"
             width={720}
             height={560}
+            sizes="(max-width: 1024px) 100vw, 50vw"
             className="h-full w-full object-cover"
           />
         </div>

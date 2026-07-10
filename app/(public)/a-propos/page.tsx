@@ -43,6 +43,7 @@ export default function AboutPage() {
               alt="Portrait en situation"
               width={680}
               height={820}
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="h-full w-full object-cover"
             />
           </div>

@@ -45,6 +45,7 @@ export function Hero() {
               width={720}
               height={860}
               priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="h-full w-full object-cover"
             />
           </div>
