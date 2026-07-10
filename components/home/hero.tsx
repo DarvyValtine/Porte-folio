@@ -1,8 +1,8 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { site } from "@/lib/site";
+import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -36,16 +36,16 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="relative">
+        <div className="relative mx-auto w-full max-w-96 sm:max-w-104 lg:max-w-116">
           <div className="absolute -right-6 -top-6 hidden h-40 w-40 rounded-full bg-accent/50 blur-2xl md:block" />
-          <div className="relative h-125 overflow-hidden rounded-[2rem] border border-border/60 shadow-xl shadow-primary/5 lg:h-130">
+          <div className="relative aspect-4/5 overflow-hidden rounded-[2rem] border border-border/60 shadow-xl shadow-primary/5">
             <Image
               src="/images/portrait-hero.jpeg"
               alt="Portrait de la psychologue"
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-[center_30%]"
+              className="object-cover object-[center_10%] sm:object-[center_12%] lg:object-[center_16%]"
             />
           </div>
         </div>
