@@ -38,15 +38,14 @@ export function Hero() {
 
         <div className="relative">
           <div className="absolute -right-6 -top-6 hidden h-40 w-40 rounded-full bg-accent/50 blur-2xl md:block" />
-          <div className="relative overflow-hidden rounded-[2rem] border border-border/60 shadow-xl shadow-primary/5">
+          <div className="relative aspect-[6/5] overflow-hidden rounded-[2rem] border border-border/60 shadow-xl shadow-primary/5">
             <Image
               src="/images/portrait-hero.jpeg"
               alt="Portrait de la psychologue"
-              width={720}
-              height={600}
+              fill
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="h-full w-full object-cover"
+              className="object-cover object-[center_30%]"
             />
           </div>
         </div>
