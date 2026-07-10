@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { FileUpload } from "@/components/admin/file-upload"
+import { UploadthingUpload } from "@/components/admin/uploadthing-upload"
 import type { ActionState } from "@/lib/actions/articles"
 
 type Article = {
@@ -55,7 +55,7 @@ export function ArticleForm({
           <Input id="category" name="category" defaultValue={article?.category ?? ""} />
         </div>
         <div className="space-y-1.5">
-          <FileUpload
+          <UploadthingUpload
             name="coverImage"
             label="Image de couverture"
             defaultValue={article?.coverImage ?? ""}

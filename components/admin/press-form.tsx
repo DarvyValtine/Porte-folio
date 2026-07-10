@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { FileUpload } from "@/components/admin/file-upload"
+import { UploadthingUpload } from "@/components/admin/uploadthing-upload"
 import { createPressItem, type ActionState } from "@/lib/actions/press"
 import { toast } from "sonner"
 
@@ -47,7 +47,7 @@ export function PressForm() {
         </div>
       </div>
 
-      <FileUpload name="coverImage" label="Image de couverture" />
+      <UploadthingUpload name="coverImage" label="Image de couverture" />
 
       <div className="space-y-1.5">
         <Label htmlFor="excerpt">Extrait</Label>

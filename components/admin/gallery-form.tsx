@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { FileUpload } from "@/components/admin/file-upload"
+import { UploadthingUpload } from "@/components/admin/uploadthing-upload"
 import { createGalleryItem, type ActionState } from "@/lib/actions/gallery"
 import { toast } from "sonner"
 
@@ -25,7 +25,7 @@ export function GalleryForm() {
 
   return (
     <form ref={formRef} action={formAction} className="space-y-4">
-      <FileUpload name="imageUrl" label="Image *" />
+      <UploadthingUpload name="imageUrl" label="Image *" />
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-1.5">

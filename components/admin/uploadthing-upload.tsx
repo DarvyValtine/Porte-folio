@@ -1,23 +1,39 @@
 "use client"
 
 import { useRef, useState, useCallback } from "react"
+import { generateReactHelpers } from "@uploadthing/react"
+import type { UploadRouter } from "@/lib/uploadthing"
 import { Label } from "@/components/ui/label"
 import { Loader2, Upload, X } from "lucide-react"
 
-type FileUploadProps = {
+const { useUploadThing } = generateReactHelpers<UploadRouter>()
+
+type Props = {
   name: string
   label?: string
   defaultValue?: string
 }
 
-export function FileUpload({ name, label = "Image", defaultValue = "" }: FileUploadProps) {
+export function UploadthingUpload({ name, label = "Image", defaultValue = "" }: Props) {
   const inputRef = useRef<HTMLInputElement>(null)
   const [preview, setPreview] = useState(defaultValue)
-  const [uploading, setUploading] = useState(false)
   const [error, setError] = useState("")
   const [url, setUrl] = useState(defaultValue)
 
-console.log("[FileUpload] render — name:", name, "defaultValue:", defaultValue, "current url:", url)
+  const { startUpload, isUploading } = useUploadThing("imageUploader", {
+    onClientUploadComplete: (res) => {
+      const uploaded = res?.[0]
+      if (uploaded) {
+        setUrl(uploaded.url)
+        setPreview(uploaded.url)
+      }
+    },
+    onUploadError: (err) => {
+      setError(err.message || "Erreur lors de l'upload")
+      setPreview("")
+      setUrl("")
+    },
+  })
 
   const handleFile = useCallback(async (file: File) => {
     if (!file.type.startsWith("image/")) {
@@ -25,31 +41,19 @@ console.log("[FileUpload] render — name:", name, "defaultValue:", defaultValue
       return
     }
 
-    setUploading(true)
+    if (file.size > 5 * 1024 * 1024) {
+      setError("L'image ne doit pas dépasser 5 Mo")
+      return
+    }
+
     setError("")
 
     const localPreview = URL.createObjectURL(file)
     setPreview(localPreview)
 
-    const fd = new FormData()
-    fd.append("file", file)
-
-    try {
-      const res = await fetch("/api/upload", { method: "POST", body: fd })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error || "Erreur")
-      console.log("[FileUpload] upload réussi → URL:", data.url)
-      setUrl(data.url)
-      setPreview(data.url)
-    } catch (e) {
-      setError((e as Error).message || "Erreur lors de l'upload")
-      setPreview("")
-      setUrl("")
-    } finally {
-      setUploading(false)
-      URL.revokeObjectURL(localPreview)
-    }
-  }, [])
+    await startUpload([file])
+    URL.revokeObjectURL(localPreview)
+  }, [startUpload])
 
   const handleDrop = useCallback(
     (e: React.DragEvent) => {
@@ -88,7 +92,7 @@ console.log("[FileUpload] render — name:", name, "defaultValue:", defaultValue
             alt="Aperçu"
             className="h-48 w-full object-cover"
           />
-          {uploading && (
+          {isUploading && (
             <div className="absolute inset-0 flex items-center justify-center bg-black/40">
               <Loader2 className="h-6 w-6 animate-spin text-white" />
             </div>
@@ -108,7 +112,7 @@ console.log("[FileUpload] render — name:", name, "defaultValue:", defaultValue
           onClick={() => inputRef.current?.click()}
           className="flex cursor-pointer flex-col items-center gap-2 rounded-lg border-2 border-dashed border-border/60 bg-secondary/30 px-4 py-8 text-center transition-colors hover:border-primary/50 hover:bg-secondary/50"
         >
-          {uploading ? (
+          {isUploading ? (
             <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
           ) : (
             <>

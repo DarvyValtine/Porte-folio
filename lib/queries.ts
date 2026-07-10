@@ -25,9 +25,7 @@ export async function getPublishedArticles() {
   return Promise.all(
     rows.map(async (a) => {
       const exists = await localFileExists(a.coverImage)
-      const result = exists ? a.coverImage : null
-      console.log("[getPublishedArticles] id:", a.id, "coverImage DB:", a.coverImage, "existe:", exists, "→ retourne:", result)
-      return { ...a, coverImage: result }
+      return { ...a, coverImage: exists ? a.coverImage : null }
     })
   )
 }
@@ -39,15 +37,10 @@ export async function getArticleBySlug(slug: string) {
     .where(and(eq(articles.slug, slug), eq(articles.published, true)))
     .limit(1)
 
-  if (!rows[0]) {
-    console.log("[getArticleBySlug] slug:", slug, "→ non trouvé")
-    return null
-  }
+  if (!rows[0]) return null
 
   const exists = await localFileExists(rows[0].coverImage)
-  const result = exists ? rows[0].coverImage : null
-  console.log("[getArticleBySlug] slug:", slug, "coverImage DB:", rows[0].coverImage, "existe:", exists, "→ retourne:", result)
-  return { ...rows[0], coverImage: result }
+  return { ...rows[0], coverImage: exists ? rows[0].coverImage : null }
 }
 
 export async function getPressItems() {

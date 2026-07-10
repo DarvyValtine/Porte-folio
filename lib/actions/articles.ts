@@ -39,8 +39,6 @@ export async function createArticle(_prev: ActionState, formData: FormData): Pro
   const slugInput = String(formData.get("slug") || "").trim()
   const slug = slugify(slugInput || title)
 
-  console.log("[createArticle] coverImage reçu:", coverImage)
-
   const existing = await db.select().from(articles).where(eq(articles.slug, slug)).limit(1)
   if (existing.length > 0) {
     return { error: "Ce slug est déjà utilisé par un autre article." }
@@ -56,8 +54,6 @@ export async function createArticle(_prev: ActionState, formData: FormData): Pro
     category: String(formData.get("category") || "").trim() || null,
     published: formData.get("published") === "on",
   })
-
-  console.log("[createArticle] sauvegardé avec coverImage:", coverImage)
 
   revalidatePath("/admin/articles")
   revalidatePath("/articles")
@@ -79,8 +75,6 @@ export async function updateArticle(
   const coverImage = String(formData.get("coverImage") || "").trim() || null
   const slugInput = String(formData.get("slug") || "").trim()
   const slug = slugify(slugInput || title)
-
-  console.log("[updateArticle] id:", id, "coverImage reçu:", coverImage)
 
   const existing = await db.select().from(articles).where(eq(articles.slug, slug)).limit(1)
   if (existing.length > 0 && existing[0].id !== id) {
