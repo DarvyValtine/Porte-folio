@@ -43,7 +43,7 @@ export function Hero() {
               src="/images/portrait-hero.jpeg"
               alt="Portrait de la psychologue"
               width={720}
-              height={860}
+              height={600}
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="h-full w-full object-cover"
