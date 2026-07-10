@@ -1,13 +1,13 @@
-import Link from "next/link"
-import { ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { ArticleCard } from "@/components/article-card"
-import { getPublishedArticles } from "@/lib/queries"
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ArticleCard } from "@/components/article-card";
+import { getPublishedArticles } from "@/lib/queries";
 
 export async function LatestArticles() {
-  const articles = (await getPublishedArticles()).slice(0, 3)
+  const articles = (await getPublishedArticles()).slice(0, 3);
 
-  if (articles.length === 0) return null
+  if (articles.length === 0) return null;
 
   return (
     <section className="border-t border-border/60 bg-secondary/30">
@@ -21,7 +21,11 @@ export async function LatestArticles() {
               Derniers articles & réflexions
             </h2>
           </div>
-          <Button asChild variant="outline" className="hidden shrink-0 rounded-full sm:inline-flex">
+          <Button
+            asChild
+            variant="outline"
+            className="hidden shrink-0 rounded-full sm:inline-flex"
+          >
             <Link href="/articles">
               Tous les articles
               <ArrowRight className="h-4 w-4" />
@@ -35,5 +39,5 @@ export async function LatestArticles() {
         </div>
       </div>
     </section>
-  )
+  );
 }

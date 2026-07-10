@@ -1,6 +1,6 @@
-import Image from "next/image"
 import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
+import { SafeImage } from "@/components/safe-image"
 
 type Article = {
   slug: string
@@ -25,14 +25,15 @@ export function ArticleCard({ article }: { article: Article }) {
       href={`/articles/${article.slug}`}
       className="group flex flex-col overflow-hidden rounded-2xl border border-border/60 bg-card transition-shadow hover:shadow-md hover:shadow-primary/5"
     >
-      <div className="relative aspect-[16/10] overflow-hidden bg-muted">
-        <Image
-          src={article.coverImage || "/images/office.png"}
-          alt={article.title}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-      </div>
+      {article.coverImage && (
+        <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+          <SafeImage
+            src={article.coverImage}
+            alt={article.title}
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
+      )}
       <div className="flex flex-1 flex-col gap-3 p-5">
         <div className="flex items-center gap-2 text-xs text-muted-foreground">
           {article.category && (

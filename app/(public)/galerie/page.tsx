@@ -1,5 +1,5 @@
-import Image from "next/image"
 import { PageHeader } from "@/components/page-header"
+import { SafeImage } from "@/components/safe-image"
 import { getGalleryItems } from "@/lib/queries"
 
 export const metadata = {
@@ -34,12 +34,12 @@ export default async function GaleriePage() {
                 key={item.id}
                 className="mb-5 break-inside-avoid overflow-hidden rounded-2xl border border-border/60 bg-card"
               >
-                <Image
-                  src={item.imageUrl || "/placeholder.svg"}
+                <SafeImage
+                  src={item.imageUrl}
                   alt={item.title || "Photo de galerie"}
+                  className="h-auto w-full object-cover"
                   width={600}
                   height={750}
-                  className="h-auto w-full object-cover"
                 />
                 {(item.title || item.caption) && (
                   <figcaption className="p-4">

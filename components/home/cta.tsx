@@ -1,6 +1,6 @@
-import Link from "next/link"
-import { ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function HomeCta() {
   return (
@@ -20,12 +20,12 @@ export function HomeCta() {
           variant="secondary"
           className="mt-8 rounded-full"
         >
-          <Link href="/rdv">
+          <Link href="/contact">
             Demander un rendez-vous
             <ArrowRight className="h-4 w-4" />
           </Link>
         </Button>
       </div>
     </section>
-  )
+  );
 }
