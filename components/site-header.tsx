@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -10,6 +10,7 @@ import { navLinks, site } from "@/lib/site";
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
 
   return (
@@ -19,6 +20,7 @@ export function SiteHeader() {
           href="/"
           className="flex flex-col leading-none"
           onClick={() => setOpen(false)}
+          onDoubleClick={() => router.push("/sign-in")}
         >
           <span className="font-serif text-lg font-semibold tracking-tight text-foreground">
             {site.name}
