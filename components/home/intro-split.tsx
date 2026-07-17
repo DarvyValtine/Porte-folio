@@ -3,19 +3,23 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const stats = [
-  { value: "6+", label: "années de terrain au Congo" },
-  { value: "4+", label: "projets de protection de l'enfance" },
-  { value: "3", label: "publications & articles de presse" },
-];
+type IntroData = {
+  eyebrow: string
+  title: string
+  body: string
+  stats: { value: string; label: string }[]
+  ctaLabel: string
+  ctaLink: string
+  image: string
+}
 
-export function IntroSplit() {
+export function IntroSplit({ data }: { data: IntroData }) {
   return (
     <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
       <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div className="relative order-2 overflow-hidden rounded-[2rem] border border-border/60 shadow-lg shadow-primary/5 lg:order-1">
           <Image
-            src="/images/engagement.jpg"
+            src={data.image}
             alt="Atelier communautaire de soutien"
             width={720}
             height={560}
@@ -25,19 +29,16 @@ export function IntroSplit() {
         </div>
         <div className="order-1 space-y-6 lg:order-2">
           <p className="text-sm font-medium uppercase tracking-[0.16em] text-primary">
-            Mon approche
+            {data.eyebrow}
           </p>
           <h2 className="font-serif text-3xl font-semibold tracking-tight text-foreground text-balance sm:text-4xl">
-            Un engagement de terrain au service des enfants
+            {data.title}
           </h2>
           <p className="leading-relaxed text-muted-foreground text-pretty">
-            Je conjugue la rigueur de la psychologie clinique avec un engagement
-            militant de longue date. Mon travail consiste à protéger les enfants
-            vulnérables, à restaurer leur dignité, et à porter leur voix auprès
-            des institutions et de la société.
+            {data.body}
           </p>
           <div className="grid grid-cols-3 gap-4">
-            {stats.map((s) => (
+            {data.stats.map((s) => (
               <div key={s.label}>
                 <p className="font-serif text-3xl font-semibold text-primary">
                   {s.value}
@@ -49,8 +50,8 @@ export function IntroSplit() {
             ))}
           </div>
           <Button asChild variant="link" className="h-auto p-0 text-primary">
-            <Link href="/parcours">
-              Voir le parcours complet
+            <Link href={data.ctaLink}>
+              {data.ctaLabel}
               <ArrowRight className="h-4 w-4" />
             </Link>
           </Button>

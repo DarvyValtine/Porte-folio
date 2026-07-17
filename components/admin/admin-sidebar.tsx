@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import {
   CalendarDays,
   ExternalLink,
+  FileText,
   Images,
   LayoutDashboard,
   LogOut,
@@ -26,6 +27,7 @@ const links = [
     icon: LayoutDashboard,
     exact: true,
   },
+  { href: "/admin/contenu", label: "Contenu du site", icon: FileText },
   { href: "/admin/articles", label: "Articles", icon: Newspaper },
   { href: "/admin/galerie", label: "Galerie", icon: Images },
   { href: "/admin/presse", label: "Presse", icon: Megaphone },

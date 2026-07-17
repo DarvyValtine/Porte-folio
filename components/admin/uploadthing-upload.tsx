@@ -12,9 +12,10 @@ type Props = {
   name: string
   label?: string
   defaultValue?: string
+  onChange?: (url: string) => void
 }
 
-export function UploadthingUpload({ name, label = "Image", defaultValue = "" }: Props) {
+export function UploadthingUpload({ name, label = "Image", defaultValue = "", onChange }: Props) {
   const inputRef = useRef<HTMLInputElement>(null)
   const [preview, setPreview] = useState(defaultValue)
   const [error, setError] = useState("")
@@ -26,6 +27,7 @@ export function UploadthingUpload({ name, label = "Image", defaultValue = "" }: 
       if (uploaded) {
         setUrl(uploaded.url)
         setPreview(uploaded.url)
+        onChange?.(uploaded.url)
       }
     },
     onUploadError: (err) => {
@@ -76,8 +78,9 @@ export function UploadthingUpload({ name, label = "Image", defaultValue = "" }: 
     setPreview("")
     setUrl("")
     setError("")
+    onChange?.("")
     if (inputRef.current) inputRef.current.value = ""
-  }, [])
+  }, [onChange])
 
   return (
     <div className="space-y-1.5">
