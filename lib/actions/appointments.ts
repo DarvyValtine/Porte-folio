@@ -13,6 +13,7 @@ const appointmentSchema = z.object({
   email: z.string().email("Adresse email invalide"),
   phone: z.string().optional(),
   preferredDate: z.string().optional(),
+  typeId: z.coerce.number().optional(),
   subject: z.string().optional(),
   message: z.string().min(10, "Message requis (min. 10 caractères)"),
 })
@@ -41,6 +42,7 @@ export async function createAppointment(
     phone: formData.get("phone") || undefined,
     preferredDate: formData.get("preferredDate") || undefined,
     subject: formData.get("subject") || undefined,
+    typeId: formData.get("typeId") || undefined,
     message: formData.get("message"),
   })
 
@@ -55,6 +57,7 @@ export async function createAppointment(
     email: parsed.data.email,
     phone: parsed.data.phone ?? null,
     preferredDate: parsed.data.preferredDate ?? null,
+    typeId: parsed.data.typeId ?? null,
     subject: parsed.data.subject ?? null,
     message: parsed.data.message,
   })

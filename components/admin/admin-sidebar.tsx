@@ -9,6 +9,7 @@ import {
   FileText,
   Images,
   LayoutDashboard,
+  List,
   LogOut,
   Megaphone,
   Newspaper,
@@ -37,6 +38,7 @@ const links = [
     icon: CalendarDays,
     badge: true,
   },
+  { href: "/admin/rdv/types", label: "Types de RDV", icon: List },
   { href: "/admin/articles/new", label: "Nouvel article", icon: Plus },
   { href: "/", label: "Voir le site", icon: ExternalLink, external: true },
 ];

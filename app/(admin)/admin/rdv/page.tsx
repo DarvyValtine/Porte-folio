@@ -1,5 +1,8 @@
 import { getAllAppointmentsAdmin } from "@/lib/db/admin-queries"
 import { RdvManager } from "./rdv-manager"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { List } from "lucide-react"
 
 export const dynamic = "force-dynamic"
 
@@ -9,12 +12,13 @@ export default async function AdminRdvPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="font-serif text-2xl font-semibold text-foreground">
-          Mes rendez-vous
-        </h1>
-        <p className="mt-1 text-sm text-muted-foreground">
-          {appointments.length} rendez-vous
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <h1 className="font-serif text-2xl font-semibold text-foreground">
+            Mes rendez-vous
+          </h1>
+          <p className="mt-1 text-sm text-muted-foreground">
+            {appointments.length} rendez-vous
           {appointments.length !== 1 ? "s" : ""} reçu
           {appointments.length !== 1 ? "s" : ""}
           {pendingCount > 0 && (
@@ -23,6 +27,13 @@ export default async function AdminRdvPage() {
             </span>
           )}
         </p>
+      </div>
+        <Button asChild variant="outline" size="sm">
+          <Link href="/admin/rdv/types">
+            <List className="h-3.5 w-3.5" />
+            Types de RDV
+          </Link>
+        </Button>
       </div>
 
       <RdvManager appointments={appointments} />

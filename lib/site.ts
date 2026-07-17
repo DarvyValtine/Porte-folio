@@ -1,6 +1,6 @@
 export const site = {
-  name: "Grace Estia Otilibili",
-  role: "Psychologue clinicienne & Chargée de projet",
+  name: "Grace Estia",
+  role: "Psychologue clinicienne",
   tagline:
     "Psychologue clinicienne et militante pour les droits humains, les droits des femmes et des enfants, et la santé sexuelle et reproductive.",
   email: "contact@grace-estia.com",

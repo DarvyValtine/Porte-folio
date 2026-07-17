@@ -110,12 +110,22 @@ export const siteContent = pgTable("site_content", {
   updatedAt: timestamp("updatedAt").notNull().defaultNow(),
 })
 
+export const appointmentTypes = pgTable("appointment_types", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  description: text("description"),
+  isActive: boolean("isActive").notNull().default(true),
+  sortOrder: integer("sortOrder").notNull().default(0),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+})
+
 export const appointments = pgTable("appointments", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   email: text("email").notNull(),
   phone: text("phone"),
   preferredDate: date("preferredDate"),
+  typeId: integer("typeId").references(() => appointmentTypes.id),
   subject: text("subject"),
   message: text("message").notNull(),
   status: text("status").notNull().default("pending"),
