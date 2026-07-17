@@ -232,21 +232,6 @@ export function RdvPageClient({ types }: { types: AppointmentType[] }) {
 
                   <div className="space-y-1.5">
                     <label
-                      htmlFor="subject"
-                      className="text-sm font-medium text-foreground"
-                    >
-                      Motif de la consultation
-                    </label>
-                    <input
-                      id="subject"
-                      name="subject"
-                      className="flex h-9 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:border-ring focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
-                      placeholder="Ex: Consultation, intervention, collaboration..."
-                    />
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <label
                       htmlFor="message"
                       className="text-sm font-medium text-foreground"
                     >
