@@ -6,6 +6,7 @@ import {
   serial,
   integer,
   date,
+  jsonb,
 } from "drizzle-orm/pg-core"
 
 // ---------------------------------------------------------------------------
@@ -100,6 +101,13 @@ export const galleryItems = pgTable("gallery_items", {
   imageUrl: text("imageUrl").notNull(),
   sortOrder: integer("sortOrder").notNull().default(0),
   createdAt: timestamp("createdAt").notNull().defaultNow(),
+})
+
+export const siteContent = pgTable("site_content", {
+  id: serial("id").primaryKey(),
+  key: text("key").notNull().unique(),
+  value: jsonb("value").notNull(),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow(),
 })
 
 export const appointments = pgTable("appointments", {
