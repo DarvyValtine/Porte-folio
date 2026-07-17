@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { PageHeader } from "@/components/page-header";
 import { Button } from "@/components/ui/button";
@@ -7,7 +7,9 @@ import { site } from "@/lib/site";
 import { Calendar, CheckCircle, Clock, MapPin } from "lucide-react";
 import { useState } from "react";
 
-export function RdvPageClient() {
+type AppointmentType = { id: number; name: string; description: string | null };
+
+export function RdvPageClient({ types }: { types: AppointmentType[] }) {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -204,6 +206,29 @@ export function RdvPageClient() {
                       />
                     </div>
                   </div>
+
+                  {types.length > 0 && (
+                    <div className="space-y-1.5">
+                      <label
+                        htmlFor="typeId"
+                        className="text-sm font-medium text-foreground"
+                      >
+                        Type de rendez-vous
+                      </label>
+                      <select
+                        id="typeId"
+                        name="typeId"
+                        className="flex h-9 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm shadow-sm transition-colors focus-visible:border-ring focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+                      >
+                        <option value="">Selectionnez un type</option>
+                        {types.map((t) => (
+                          <option key={t.id} value={t.id}>
+                            {t.name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
 
                   <div className="space-y-1.5">
                     <label

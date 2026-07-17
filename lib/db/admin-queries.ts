@@ -1,6 +1,6 @@
 import "server-only"
 import { db } from "@/lib/db"
-import { articles, pressItems, galleryItems, appointments } from "@/lib/db/schema"
+import { articles, pressItems, galleryItems, appointments, appointmentTypes } from "@/lib/db/schema"
 import { desc, eq } from "drizzle-orm"
 
 // Articles
@@ -33,5 +33,21 @@ export async function getPressItemByIdAdmin(id: number) {
 
 // Appointments / messages
 export async function getAllAppointmentsAdmin() {
-  return db.select().from(appointments).orderBy(desc(appointments.createdAt))
+  return db
+    .select({
+      id: appointments.id,
+      name: appointments.name,
+      email: appointments.email,
+      phone: appointments.phone,
+      preferredDate: appointments.preferredDate,
+      typeId: appointments.typeId,
+      typeName: appointmentTypes.name,
+      subject: appointments.subject,
+      message: appointments.message,
+      status: appointments.status,
+      createdAt: appointments.createdAt,
+    })
+    .from(appointments)
+    .leftJoin(appointmentTypes, eq(appointments.typeId, appointmentTypes.id))
+    .orderBy(desc(appointments.createdAt))
 }
