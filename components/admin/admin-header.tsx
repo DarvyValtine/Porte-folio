@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Menu } from "lucide-react";
 
 const breadcrumbLabels: Record<string, string> = {
   "/admin": "Tableau de bord",
@@ -12,7 +13,7 @@ const breadcrumbLabels: Record<string, string> = {
   "/admin/rdv": "Mes rendez-vous",
 };
 
-export function AdminHeader() {
+export function AdminHeader({ onMenuClick }: { onMenuClick: () => void }) {
   const pathname = usePathname();
 
   const currentLabel = Object.entries(breadcrumbLabels).reduce(
@@ -24,8 +25,16 @@ export function AdminHeader() {
   )[1];
 
   return (
-    <header className="flex h-14 shrink-0 items-center justify-between border-b border-border/60 bg-background px-6">
+    <header className="flex h-14 shrink-0 items-center justify-between border-b border-border/60 bg-background px-4 sm:px-6">
       <div className="flex items-center gap-3">
+        <button
+          type="button"
+          onClick={onMenuClick}
+          className="flex sm:hidden size-8 items-center justify-center rounded-md text-muted-foreground hover:bg-secondary/60 hover:text-foreground"
+          aria-label="Menu"
+        >
+          <Menu className="h-4 w-4" />
+        </button>
         <Link href="/admin">
           <span className="font-serif text-base font-semibold text-foreground">
             Grace Estia
