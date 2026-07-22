@@ -18,6 +18,7 @@ type Article = {
   slug: string
   category: string | null
   published: boolean
+  views: number
 }
 
 export function ArticlesTable({ articles }: { articles: Article[] }) {
@@ -45,6 +46,13 @@ export function ArticlesTable({ articles }: { articles: Article[] }) {
           <span className="text-muted-foreground">
             {row.original.category || "—"}
           </span>
+        ),
+      },
+      {
+        accessorKey: "views",
+        header: "Lectures",
+        cell: ({ row }) => (
+          <span className="text-muted-foreground">{row.original.views}</span>
         ),
       },
       {

@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 import { SafeImage } from "@/components/safe-image"
+import { Eye } from "lucide-react"
 
 type Article = {
   slug: string
@@ -9,6 +10,7 @@ type Article = {
   coverImage: string | null
   category: string | null
   createdAt: Date | string
+  views: number
 }
 
 function formatDate(d: Date | string) {
@@ -42,6 +44,10 @@ export function ArticleCard({ article }: { article: Article }) {
             </Badge>
           )}
           <span>{formatDate(article.createdAt)}</span>
+          <span className="flex items-center gap-1 text-muted-foreground/60">
+            <Eye className="h-3 w-3" />
+            {article.views} lecture{article.views > 1 ? "s" : ""}
+          </span>
         </div>
         <h3 className="font-serif text-lg font-semibold leading-snug text-foreground text-balance group-hover:text-primary">
           {article.title}
