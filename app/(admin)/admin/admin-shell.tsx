@@ -110,9 +110,9 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
       </aside>
 
       {/* Main area */}
-      <div className="flex flex-1 flex-col overflow-hidden">
+      <div className="relative flex flex-1 flex-col overflow-hidden">
         {/* Header with hamburger */}
-        <header className="flex h-14 shrink-0 items-center justify-between border-b border-border/60 bg-background px-4 sm:px-6">
+        <header className="relative z-50 flex h-14 shrink-0 items-center justify-between border-b border-border/60 bg-background px-4 sm:px-6">
           <div className="flex items-center gap-3">
             <button
               type="button"
@@ -128,19 +128,22 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
           </div>
         </header>
 
-        {/* Mobile dropdown */}
+        {/* Mobile dropdown overlay */}
         {mobileMenuOpen && (
-          <div className="border-b border-border/60 bg-background lg:hidden">
-            <nav className="flex flex-col px-3 py-2">
-              {links.map((link) => <NavLink key={link.href} link={link} />)}
-              <button onClick={handleSignOut}
-                className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary/60 hover:text-destructive"
-              >
-                <LogOut className="h-4.5 w-4.5 shrink-0" />
-                <span>Déconnexion</span>
-              </button>
-            </nav>
-          </div>
+          <>
+            <div className="fixed inset-0 z-40 bg-black/20 lg:hidden" onClick={() => setMobileMenuOpen(false)} />
+            <div className="absolute left-0 right-0 top-full z-50 border-b border-border/60 bg-background shadow-xl lg:hidden">
+              <nav className="flex flex-col px-3 py-2">
+                {links.map((link) => <NavLink key={link.href} link={link} />)}
+                <button onClick={handleSignOut}
+                  className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary/60 hover:text-destructive"
+                >
+                  <LogOut className="h-4.5 w-4.5 shrink-0" />
+                  <span>Déconnexion</span>
+                </button>
+              </nav>
+            </div>
+          </>
         )}
 
         <main className="flex-1 overflow-y-auto bg-secondary/20 px-4 py-6 sm:px-6 sm:py-8">
