@@ -9,6 +9,15 @@ import { auth } from "@/lib/auth"
 
 export type ActionState = { error?: string } | undefined
 
+const publicPages: Record<string, string> = {
+  home_hero: "/",
+  home_intro: "/",
+  home_focus_areas: "/",
+  home_cta: "/",
+  a_propos: "/a-propos",
+  parcours: "/parcours",
+}
+
 async function requireUserId() {
   const session = await auth.api.getSession({ headers: await headers() })
   if (!session) throw new Error("Non autorisé")
@@ -42,7 +51,7 @@ export async function updateSiteContent(
     await db.insert(siteContent).values({ key, value })
   }
 
-  revalidatePath("/")
+  revalidatePath(publicPages[key] ?? "/")
   revalidatePath("/admin/contenu")
   return undefined
 }
