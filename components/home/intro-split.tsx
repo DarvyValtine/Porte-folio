@@ -14,20 +14,24 @@ type IntroData = {
 }
 
 export function IntroSplit({ data }: { data: IntroData }) {
+  const hasImage = !!data.image
+
   return (
     <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
-      <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-        <div className="relative order-2 overflow-hidden rounded-[2rem] border border-border/60 shadow-lg shadow-primary/5 lg:order-1">
-          <Image
-            src={data.image}
-            alt="Atelier communautaire de soutien"
-            width={720}
-            height={560}
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="h-full w-full object-cover"
-          />
-        </div>
-        <div className="order-1 space-y-6 lg:order-2">
+      <div className={`grid items-center gap-10 ${hasImage ? "lg:grid-cols-2 lg:gap-16" : ""}`}>
+        {hasImage && (
+          <div className="relative order-2 overflow-hidden rounded-[2rem] border border-border/60 shadow-lg shadow-primary/5 lg:order-1">
+            <Image
+              src={data.image}
+              alt="Atelier communautaire de soutien"
+              width={720}
+              height={560}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="h-full w-full object-cover"
+            />
+          </div>
+        )}
+        <div className={`space-y-6 ${hasImage ? "order-1 lg:order-2" : "mx-auto max-w-2xl"}`}>
           <p className="text-sm font-medium uppercase tracking-[0.16em] text-primary">
             {data.eyebrow}
           </p>

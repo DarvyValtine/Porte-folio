@@ -7,6 +7,7 @@ const defaults: Record<string, unknown> = {
   home_hero: {
     badge: "Psychologue · Militante",
     title: "Protéger les droits, restaurer l'espoir.",
+    subtitle: "Psychologue clinicienne et militante pour les droits humains, engagée dans la protection de l'enfance et l'accompagnement des communautés au Congo.",
     ctaPrimary: "Prendre rendez-vous",
     ctaPrimaryLink: "/rdv",
     ctaSecondary: "Découvrir mon parcours",
