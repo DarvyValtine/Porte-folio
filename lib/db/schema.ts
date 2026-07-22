@@ -77,6 +77,7 @@ export const articles = pgTable("articles", {
   coverImage: text("coverImage"),
   category: text("category"),
   published: boolean("published").notNull().default(false),
+  views: integer("views").notNull().default(0),
   createdAt: timestamp("createdAt").notNull().defaultNow(),
   updatedAt: timestamp("updatedAt").notNull().defaultNow(),
 })
