@@ -132,7 +132,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
         {mobileMenuOpen && (
           <>
             <div className="fixed inset-0 z-40 bg-black/20 lg:hidden" onClick={() => setMobileMenuOpen(false)} />
-            <div className="absolute left-0 right-0 top-full z-50 border-b border-border/60 bg-background shadow-xl lg:hidden">
+            <div className="fixed left-0 right-0 top-14 z-50 border-b border-border/60 bg-background shadow-xl lg:hidden">
               <nav className="flex flex-col px-3 py-2">
                 {links.map((link) => <NavLink key={link.href} link={link} />)}
                 <button onClick={handleSignOut}
