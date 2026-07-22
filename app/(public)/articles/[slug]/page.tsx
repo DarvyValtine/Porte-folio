@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { headers } from "next/headers"
 import { notFound } from "next/navigation"
 import { ArrowLeft, Eye } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
@@ -27,7 +28,9 @@ export default async function ArticleDetailPage({
 
   if (!article) notFound()
 
-  const articleUrl = `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/articles/${slug}`
+  const host = (await headers()).get("host") || "localhost:3000"
+  const protocol = host.includes("localhost") || host.includes("127.0.0.1") ? "http" : "https"
+  const articleUrl = `${protocol}://${host}/articles/${slug}`
 
   return (
     <>
