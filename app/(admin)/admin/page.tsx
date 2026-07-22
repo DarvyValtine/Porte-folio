@@ -117,23 +117,23 @@ export default async function AdminDashboardPage() {
         </p>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
         {cards.map((c) => (
           <Link key={c.href} href={c.href} className="flex">
             <Card className="flex w-full flex-col border-border/60 transition-all hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/5">
-              <CardContent className="flex flex-1 flex-col justify-between space-y-3 p-5">
+              <CardContent className="flex flex-1 flex-col justify-between space-y-2 p-3 sm:p-5 sm:space-y-3">
                 <span
-                  className={`inline-flex h-10 w-10 items-center justify-center rounded-xl ${c.bg}`}
+                  className={`inline-flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-xl ${c.bg}`}
                 >
-                  <c.icon className={`h-5 w-5 ${c.color}`} />
+                  <c.icon className={`h-4 w-4 sm:h-5 sm:w-5 ${c.color}`} />
                 </span>
                 <div>
-                  <p className="font-serif text-3xl font-semibold text-foreground">
+                  <p className="font-serif text-xl sm:text-3xl font-semibold text-foreground">
                     {c.value}
                   </p>
-                  <p className="text-sm text-muted-foreground">{c.label}</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">{c.label}</p>
                   {c.sub && (
-                    <p className="mt-1 text-xs font-medium text-muted-foreground">
+                    <p className="mt-0.5 sm:mt-1 text-[0.65rem] sm:text-xs font-medium text-muted-foreground">
                       {c.sub}
                     </p>
                   )}
