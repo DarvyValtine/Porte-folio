@@ -5,6 +5,8 @@ import { IntroSplit } from "@/components/home/intro-split"
 import { LatestArticles } from "@/components/home/latest-articles"
 import { HomeCta } from "@/components/home/cta"
 
+export const dynamic = 'force-dynamic'
+
 export default async function HomePage() {
   const [hero, intro, focusAreas, cta] = await Promise.all([
     getSiteContent("home_hero"),

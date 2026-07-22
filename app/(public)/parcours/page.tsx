@@ -10,6 +10,8 @@ import {
 import { PageHeader } from "@/components/page-header";
 import { getSiteContent } from "@/lib/queries/site-content";
 
+export const dynamic = 'force-dynamic'
+
 export const metadata = {
   title: "Parcours — Grace Estia Otilibili",
   description:

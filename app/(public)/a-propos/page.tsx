@@ -6,6 +6,8 @@ import { PageHeader } from "@/components/page-header";
 import { site } from "@/lib/site";
 import { getSiteContent } from "@/lib/queries/site-content";
 
+export const dynamic = 'force-dynamic'
+
 export const metadata = {
   title: "À propos — Grace Estia Otilibili",
   description:
