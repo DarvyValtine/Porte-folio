@@ -72,7 +72,7 @@ export function HomeContentForm({
   )
 }
 
-function HeroSection({ defaultData }: { defaultData: { badge: string; title: string; ctaPrimary: string; ctaPrimaryLink: string; ctaSecondary: string; ctaSecondaryLink: string; image: string } }) {
+function HeroSection({ defaultData }: { defaultData: { badge: string; title: string; subtitle: string; ctaPrimary: string; ctaPrimaryLink: string; ctaSecondary: string; ctaSecondaryLink: string; image: string } }) {
   const [form, setForm] = useState(defaultData)
   const { save, saving } = useSave("home_hero")
   const dirty = JSON.stringify(form) !== JSON.stringify(defaultData)
@@ -82,6 +82,7 @@ function HeroSection({ defaultData }: { defaultData: { badge: string; title: str
       <div className="space-y-3">
         <Field label="Badge" value={form.badge} onChange={(v) => setForm({ ...form, badge: v })} />
         <Field label="Titre principal" value={form.title} onChange={(v) => setForm({ ...form, title: v })} textarea rows={2} />
+        <Field label="Sous-titre" value={form.subtitle} onChange={(v) => setForm({ ...form, subtitle: v })} textarea rows={3} />
         <div className="grid gap-3 sm:grid-cols-2">
           <Field label="Texte bouton 1" value={form.ctaPrimary} onChange={(v) => setForm({ ...form, ctaPrimary: v })} />
           <Field label="Lien bouton 1" value={form.ctaPrimaryLink} onChange={(v) => setForm({ ...form, ctaPrimaryLink: v })} />
