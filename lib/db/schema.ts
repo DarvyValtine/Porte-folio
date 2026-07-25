@@ -133,7 +133,7 @@ export const articleComments = pgTable("article_comments", {
   authorName: text("authorName").notNull(),
   authorEmail: text("authorEmail"),
   content: text("content").notNull(),
-  isApproved: boolean("isApproved").notNull().default(false),
+  isApproved: boolean("isApproved").notNull().default(true),
   createdAt: timestamp("createdAt").notNull().defaultNow(),
 })
 

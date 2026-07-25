@@ -42,7 +42,7 @@ export default async function AdminArticleCommentsPage({
         </p>
       </div>
 
-      <CommentsManager comments={comments} articleId={articleId} />
+      <CommentsManager comments={comments} />
     </div>
   )
 }

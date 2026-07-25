@@ -5,20 +5,38 @@ import { desc, eq, sql } from "drizzle-orm"
 
 // Articles
 export async function getAllArticlesAdmin() {
-  return db
-    .select({
-      id: articles.id,
-      title: articles.title,
-      slug: articles.slug,
-      category: articles.category,
-      published: articles.published,
-      views: articles.views,
-      createdAt: articles.createdAt,
-      likes: sql<number>`COALESCE((SELECT COUNT(*) FROM ${articleLikes} WHERE ${articleLikes.articleId} = ${articles.id}), 0)`,
-      comments: sql<number>`COALESCE((SELECT COUNT(*) FROM ${articleComments} WHERE ${articleComments.articleId} = ${articles.id}), 0)`,
-    })
+  const rows = await db
+    .select()
     .from(articles)
     .orderBy(desc(articles.createdAt))
+
+  const articleIds = rows.map((a) => a.id)
+
+  const [allLikes, allComments] = await Promise.all([
+    articleIds.length > 0
+      ? db.select({ articleId: articleLikes.articleId }).from(articleLikes)
+      : Promise.resolve([]),
+    articleIds.length > 0
+      ? db.select({ articleId: articleComments.articleId }).from(articleComments)
+      : Promise.resolve([]),
+  ])
+
+  const likeMap: Record<number, number> = {}
+  const commentMap: Record<number, number> = {}
+  for (const l of allLikes) likeMap[l.articleId] = (likeMap[l.articleId] ?? 0) + 1
+  for (const c of allComments) commentMap[c.articleId] = (commentMap[c.articleId] ?? 0) + 1
+
+  return rows.map((a) => ({
+    id: a.id,
+    title: a.title,
+    slug: a.slug,
+    category: a.category,
+    published: a.published,
+    views: a.views,
+    createdAt: a.createdAt,
+    likes: likeMap[a.id] ?? 0,
+    comments: commentMap[a.id] ?? 0,
+  }))
 }
 
 export async function getArticleByIdAdmin(id: number) {
