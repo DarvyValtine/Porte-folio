@@ -18,7 +18,6 @@ export function CommentsSection({ articleId }: { articleId: number }) {
   const [authorName, setAuthorName] = useState("")
   const [content, setContent] = useState("")
   const [submitting, setSubmitting] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
 
   useEffect(() => {
     fetch(`/api/comments?articleId=${articleId}`)
@@ -31,12 +30,16 @@ export function CommentsSection({ articleId }: { articleId: number }) {
     if (!authorName.trim() || !content.trim() || submitting) return
     setSubmitting(true)
     try {
-      await fetch("/api/comments", {
+      const res = await fetch("/api/comments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ articleId, authorName: authorName.trim(), content: content.trim() }),
       })
-      setSubmitted(true)
+      const data = await res.json()
+      if (data.comment) {
+        setComments((prev) => [data.comment, ...prev])
+      }
+      setAuthorName("")
       setContent("")
     } catch {
     } finally {
@@ -51,12 +54,7 @@ export function CommentsSection({ articleId }: { articleId: number }) {
         Commentaires ({comments.length})
       </h3>
 
-      {submitted ? (
-        <p className="rounded-xl bg-primary/5 px-4 py-3 text-sm text-muted-foreground">
-          Votre commentaire a été publié.
-        </p>
-      ) : (
-        <div className="space-y-3 rounded-xl border border-border/60 p-4">
+      <div className="space-y-3 rounded-xl border border-border/60 p-4">
           <Input
             placeholder="Votre nom"
             value={authorName}
@@ -78,7 +76,6 @@ export function CommentsSection({ articleId }: { articleId: number }) {
             {submitting ? "Envoi..." : "Envoyer"}
           </Button>
         </div>
-      )}
 
       {comments.length > 0 && (
         <div className="mt-6 space-y-4">
