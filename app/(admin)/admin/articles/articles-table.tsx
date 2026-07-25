@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useMemo, useTransition } from "react"
-import { Pencil } from "lucide-react"
+import { Pencil, Heart, MessageSquare, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { DataTable } from "@/components/admin/data-table"
@@ -19,6 +19,8 @@ type Article = {
   category: string | null
   published: boolean
   views: number
+  likes: number
+  comments: number
 }
 
 export function ArticlesTable({ articles }: { articles: Article[] }) {
@@ -53,6 +55,29 @@ export function ArticlesTable({ articles }: { articles: Article[] }) {
         header: "Lectures",
         cell: ({ row }) => (
           <span className="text-muted-foreground">{row.original.views}</span>
+        ),
+      },
+      {
+        id: "likes",
+        header: "J'aime",
+        cell: ({ row }) => (
+          <span className="inline-flex items-center gap-1 text-muted-foreground">
+            <Heart className="h-3 w-3" />
+            {row.original.likes}
+          </span>
+        ),
+      },
+      {
+        id: "comments",
+        header: "Commentaires",
+        cell: ({ row }) => (
+          <Link
+            href={`/admin/articles/${row.original.id}/comments`}
+            className="inline-flex items-center gap-1 text-muted-foreground hover:text-primary"
+          >
+            <MessageSquare className="h-3 w-3" />
+            {row.original.comments}
+          </Link>
         ),
       },
       {

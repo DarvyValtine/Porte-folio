@@ -1,11 +1,24 @@
 import "server-only"
 import { db } from "@/lib/db"
-import { articles, pressItems, galleryItems, appointments, appointmentTypes } from "@/lib/db/schema"
-import { desc, eq } from "drizzle-orm"
+import { articles, pressItems, galleryItems, appointments, appointmentTypes, articleLikes, articleComments } from "@/lib/db/schema"
+import { desc, eq, sql } from "drizzle-orm"
 
 // Articles
 export async function getAllArticlesAdmin() {
-  return db.select().from(articles).orderBy(desc(articles.createdAt))
+  return db
+    .select({
+      id: articles.id,
+      title: articles.title,
+      slug: articles.slug,
+      category: articles.category,
+      published: articles.published,
+      views: articles.views,
+      createdAt: articles.createdAt,
+      likes: sql<number>`COALESCE((SELECT COUNT(*) FROM ${articleLikes} WHERE ${articleLikes.articleId} = ${articles.id}), 0)`,
+      comments: sql<number>`COALESCE((SELECT COUNT(*) FROM ${articleComments} WHERE ${articleComments.articleId} = ${articles.id}), 0)`,
+    })
+    .from(articles)
+    .orderBy(desc(articles.createdAt))
 }
 
 export async function getArticleByIdAdmin(id: number) {
