@@ -7,6 +7,9 @@ import { SafeImage } from "@/components/safe-image"
 import { getArticleBySlug } from "@/lib/queries"
 import { ShareArticle } from "@/components/share-article"
 import { TrackView } from "@/components/track-view"
+import { LikeButton } from "@/components/like-button"
+import { CommentsSection } from "@/components/comments-section"
+import { SuggestedArticles } from "@/components/suggested-articles"
 
 export const dynamic = "force-dynamic"
 
@@ -87,10 +90,15 @@ export default async function ArticleDetailPage({
           ))}
         </div>
 
-        <div className="mt-12 border-t border-border/60 pt-6">
+        <div className="mt-12 flex items-center gap-3 border-t border-border/60 pt-6">
           <ShareArticle url={articleUrl} title={article.title} />
+          <LikeButton articleId={article.id} />
         </div>
+
+        <CommentsSection articleId={article.id} />
       </article>
+
+      <SuggestedArticles currentSlug={slug} />
     </>
   )
 }

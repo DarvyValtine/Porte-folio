@@ -3,7 +3,7 @@ import fs from "fs/promises"
 import path from "path"
 import { db } from "@/lib/db"
 import { articles, pressItems, galleryItems } from "@/lib/db/schema"
-import { desc, eq, and } from "drizzle-orm"
+import { desc, eq, ne, and } from "drizzle-orm"
 
 async function localFileExists(url: string | null) {
   if (!url || !url.startsWith("/uploads/")) return true
@@ -21,6 +21,22 @@ export async function getPublishedArticles() {
     .from(articles)
     .where(eq(articles.published, true))
     .orderBy(desc(articles.createdAt))
+
+  return Promise.all(
+    rows.map(async (a) => {
+      const exists = await localFileExists(a.coverImage)
+      return { ...a, coverImage: exists ? a.coverImage : null }
+    })
+  )
+}
+
+export async function getSuggestedArticles(currentSlug: string, limit = 3) {
+  const rows = await db
+    .select()
+    .from(articles)
+    .where(and(eq(articles.published, true), ne(articles.slug, currentSlug)))
+    .orderBy(desc(articles.createdAt))
+    .limit(limit)
 
   return Promise.all(
     rows.map(async (a) => {
@@ -66,4 +82,31 @@ export async function getGalleryItems() {
       imageUrl: (await localFileExists(g.imageUrl)) ? g.imageUrl : "",
     }))
   )
+}
+
+import { articleLikes, articleComments } from "@/lib/db/schema"
+
+export async function getArticleLikeCount(articleId: number) {
+  const rows = await db
+    .select({ count: articleLikes.id })
+    .from(articleLikes)
+    .where(eq(articleLikes.articleId, articleId))
+  return rows.length
+}
+
+export async function hasUserLiked(articleId: number, sessionId: string) {
+  const rows = await db
+    .select()
+    .from(articleLikes)
+    .where(and(eq(articleLikes.articleId, articleId), eq(articleLikes.sessionId, sessionId)))
+    .limit(1)
+  return rows.length > 0
+}
+
+export async function getApprovedComments(articleId: number) {
+  return db
+    .select()
+    .from(articleComments)
+    .where(and(eq(articleComments.articleId, articleId), eq(articleComments.isApproved, true)))
+    .orderBy(desc(articleComments.createdAt))
 }

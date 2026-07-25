@@ -120,6 +120,23 @@ export const appointmentTypes = pgTable("appointment_types", {
   createdAt: timestamp("createdAt").notNull().defaultNow(),
 })
 
+export const articleLikes = pgTable("article_likes", {
+  id: serial("id").primaryKey(),
+  articleId: integer("articleId").notNull().references(() => articles.id, { onDelete: "cascade" }),
+  sessionId: text("sessionId").notNull(),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+})
+
+export const articleComments = pgTable("article_comments", {
+  id: serial("id").primaryKey(),
+  articleId: integer("articleId").notNull().references(() => articles.id, { onDelete: "cascade" }),
+  authorName: text("authorName").notNull(),
+  authorEmail: text("authorEmail"),
+  content: text("content").notNull(),
+  isApproved: boolean("isApproved").notNull().default(false),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+})
+
 export const appointments = pgTable("appointments", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
