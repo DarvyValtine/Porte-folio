@@ -74,6 +74,7 @@ export function ArticlesTable({ articles }: { articles: Article[] }) {
           <Link
             href={`/admin/articles/${row.original.id}/comments`}
             className="inline-flex items-center gap-1 text-muted-foreground hover:text-primary"
+            title="Voir les commentaires"
           >
             <MessageSquare className="h-3 w-3" />
             {row.original.comments}

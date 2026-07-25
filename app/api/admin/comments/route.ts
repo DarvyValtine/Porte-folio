@@ -11,19 +11,6 @@ async function requireAdmin() {
   if (!session) throw new Error("Non autorisé")
 }
 
-export async function PATCH(req: NextRequest) {
-  try {
-    await requireAdmin()
-  } catch {
-    return NextResponse.json({ error: "Non autorisé" }, { status: 401 })
-  }
-
-  const { id, isApproved } = await req.json()
-  await db.update(articleComments).set({ isApproved }).where(eq(articleComments.id, id))
-  revalidatePath("/admin/articles")
-  return NextResponse.json({ success: true })
-}
-
 export async function DELETE(req: NextRequest) {
   try {
     await requireAdmin()

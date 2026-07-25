@@ -53,7 +53,7 @@ export function CommentsSection({ articleId }: { articleId: number }) {
 
       {submitted ? (
         <p className="rounded-xl bg-primary/5 px-4 py-3 text-sm text-muted-foreground">
-          Votre commentaire a été envoyé et sera visible après modération.
+          Votre commentaire a été publié.
         </p>
       ) : (
         <div className="space-y-3 rounded-xl border border-border/60 p-4">

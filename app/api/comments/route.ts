@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import { desc, eq, and } from "drizzle-orm"
+import { desc, eq } from "drizzle-orm"
 import { db } from "@/lib/db"
 import { articleComments } from "@/lib/db/schema"
 
@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
   const comments = await db
     .select()
     .from(articleComments)
-    .where(and(eq(articleComments.articleId, articleId), eq(articleComments.isApproved, true)))
+    .where(eq(articleComments.articleId, articleId))
     .orderBy(desc(articleComments.createdAt))
   return NextResponse.json({ comments })
 }
@@ -22,6 +22,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Champs requis manquants" }, { status: 400 })
   }
 
-  await db.insert(articleComments).values({ articleId, authorName, authorEmail, content })
-  return NextResponse.json({ success: true })
+  const [inserted] = await db
+    .insert(articleComments)
+    .values({ articleId, authorName, authorEmail, content })
+    .returning()
+
+  return NextResponse.json({ success: true, comment: inserted })
 }
