@@ -13,9 +13,9 @@ import { getSiteContent } from "@/lib/queries/site-content";
 export const dynamic = 'force-dynamic'
 
 export const metadata = {
-  title: "Parcours — Grace Estia Otilibili",
+  title: "Parcours — Grâce Estia Otilibili",
   description:
-    "Formation, expériences professionnelles, engagements et publications de Grace Estia Otilibili.",
+    "Formation, expériences professionnelles, engagements et publications de Grâce Estia Otilibili.",
 };
 
 type TimelineItem = { period: string; title: string; org: string; text?: string };

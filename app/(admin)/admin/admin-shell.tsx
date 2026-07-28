@@ -93,7 +93,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
       <aside className="hidden w-56 shrink-0 flex-col border-r border-border/60 bg-background lg:flex">
         <div className="flex h-14 shrink-0 items-center border-b border-border/60 px-4">
           <Link href="/admin">
-            <span className="font-serif text-base font-semibold text-foreground">Grace Estia</span>
+            <span className="font-serif text-base font-semibold text-foreground">Grâce Estia</span>
           </Link>
         </div>
         <nav className="flex-1 space-y-0.5 overflow-y-auto p-2">
@@ -123,7 +123,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
               {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </button>
             <Link href="/admin">
-              <span className="font-serif text-base font-semibold text-foreground">Grace Estia</span>
+              <span className="font-serif text-base font-semibold text-foreground">Grâce Estia</span>
             </Link>
           </div>
         </header>

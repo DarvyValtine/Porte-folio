@@ -9,9 +9,9 @@ import { getSiteContent } from "@/lib/queries/site-content";
 export const dynamic = 'force-dynamic'
 
 export const metadata = {
-  title: "À propos — Grace Estia Otilibili",
+  title: "À propos — Grâce Estia Otilibili",
   description:
-    "Découvrez le parcours et les valeurs de Grace Estia Otilibili, psychologue clinicienne et militante.",
+    "Découvrez le parcours et les valeurs de Grâce Estia Otilibili, psychologue clinicienne et militante.",
 };
 
 type AProposData = {

@@ -4,7 +4,7 @@ import { SafeImage } from "@/components/safe-image"
 import { getPressItems } from "@/lib/queries"
 
 export const metadata = {
-  title: "Presse & médias — Dr. Grace Estia",
+  title: "Presse & médias — Dr. Grâce Estia",
   description: "Interventions, interviews et apparitions médiatiques.",
 }
 
