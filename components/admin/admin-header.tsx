@@ -37,7 +37,7 @@ export function AdminHeader({ onMenuClick }: { onMenuClick: () => void }) {
         </button>
         <Link href="/admin">
           <span className="font-serif text-base font-semibold text-foreground">
-            Grace Estia
+            Grâce Estia
           </span>
         </Link>
         {currentLabel && (

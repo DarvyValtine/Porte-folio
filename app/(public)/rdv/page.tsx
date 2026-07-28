@@ -3,8 +3,8 @@ import { RdvPageClient } from "./rdv-page-client";
 import { getAppointmentTypes } from "@/lib/actions/appointment-types";
 
 export const metadata: Metadata = {
-  title: "Rendez-vous — Grace Estia Otilibili",
-  description: "Prendre rendez-vous ou contacter Grace Estia Otilibili.",
+  title: "Rendez-vous — Grâce Estia Otilibili",
+  description: "Prendre rendez-vous ou contacter Grâce Estia Otilibili.",
 };
 
 export default async function RdvPage() {

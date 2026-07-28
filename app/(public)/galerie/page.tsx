@@ -3,7 +3,7 @@ import { SafeImage } from "@/components/safe-image"
 import { getGalleryItems } from "@/lib/queries"
 
 export const metadata = {
-  title: "Galerie — Dr. Grace Estia",
+  title: "Galerie — Dr. Grâce Estia",
   description: "Photos d'événements, conférences et engagements.",
 }
 

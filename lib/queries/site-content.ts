@@ -122,7 +122,7 @@ const defaults: Record<string, unknown> = {
       heading: "Publications & visibilité",
       items: [
         { title: "Congo/Société : Le divorce des parents, l'une des principales causes conduisant les enfants en situation de rue", source: "Agence Congolaise pour l'Information — DB News", url: "https://dbnews.com" },
-        { title: "Portrait : Grace Estia Otilibili redonne de l'espoir aux enfants incarcérés", source: "Adiac Congo", url: "https://adiac-congo.com" },
+        { title: "Portrait : Grâce Estia Otilibili redonne de l'espoir aux enfants incarcérés", source: "Adiac Congo", url: "https://adiac-congo.com" },
         { title: "Girls Talk 242 — Témoignage et partage d'expérience", source: "Girls Talk 242", url: "https://www.facebook.com/share/v/19Ad4cAGQm/" },
       ],
     },
