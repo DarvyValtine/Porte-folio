@@ -1,11 +1,11 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
-import { Geist, Fraunces } from "next/font/google";
+import { Inter, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
+const sourceSerif4 = Source_Serif_4({
+  variable: "--font-source-serif-4",
   subsets: ["latin"],
   display: "swap",
 });
@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${geistSans.variable} ${fraunces.variable} bg-background`}
+      className={`${inter.variable} ${sourceSerif4.variable} bg-background`}
     >
       <body className="font-sans antialiased">
         {children}
