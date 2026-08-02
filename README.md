@@ -206,6 +206,7 @@ Ce site est prêt à être déployé sur **Vercel** (plateforme recommandée pou
 2. Connecte Vercel à ton dépôt
 3. Ajoute les variables d'environnement dans le tableau de bord Vercel :
    - `DATABASE_URL` (ta connection string Neon)
-   - `BETTER_AUTH_URL` (l'URL de ton site, ex: `https://tonsite.vercel.app`)
+   - `NEXT_PUBLIC_APP_URL` (l'URL publique finale, ex: `https://xn--grce-estia-44a.com`)
+   - `BETTER_AUTH_URL` (même valeur que `NEXT_PUBLIC_APP_URL` pour garder l'auth alignée sur le domaine public)
    - `BETTER_AUTH_SECRET`
 4. Déploie !

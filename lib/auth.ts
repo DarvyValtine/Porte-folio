@@ -23,8 +23,15 @@ function normalizeURL(value: string | undefined) {
   return trimmed;
 }
 
+function getExplicitAppURL() {
+  return (
+    normalizeURL(process.env.NEXT_PUBLIC_APP_URL) ||
+    normalizeURL(process.env.BETTER_AUTH_URL)
+  );
+}
+
 function getProductionBaseURL() {
-  const explicit = normalizeURL(process.env.BETTER_AUTH_URL);
+  const explicit = getExplicitAppURL();
   if (explicit) return explicit;
   if (process.env.VERCEL_PROJECT_PRODUCTION_URL)
     return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
@@ -53,8 +60,7 @@ const trustedOrigins = [
   process.env.VERCEL_PROJECT_PRODUCTION_URL
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
     : undefined,
-  normalizeURL(process.env.BETTER_AUTH_URL) || undefined,
-  normalizeURL(process.env.NEXT_PUBLIC_APP_URL) || undefined,
+  getExplicitAppURL() || undefined,
   normalizeURL(process.env.DEV_ORIGIN) || undefined,
   "http://localhost:3000",
   "http://127.0.0.1:3000",
