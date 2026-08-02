@@ -15,13 +15,21 @@ const DEV_ALLOWED_HOSTS = [
   "172.31.*.*:3000",
 ];
 
+function normalizeURL(value: string | undefined) {
+  if (!value) return undefined;
+  const trimmed = value.trim();
+  if (!trimmed) return undefined;
+  if (!/^https?:\/\//i.test(trimmed)) return `https://${trimmed}`;
+  return trimmed;
+}
+
 function getProductionBaseURL() {
-  if (process.env.BETTER_AUTH_URL) return process.env.BETTER_AUTH_URL;
+  const explicit = normalizeURL(process.env.BETTER_AUTH_URL);
+  if (explicit) return explicit;
   if (process.env.VERCEL_PROJECT_PRODUCTION_URL)
     return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-  if (process.env.V0_RUNTIME_URL) return process.env.V0_RUNTIME_URL;
-  return "http://localhost:3000";
+  return normalizeURL(process.env.V0_RUNTIME_URL) || "http://localhost:3000";
 }
 
 function getBaseURLConfig() {
@@ -37,14 +45,17 @@ function getBaseURLConfig() {
 }
 
 const trustedOrigins = [
-  process.env.V0_RUNTIME_URL,
+  process.env.V0_RUNTIME_URL &&
+  (/^https?:\/\//i.test(process.env.V0_RUNTIME_URL)
+    ? process.env.V0_RUNTIME_URL
+    : `https://${process.env.V0_RUNTIME_URL}`),
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined,
   process.env.VERCEL_PROJECT_PRODUCTION_URL
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
     : undefined,
-  process.env.BETTER_AUTH_URL,
-  process.env.NEXT_PUBLIC_APP_URL,
-  process.env.DEV_ORIGIN,
+  normalizeURL(process.env.BETTER_AUTH_URL) || undefined,
+  normalizeURL(process.env.NEXT_PUBLIC_APP_URL) || undefined,
+  normalizeURL(process.env.DEV_ORIGIN) || undefined,
   "http://localhost:3000",
   "http://127.0.0.1:3000",
 ].filter(Boolean) as string[];
