@@ -41,12 +41,12 @@ export function SiteFooter() {
             Contact
           </p>
           <ul className="space-y-2 text-sm text-foreground/80">
-            <li className="flex items-center gap-2">
+            {/* <li className="flex items-center gap-2">
               <Mail className="h-4 w-4 text-primary" />
               <a href={`mailto:${site.email}`} className="hover:text-primary">
                 {site.email}
               </a>
-            </li>
+            </li> */}
             <li className="flex items-center gap-2">
               <Phone className="h-4 w-4 text-primary" />
               <a href={`tel:${site.phone}`} className="hover:text-primary">
