@@ -2,6 +2,7 @@ import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { Inter, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 const sourceSerif4 = Source_Serif_4({
@@ -36,6 +37,7 @@ export default function RootLayout({
         {children}
         {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
+      <SpeedInsights />
     </html>
   );
 }
