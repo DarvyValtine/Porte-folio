@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { UploadthingUpload } from "@/components/admin/uploadthing-upload"
+import { MarkdownEditor } from "@/components/admin/markdown-editor"
 import type { ActionState } from "@/lib/actions/articles"
 
 type Article = {
@@ -16,6 +17,7 @@ type Article = {
   excerpt: string | null
   content: string
   coverImage: string | null
+  coverImageCredit: string | null
   category: string | null
   published: boolean
 }
@@ -64,6 +66,19 @@ export function ArticleForm({
       </div>
 
       <div className="space-y-1.5">
+        <Label htmlFor="coverImageCredit">Source / crédit de l&apos;image</Label>
+        <Input
+          id="coverImageCredit"
+          name="coverImageCredit"
+          placeholder="Ex : © AFP / Michel Euler"
+          defaultValue={article?.coverImageCredit ?? ""}
+        />
+        <p className="text-xs text-muted-foreground">
+          Affiché en bas de l&apos;image de couverture de l&apos;article.
+        </p>
+      </div>
+
+      <div className="space-y-1.5">
         <Label htmlFor="excerpt">Extrait</Label>
         <Textarea
           id="excerpt"
@@ -75,16 +90,12 @@ export function ArticleForm({
       </div>
 
       <div className="space-y-1.5">
-        <Label htmlFor="content">Contenu</Label>
-        <Textarea
-          id="content"
+        <MarkdownEditor
           name="content"
-          required
-          rows={14}
-          className="min-h-72 font-mono text-sm"
-          defaultValue={article?.content}
+          label="Contenu"
+          defaultValue={article?.content ?? ""}
+          placeholder="Rédigez votre article..."
         />
-        <p className="text-xs text-muted-foreground">Markdown supporté.</p>
       </div>
 
       <label className="flex items-center gap-2 text-sm text-foreground">

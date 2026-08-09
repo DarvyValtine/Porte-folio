@@ -75,6 +75,7 @@ export const articles = pgTable("articles", {
   excerpt: text("excerpt"),
   content: text("content").notNull(),
   coverImage: text("coverImage"),
+  coverImageCredit: text("coverImageCredit"),
   category: text("category"),
   published: boolean("published").notNull().default(false),
   views: integer("views").notNull().default(0),

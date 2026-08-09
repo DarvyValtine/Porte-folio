@@ -36,6 +36,7 @@ export async function createArticle(_prev: ActionState, formData: FormData): Pro
   if (!content) return { error: "Le contenu est requis." }
 
   const coverImage = String(formData.get("coverImage") || "").trim() || null
+  const coverImageCredit = String(formData.get("coverImageCredit") || "").trim() || null
   const slugInput = String(formData.get("slug") || "").trim()
   const slug = slugify(slugInput || title)
 
@@ -51,6 +52,7 @@ export async function createArticle(_prev: ActionState, formData: FormData): Pro
     excerpt: String(formData.get("excerpt") || "").trim() || null,
     content,
     coverImage,
+    coverImageCredit,
     category: String(formData.get("category") || "").trim() || null,
     published: formData.get("published") === "on",
   })
@@ -73,6 +75,7 @@ export async function updateArticle(
   if (!content) return { error: "Le contenu est requis." }
 
   const coverImage = String(formData.get("coverImage") || "").trim() || null
+  const coverImageCredit = String(formData.get("coverImageCredit") || "").trim() || null
   const slugInput = String(formData.get("slug") || "").trim()
   const slug = slugify(slugInput || title)
 
@@ -89,6 +92,7 @@ export async function updateArticle(
       excerpt: String(formData.get("excerpt") || "").trim() || null,
       content,
       coverImage,
+      coverImageCredit,
       category: String(formData.get("category") || "").trim() || null,
       published: formData.get("published") === "on",
       updatedAt: new Date(),
