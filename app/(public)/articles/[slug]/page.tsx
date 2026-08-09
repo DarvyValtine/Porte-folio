@@ -1,6 +1,8 @@
 import Link from "next/link"
 import { headers } from "next/headers"
 import { notFound } from "next/navigation"
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
 import { ArrowLeft, Eye } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { SafeImage } from "@/components/safe-image"
@@ -71,7 +73,7 @@ export default async function ArticleDetailPage({
         )}
 
         {article.coverImage && (
-          <div className="mt-8 overflow-hidden rounded-2xl border border-border/60">
+          <figure className="mt-8 overflow-hidden rounded-2xl border border-border/60">
             <SafeImage
               src={article.coverImage}
               alt={article.title}
@@ -79,15 +81,62 @@ export default async function ArticleDetailPage({
               width={900}
               height={560}
             />
-          </div>
+            {article.coverImageCredit && (
+              <figcaption className="px-4 py-2 text-xs text-muted-foreground">
+                {article.coverImageCredit}
+              </figcaption>
+            )}
+          </figure>
         )}
 
         <div className="mt-10 space-y-5 leading-relaxed text-foreground/90">
-          {article.content.split(/\n{2,}/).map((para, i) => (
-            <p key={i} className="text-pretty">
-              {para}
-            </p>
-          ))}
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              h2: ({ children }) => (
+                <h2 className="font-serif text-2xl font-semibold tracking-tight text-foreground">
+                  {children}
+                </h2>
+              ),
+              h3: ({ children }) => (
+                <h3 className="font-serif text-xl font-semibold tracking-tight text-foreground">
+                  {children}
+                </h3>
+              ),
+              p: ({ children }) => <p className="text-pretty">{children}</p>,
+              ul: ({ children }) => (
+                <ul className="list-disc space-y-1 pl-6">{children}</ul>
+              ),
+              ol: ({ children }) => (
+                <ol className="list-decimal space-y-1 pl-6">{children}</ol>
+              ),
+              blockquote: ({ children }) => (
+                <blockquote className="border-l-4 border-primary/40 pl-4 italic text-muted-foreground">
+                  {children}
+                </blockquote>
+              ),
+              a: ({ children, href }) => (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary underline underline-offset-4"
+                >
+                  {children}
+                </a>
+              ),
+              img: ({ src, alt }) => (
+                <img
+                  src={src}
+                  alt={alt}
+                  className="h-auto w-full rounded-lg border border-border/60"
+                />
+              ),
+              hr: () => <hr className="border-border/60" />,
+            }}
+          >
+            {article.content}
+          </ReactMarkdown>
         </div>
 
         <div className="mt-12 flex items-center gap-3 border-t border-border/60 pt-6">
