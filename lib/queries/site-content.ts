@@ -19,7 +19,7 @@ const defaults: Record<string, unknown> = {
     title: "Un engagement de terrain au service des enfants",
     body: "Je conjugue la rigueur de la psychologie clinique avec un engagement militant de longue date. Mon travail consiste à protéger les enfants vulnérables, à restaurer leur dignité, et à porter leur voix auprès des institutions et de la société.",
     stats: [
-      { value: "6+", label: "années de terrain au Congo" },
+      { value: "12+", label: "années de terrain au Congo" },
       { value: "4+", label: "projets de protection de l'enfance" },
       { value: "3", label: "publications & articles de presse" },
     ],

@@ -5,8 +5,10 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { updateSiteContent } from "@/lib/actions/site-content"
 import { UploadthingUpload } from "@/components/admin/uploadthing-upload"
+import { FOCUS_ICONS, FOCUS_ICON_NAMES, getFocusIcon } from "@/lib/focus-icons"
 import { ChevronDown, ChevronUp, Check, Loader2 } from "lucide-react"
 
 function Section({ title, defaultOpen, children }: { title: string; defaultOpen?: boolean; children: React.ReactNode }) {
@@ -159,16 +161,43 @@ function FocusAreasSection({ defaultData }: { defaultData: { eyebrow: string; ti
                   }}
                   placeholder="Titre"
                 />
-                <input
-                  className="mb-1 w-full rounded-md border border-input bg-background px-3 py-1.5 text-sm"
-                  value={item.icon}
-                  onChange={(e) => {
-                    const items = [...form.items]
-                    items[i] = { ...items[i], icon: e.target.value }
-                    setForm({ ...form, items })
-                  }}
-                  placeholder="Icône (HeartHandshake, Scale, Users, PhoneCall)"
-                />
+                <div className="mb-1">
+                  <Label className="text-xs">Icône</Label>
+                  <Select
+                    value={item.icon}
+                    onValueChange={(value) => {
+                      const items = [...form.items]
+                      items[i] = { ...items[i], icon: String(value ?? "") }
+                      setForm({ ...form, items })
+                    }}
+                  >
+                    <SelectTrigger className="w-full">
+                      <SelectValue>
+                        {(value) => {
+                          const name = String(value ?? "")
+                          const Icon = getFocusIcon(name)
+                          return (
+                            <span className="inline-flex items-center gap-2">
+                              <Icon className="h-4 w-4" />
+                              {name || "Choisir une icône"}
+                            </span>
+                          )
+                        }}
+                      </SelectValue>
+                    </SelectTrigger>
+                    <SelectContent>
+                      {FOCUS_ICON_NAMES.map((name) => {
+                        const Icon = FOCUS_ICONS[name]
+                        return (
+                          <SelectItem key={name} value={name}>
+                            <Icon className="h-4 w-4" />
+                            {name}
+                          </SelectItem>
+                        )
+                      })}
+                    </SelectContent>
+                  </Select>
+                </div>
                 <textarea
                   className="w-full rounded-md border border-input bg-background px-3 py-1.5 text-sm"
                   value={item.description}
