@@ -3,6 +3,8 @@ import { headers } from "next/headers"
 import { notFound } from "next/navigation"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
+import rehypeRaw from "rehype-raw"
+import rehypeSanitize, { defaultSchema } from "rehype-sanitize"
 import { ArrowLeft, Eye } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { SafeImage } from "@/components/safe-image"
@@ -21,6 +23,20 @@ function formatDate(d: Date | string) {
     month: "long",
     year: "numeric",
   })
+}
+
+const articleSchema: NonNullable<Parameters<typeof rehypeSanitize>[0]> = {
+  ...defaultSchema,
+  protocols: {
+    ...(defaultSchema.protocols ?? {}),
+    href: ["http", "https", "mailto", "tel"],
+    src: ["http", "https"],
+  },
+  attributes: {
+    ...(defaultSchema.attributes ?? {}),
+    a: [...((defaultSchema.attributes ?? {}).a ?? []), "title"],
+    img: [...((defaultSchema.attributes ?? {}).img ?? []), "alt", "width", "height"],
+  },
 }
 
 export default async function ArticleDetailPage({
@@ -92,6 +108,7 @@ export default async function ArticleDetailPage({
         <div className="mt-10 space-y-5 leading-relaxed text-foreground/90">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeRaw, [rehypeSanitize, articleSchema]]}
             components={{
               h2: ({ children }) => (
                 <h2 className="font-serif text-2xl font-semibold tracking-tight text-foreground">

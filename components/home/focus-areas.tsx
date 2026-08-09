@@ -1,12 +1,5 @@
-import { HeartHandshake, Scale, Users, PhoneCall } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-
-const iconMap: Record<string, typeof HeartHandshake> = {
-  HeartHandshake,
-  Scale,
-  Users,
-  PhoneCall,
-};
+import { getFocusIcon } from "@/lib/focus-icons";
 
 type FocusAreaItem = {
   icon: string
@@ -34,7 +27,7 @@ export function FocusAreas({ data }: { data: FocusAreasData }) {
         </div>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {data.items.map((area) => {
-            const Icon = iconMap[area.icon] || HeartHandshake;
+            const Icon = getFocusIcon(area.icon);
             return (
               <Card
                 key={area.title}

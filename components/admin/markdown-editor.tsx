@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useState } from "react"
+import { useRef, useState, useCallback } from "react"
 import {
   Bold,
   Italic,
@@ -13,6 +13,15 @@ import {
   Image as ImageIcon,
 } from "lucide-react"
 import { Label } from "@/components/ui/label"
+
+function htmlLinksToMarkdown(html: string) {
+  return html
+    .replace(/<a\b[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi, (_match, href: string, text: string) => {
+      const cleanText = text.replace(/<[^>]+>/g, "").trim() || href.trim()
+      return `[${cleanText}](${href.trim()})`
+    })
+    .replace(/<br\s*\/?>/gi, "\n")
+}
 
 type Props = {
   name: string
@@ -102,6 +111,30 @@ export function MarkdownEditor({
     }
   }
 
+  const replaceSelection = (text: string) => {
+    const ta = textareaRef.current
+    if (!ta) return
+    const start = ta.selectionStart
+    const end = ta.selectionEnd
+    const next = value.slice(0, start) + text + value.slice(end)
+    setValue(next)
+    requestAnimationFrame(() => {
+      ta.focus()
+      ta.setSelectionRange(start + text.length, start + text.length)
+    })
+  }
+
+  const handlePaste = useCallback(
+    (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
+      const html = e.clipboardData.getData("text/html")
+      if (html && /<a\b/i.test(html)) {
+        e.preventDefault()
+        replaceSelection(htmlLinksToMarkdown(html))
+      }
+    },
+    [value, textareaRef]
+  )
+
   const insertImage = () => {
     const ta = textareaRef.current
     if (!ta) return
@@ -155,6 +188,7 @@ export function MarkdownEditor({
           ref={textareaRef}
           value={value}
           onChange={(e) => setValue(e.target.value)}
+          onPaste={handlePaste}
           rows={rows}
           placeholder={placeholder}
           className="min-h-72 w-full resize-y bg-transparent px-3 py-2 text-sm leading-relaxed outline-none"
