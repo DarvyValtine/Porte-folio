@@ -1,24 +1,36 @@
 import { PageHeader } from "@/components/page-header"
 import { ArticleCard } from "@/components/article-card"
 import { getPublishedArticles } from "@/lib/queries"
-
-export const metadata = {
-  title: "Articles & publications — Dr. Grâce Estia",
-  description:
-    "Analyses, témoignages et réflexions sur la protection de l'enfance, les droits des femmes, la santé mentale, la jeunesse, l'éducation, les droits humains et les enjeux de développement.",
-}
+import { getSiteContent } from "@/lib/queries/site-content"
 
 export const dynamic = "force-dynamic"
 
+type PageHeaderData = {
+  eyebrow: string
+  title: string
+  description: string
+}
+
+export async function generateMetadata() {
+  const content = await getSiteContent<PageHeaderData>("articles_page")
+  return {
+    title: `${content.title} — Dr. Grâce Estia`,
+    description: content.description,
+  }
+}
+
 export default async function ArticlesPage() {
-  const articles = await getPublishedArticles()
+  const [articles, content] = await Promise.all([
+    getPublishedArticles(),
+    getSiteContent<PageHeaderData>("articles_page"),
+  ])
 
   return (
     <>
       <PageHeader
-        eyebrow="Publications"
-        title="Articles & réflexions"
-        description="À travers ce blog, je partage des analyses, des témoignages et des réflexions inspirés de mon expérience professionnelle, de mes engagements associatifs et de mon intérêt pour les questions de société. J'y aborde notamment la protection de l'enfance, les droits des femmes, la santé mentale, la jeunesse, l'éducation, les droits humains et les enjeux de développement. Mon ambition n'est pas d'apporter toutes les réponses, mais de contribuer à la réflexion collective et de nourrir le dialogue autour de sujets qui nous concernent tous."
+        eyebrow={content.eyebrow}
+        title={content.title}
+        description={content.description}
       />
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">

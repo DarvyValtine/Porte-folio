@@ -2,13 +2,23 @@ import { ExternalLink } from "lucide-react"
 import { PageHeader } from "@/components/page-header"
 import { SafeImage } from "@/components/safe-image"
 import { getPressItems } from "@/lib/queries"
-
-export const metadata = {
-  title: "Presse & médias — Dr. Grâce Estia",
-  description: "Interventions, interviews et apparitions médiatiques.",
-}
+import { getSiteContent } from "@/lib/queries/site-content"
 
 export const dynamic = "force-dynamic"
+
+type PageHeaderData = {
+  eyebrow: string
+  title: string
+  description: string
+}
+
+export async function generateMetadata() {
+  const content = await getSiteContent<PageHeaderData>("presse_page")
+  return {
+    title: `${content.title} — Dr. Grâce Estia`,
+    description: content.description,
+  }
+}
 
 function formatDate(d: Date | string | null) {
   if (!d) return ""
@@ -19,14 +29,17 @@ function formatDate(d: Date | string | null) {
 }
 
 export default async function PressePage() {
-  const items = await getPressItems()
+  const [items, content] = await Promise.all([
+    getPressItems(),
+    getSiteContent<PageHeaderData>("presse_page"),
+  ])
 
   return (
     <>
       <PageHeader
-        eyebrow="Presse & médias"
-        title="Dans les médias"
-        description="Interviews, tribunes et interventions dans la presse écrite, la radio et la télévision."
+        eyebrow={content.eyebrow}
+        title={content.title}
+        description={content.description}
       />
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
