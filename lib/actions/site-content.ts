@@ -16,6 +16,8 @@ const publicPages: Record<string, string> = {
   home_cta: "/",
   a_propos: "/a-propos",
   parcours: "/parcours",
+  articles_page: "/articles",
+  presse_page: "/presse",
 }
 
 async function requireUserId() {

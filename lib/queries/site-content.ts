@@ -43,6 +43,18 @@ const defaults: Record<string, unknown> = {
     buttonText: "Demander un rendez-vous",
     buttonLink: "/rdv",
   },
+  articles_page: {
+    eyebrow: "Publications",
+    title: "Articles & réflexions",
+    description:
+      "À travers ce blog, je partage des analyses, des témoignages et des réflexions inspirés de mon expérience professionnelle, de mes engagements associatifs et de mon intérêt pour les questions de société. J'y aborde notamment la protection de l'enfance, les droits des femmes, la santé mentale, la jeunesse, l'éducation, les droits humains et les enjeux de développement. Mon ambition n'est pas d'apporter toutes les réponses, mais de contribuer à la réflexion collective et de nourrir le dialogue autour de sujets qui nous concernent tous.",
+  },
+  presse_page: {
+    eyebrow: "Presse & médias",
+    title: "Dans les médias",
+    description:
+      "Interviews, tribunes et interventions dans la presse écrite, la radio et la télévision.",
+  },
   a_propos: {
     headerEyebrow: "À propos",
     headerTitle: "Au service des droits de l'enfant et de la justice sociale",
