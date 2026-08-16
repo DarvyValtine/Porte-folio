@@ -1,16 +1,16 @@
-import { PageHeader } from "@/components/page-header"
-import { SafeImage } from "@/components/safe-image"
-import { getGalleryItems } from "@/lib/queries"
+import { PageHeader } from "@/components/page-header";
+import { SafeImage } from "@/components/safe-image";
+import { getGalleryItems } from "@/lib/queries";
 
 export const metadata = {
-  title: "Galerie — Dr. Grâce Estia",
+  title: "Galerie — Grâce Estia",
   description: "Photos d'événements, conférences et engagements.",
-}
+};
 
-export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic";
 
 export default async function GaleriePage() {
-  const items = await getGalleryItems()
+  const items = await getGalleryItems();
 
   return (
     <>
@@ -61,5 +61,5 @@ export default async function GaleriePage() {
         )}
       </section>
     </>
-  )
+  );
 }

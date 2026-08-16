@@ -6,28 +6,28 @@ import { PageHeader } from "@/components/page-header";
 import { site } from "@/lib/site";
 import { getSiteContent } from "@/lib/queries/site-content";
 
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "À propos — Grâce Estia Otilibili",
+  title: "À propos — Grâce Estia",
   description:
     "Découvrez le parcours et les valeurs de Grâce Estia Otilibili, psychologue clinicienne et militante.",
 };
 
 type AProposData = {
-  headerEyebrow: string
-  headerTitle: string
-  headerDescription: string
-  paragraph1: string
-  paragraph2: string
-  quote: string
-  valuesTitle: string
-  values: { title: string; text: string }[]
-  ctaText: string
-  ctaLabel: string
-  ctaLink: string
-  image: string
-}
+  headerEyebrow: string;
+  headerTitle: string;
+  headerDescription: string;
+  paragraph1: string;
+  paragraph2: string;
+  quote: string;
+  valuesTitle: string;
+  values: { title: string; text: string }[];
+  ctaText: string;
+  ctaLabel: string;
+  ctaLink: string;
+  image: string;
+};
 
 export default async function AboutPage() {
   const data = await getSiteContent<AProposData>("a_propos");
