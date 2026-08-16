@@ -13,7 +13,7 @@ import { getSiteContent } from "@/lib/queries/site-content";
 export const dynamic = 'force-dynamic'
 
 export const metadata = {
-  title: "Parcours — Grâce Estia Otilibili",
+  title: "Parcours — Grâce Estia",
   description:
     "Formation, expériences professionnelles, engagements et publications de Grâce Estia Otilibili.",
 };
@@ -37,7 +37,7 @@ function Timeline({ items }: { items: TimelineItem[] }) {
     <ol className="relative border-l border-border pl-6">
       {items.map((item) => (
         <li key={item.title} className="mb-8 last:mb-0">
-          <span className="absolute -left-[7px] mt-1.5 h-3 w-3 rounded-full border-2 border-background bg-primary" />
+          <span className="absolute -left-1.75 mt-1.5 h-3 w-3 rounded-full border-2 border-background bg-primary" />
           <p className="text-xs font-medium uppercase tracking-[0.12em] text-primary">
             {item.period}
           </p>

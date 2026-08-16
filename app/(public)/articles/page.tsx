@@ -1,29 +1,29 @@
-import { PageHeader } from "@/components/page-header"
-import { ArticleCard } from "@/components/article-card"
-import { getPublishedArticles } from "@/lib/queries"
-import { getSiteContent } from "@/lib/queries/site-content"
+import { PageHeader } from "@/components/page-header";
+import { ArticleCard } from "@/components/article-card";
+import { getPublishedArticles } from "@/lib/queries";
+import { getSiteContent } from "@/lib/queries/site-content";
 
-export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic";
 
 type PageHeaderData = {
-  eyebrow: string
-  title: string
-  description: string
-}
+  eyebrow: string;
+  title: string;
+  description: string;
+};
 
 export async function generateMetadata() {
-  const content = await getSiteContent<PageHeaderData>("articles_page")
+  const content = await getSiteContent<PageHeaderData>("articles_page");
   return {
-    title: `${content.title} — Dr. Grâce Estia`,
+    title: `${content.title} — Grâce Estia`,
     description: content.description,
-  }
+  };
 }
 
 export default async function ArticlesPage() {
   const [articles, content] = await Promise.all([
     getPublishedArticles(),
     getSiteContent<PageHeaderData>("articles_page"),
-  ])
+  ]);
 
   return (
     <>
@@ -49,5 +49,5 @@ export default async function ArticlesPage() {
         )}
       </section>
     </>
-  )
+  );
 }
