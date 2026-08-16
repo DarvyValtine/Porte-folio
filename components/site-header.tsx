@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -12,6 +12,17 @@ export function SiteHeader() {
   const pathname = usePathname();
   const router = useRouter();
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
@@ -71,20 +82,27 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <div className="border-t border-border/60 bg-background lg:hidden">
-          <nav className="mx-auto flex max-w-6xl flex-col px-4 py-3 sm:px-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-2.5 text-sm text-foreground hover:bg-secondary"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
+        <>
+          <div
+            className="fixed inset-0 z-40 bg-background/50 backdrop-blur-sm lg:hidden"
+            onClick={() => setOpen(false)}
+            aria-hidden="true"
+          />
+          <div className="fixed inset-x-0 bottom-0 top-16 z-50 overflow-y-auto border-t border-border/60 bg-background lg:hidden">
+            <nav className="mx-auto flex max-w-6xl flex-col px-4 py-3 sm:px-6">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="rounded-md px-3 py-2.5 text-sm text-foreground hover:bg-secondary"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        </>
       )}
     </header>
   );
