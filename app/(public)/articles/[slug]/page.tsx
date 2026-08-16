@@ -1,28 +1,28 @@
-import Link from "next/link"
-import { headers } from "next/headers"
-import { notFound } from "next/navigation"
-import ReactMarkdown from "react-markdown"
-import remarkGfm from "remark-gfm"
-import rehypeRaw from "rehype-raw"
-import rehypeSanitize, { defaultSchema } from "rehype-sanitize"
-import { ArrowLeft, Eye } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
-import { SafeImage } from "@/components/safe-image"
-import { getArticleBySlug } from "@/lib/queries"
-import { ShareArticle } from "@/components/share-article"
-import { TrackView } from "@/components/track-view"
-import { LikeButton } from "@/components/like-button"
-import { CommentsSection } from "@/components/comments-section"
-import { SuggestedArticles } from "@/components/suggested-articles"
+import Link from "next/link";
+import { headers } from "next/headers";
+import { notFound } from "next/navigation";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
+import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
+import { ArrowLeft, Eye } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { SafeImage } from "@/components/safe-image";
+import { getArticleBySlug } from "@/lib/queries";
+import { ShareArticle } from "@/components/share-article";
+import { TrackView } from "@/components/track-view";
+import { LikeButton } from "@/components/like-button";
+import { CommentsSection } from "@/components/comments-section";
+import { SuggestedArticles } from "@/components/suggested-articles";
 
-export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic";
 
 function formatDate(d: Date | string) {
   return new Date(d).toLocaleDateString("fr-FR", {
     day: "numeric",
     month: "long",
     year: "numeric",
-  })
+  });
 }
 
 const articleSchema: NonNullable<Parameters<typeof rehypeSanitize>[0]> = {
@@ -35,23 +35,29 @@ const articleSchema: NonNullable<Parameters<typeof rehypeSanitize>[0]> = {
   attributes: {
     ...(defaultSchema.attributes ?? {}),
     a: [...((defaultSchema.attributes ?? {}).a ?? []), "title"],
-    img: [...((defaultSchema.attributes ?? {}).img ?? []), "alt", "width", "height"],
+    img: [
+      ...((defaultSchema.attributes ?? {}).img ?? []),
+      "alt",
+      "width",
+      "height",
+    ],
   },
-}
+};
 
 export default async function ArticleDetailPage({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params
-  const article = await getArticleBySlug(slug)
+  const { slug } = await params;
+  const article = await getArticleBySlug(slug);
 
-  if (!article) notFound()
+  if (!article) notFound();
 
-  const host = (await headers()).get("host") || "localhost:3000"
-  const protocol = host.includes("localhost") || host.includes("127.0.0.1") ? "http" : "https"
-  const articleUrl = `${protocol}://${host}/articles/${slug}`
+  const host = (await headers()).get("host") || "localhost:3000";
+  const protocol =
+    host.includes("localhost") || host.includes("127.0.0.1") ? "http" : "https";
+  const articleUrl = `${protocol}://${host}/articles/${slug}`;
 
   return (
     <>
@@ -93,9 +99,9 @@ export default async function ArticleDetailPage({
             <SafeImage
               src={article.coverImage}
               alt={article.title}
-              className="h-full w-full object-cover"
+              className="max-h-[50vh] w-full object-cover"
               width={900}
-              height={560}
+              height={520}
             />
             {article.coverImageCredit && (
               <figcaption className="px-4 py-2 text-xs text-muted-foreground">
@@ -105,7 +111,7 @@ export default async function ArticleDetailPage({
           </figure>
         )}
 
-        <div className="mt-10 space-y-5 break-words leading-relaxed text-foreground/90">
+        <div className="mt-10 space-y-5 wrap-break-word leading-relaxed text-foreground/90">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw, [rehypeSanitize, articleSchema]]}
@@ -121,7 +127,7 @@ export default async function ArticleDetailPage({
                 </h3>
               ),
               p: ({ children }) => (
-                <p className="text-pretty break-words">{children}</p>
+                <p className="text-pretty wrap-break-word">{children}</p>
               ),
               ul: ({ children }) => (
                 <ul className="list-disc space-y-1 pl-6">{children}</ul>
@@ -183,5 +189,5 @@ export default async function ArticleDetailPage({
 
       <SuggestedArticles currentSlug={slug} />
     </>
-  )
+  );
 }
