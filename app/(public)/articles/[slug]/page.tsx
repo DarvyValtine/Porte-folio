@@ -146,7 +146,7 @@ export default async function ArticleDetailPage({
                 <img
                   src={src}
                   alt={alt}
-                  className="h-auto w-full rounded-lg border border-border/60"
+                  className="mx-auto block h-auto max-h-[60vh] w-auto max-w-full rounded-lg border border-border/60"
                 />
               ),
               hr: () => <hr className="border-border/60" />,
