@@ -105,7 +105,7 @@ export default async function ArticleDetailPage({
           </figure>
         )}
 
-        <div className="mt-10 space-y-5 leading-relaxed text-foreground/90">
+        <div className="mt-10 space-y-5 break-words leading-relaxed text-foreground/90">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw, [rehypeSanitize, articleSchema]]}
@@ -120,7 +120,9 @@ export default async function ArticleDetailPage({
                   {children}
                 </h3>
               ),
-              p: ({ children }) => <p className="text-pretty">{children}</p>,
+              p: ({ children }) => (
+                <p className="text-pretty break-words">{children}</p>
+              ),
               ul: ({ children }) => (
                 <ul className="list-disc space-y-1 pl-6">{children}</ul>
               ),
@@ -146,8 +148,23 @@ export default async function ArticleDetailPage({
                 <img
                   src={src}
                   alt={alt}
-                  className="h-auto w-full rounded-lg border border-border/60"
+                  className="mx-auto block h-auto max-h-[60vh] w-auto max-w-full rounded-lg border border-border/60"
                 />
+              ),
+              pre: ({ children }) => (
+                <pre className="overflow-x-auto rounded-lg border border-border/60 bg-muted p-4 text-sm text-foreground">
+                  {children}
+                </pre>
+              ),
+              code: ({ children }) => (
+                <code className="rounded bg-muted px-1.5 py-0.5 text-sm">
+                  {children}
+                </code>
+              ),
+              table: ({ children }) => (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-sm">{children}</table>
+                </div>
               ),
               hr: () => <hr className="border-border/60" />,
             }}
