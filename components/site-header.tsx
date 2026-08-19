@@ -65,9 +65,12 @@ export function SiteHeader() {
             })}
           </nav>
 
-          <div className="hidden lg:block">
+          <div className="shrink-0">
             <Button asChild size="sm" className="rounded-full">
-              <Link href="/rdv">Prendre rendez-vous</Link>
+              <Link href="/rdv">
+                <span className="hidden sm:inline">Prendre rendez-vous</span>
+                <span className="sm:hidden">RDV</span>
+              </Link>
             </Button>
           </div>
 

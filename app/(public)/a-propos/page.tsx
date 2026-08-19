@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic";
 export const metadata = {
   title: "À propos — Grâce Estia",
   description:
-    "Découvrez le parcours et les valeurs de Grâce Estia Otilibili, psychologue clinicienne et militante.",
+    "Découvrez le parcours et les valeurs de Grâce Estia, psychologue clinicienne et activiste.",
 };
 
 type AProposData = {

@@ -96,12 +96,13 @@ export default async function ArticleDetailPage({
 
         {article.coverImage && (
           <figure className="mt-8 overflow-hidden rounded-2xl border border-border/60">
-            <SafeImage
+<SafeImage
               src={article.coverImage}
               alt={article.title}
-              className="max-h-[50vh] w-full object-cover"
+              className="aspect-[16/9] max-h-[40vh] w-full object-cover"
               width={900}
-              height={520}
+              height={506}
+              sizes="(max-width: 768px) 100vw, 768px"
             />
             {article.coverImageCredit && (
               <figcaption className="px-4 py-2 text-xs text-muted-foreground">
@@ -154,6 +155,8 @@ export default async function ArticleDetailPage({
                 <img
                   src={src}
                   alt={alt}
+                  loading="lazy"
+                  decoding="async"
                   className="mx-auto block h-auto max-h-[60vh] w-auto max-w-full rounded-lg border border-border/60"
                 />
               ),
