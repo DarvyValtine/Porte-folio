@@ -35,7 +35,9 @@ export function GalleryGrid({ items }: { items: GalleryItem[] }) {
             <SafeImage
               src={item.imageUrl}
               alt={item.title || ""}
-              className="h-full w-full object-cover"
+              fill
+              sizes="(max-width: 1024px) 50vw, 33vw"
+              className="object-cover"
             />
           </div>
           <div className="flex items-start justify-between gap-2 p-3">
