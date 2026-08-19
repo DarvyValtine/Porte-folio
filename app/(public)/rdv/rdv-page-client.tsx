@@ -4,7 +4,7 @@ import { PageHeader } from "@/components/page-header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { site } from "@/lib/site";
-import { Calendar, CheckCircle, Clock, MapPin } from "lucide-react";
+import { Calendar, CheckCircle, Clock } from "lucide-react";
 import { useState } from "react";
 
 type AppointmentType = { id: number; name: string; description: string | null };
@@ -108,21 +108,6 @@ export function RdvPageClient({ types }: { types: AppointmentType[] }) {
                     </p>
                     <p className="mt-0.5 text-sm font-medium text-foreground">
                       Sous 48 a 72 heures
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="border-border/60">
-                <CardContent className="flex items-center gap-4 p-4">
-                  <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                    <MapPin className="h-5 w-5" />
-                  </span>
-                  <div>
-                    <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-                      Localisation
-                    </p>
-                    <p className="mt-0.5 text-sm font-medium text-foreground">
-                      {site.location}
                     </p>
                   </div>
                 </CardContent>
