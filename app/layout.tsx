@@ -12,9 +12,9 @@ const sourceSerif4 = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  title: "Grâce Estia — Psychologue clinicienne & militante",
+  title: "Grâce Estia — Psychologue clinicienne & activiste",
   description:
-    "Psychologue clinicienne et militante pour les droits humains, les droits des femmes et des enfants, et la santé sexuelle et reproductive. Consultations, publications et engagements.",
+    "Psychologue clinicienne et activiste pour les droits des femmes et la protection de l'enfance. Éducatrice en santé sexuelle et reproductive.",
   generator: "v0.app",
 };
 

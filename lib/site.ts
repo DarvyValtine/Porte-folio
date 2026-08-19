@@ -7,8 +7,8 @@ export const site = {
   phone: "+242 06 123 45 67",
   location: "Brazzaville, Congo",
   socials: {
-    linkedin: "https://www.linkedin.com",
-    instagram: "https://www.instagram.com",
+    linkedin:
+      "https://www.linkedin.com/in/gr%C3%A2ce-estia-otilibili-2b487b127?utm_source=share_via&utm_content=profile&utm_medium=member_android",
   },
 };
 
