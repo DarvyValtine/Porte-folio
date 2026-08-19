@@ -64,7 +64,9 @@ export default async function PressePage() {
                     <SafeImage
                       src={item.coverImage}
                       alt={item.title}
-                      className="h-full w-full object-cover"
+                      fill
+                      sizes="96px"
+                      className="object-cover"
                     />
                   </div>
                 )}

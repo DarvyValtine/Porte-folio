@@ -32,7 +32,9 @@ export function ArticleCard({ article }: { article: Article }) {
           <SafeImage
             src={article.coverImage}
             alt={article.title}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         </div>
       )}

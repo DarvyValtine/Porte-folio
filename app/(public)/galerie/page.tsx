@@ -37,9 +37,10 @@ export default async function GaleriePage() {
                 <SafeImage
                   src={item.imageUrl}
                   alt={item.title || "Photo de galerie"}
-                  className="h-auto w-full object-cover"
+                  className="h-auto w-full"
                   width={600}
                   height={750}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 {(item.title || item.caption) && (
                   <figcaption className="p-4">
