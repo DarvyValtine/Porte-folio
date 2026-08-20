@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { UploadthingUpload } from "@/components/admin/uploadthing-upload"
+import { ArticleContentEditor } from "@/components/admin/article-content-editor"
 import type { ActionState } from "@/lib/actions/articles"
 
 type Article = {
@@ -90,15 +91,14 @@ export function ArticleForm({
 
       <div className="space-y-1.5">
         <Label htmlFor="content">Contenu</Label>
-        <Textarea
-          id="content"
+        <ArticleContentEditor
           name="content"
+          defaultValue={article?.content ?? ""}
           required
-          rows={14}
-          className="min-h-72 font-mono text-sm"
-          defaultValue={article?.content}
         />
-        <p className="text-xs text-muted-foreground">Markdown supporté.</p>
+        <p className="text-xs text-muted-foreground">
+          Barre d&apos;outils pour formater le texte en Markdown, avec aperçu en direct.
+        </p>
       </div>
 
       <label className="flex items-center gap-2 text-sm text-foreground">
