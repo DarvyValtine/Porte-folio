@@ -165,12 +165,8 @@ export function ArticleContentEditor({ name, defaultValue = "", required }: Prop
   }
 
   const paragraphStart = (pos: number) => {
-    let i = pos
-    while (i > 0) {
-      if (value[i - 1] === "\n" && value[i] === "\n") break
-      i--
-    }
-    return i
+    const sep = value.lastIndexOf("\n\n", pos)
+    return sep === -1 ? 0 : sep + 2
   }
 
   const paragraphEnd = (pos: number) => {
@@ -200,7 +196,7 @@ export function ArticleContentEditor({ name, defaultValue = "", required }: Prop
         <TabsTrigger value="preview">Aperçu</TabsTrigger>
       </TabsList>
 
-      <TabsContent value="edit">
+      <TabsContent value="edit" keepMounted>
         <div
           className="mb-2 flex flex-wrap items-center gap-1 rounded-lg border border-border/60 bg-muted/50 p-1"
           onMouseDown={(e) => e.preventDefault()}
@@ -273,7 +269,7 @@ export function ArticleContentEditor({ name, defaultValue = "", required }: Prop
         />
       </TabsContent>
 
-      <TabsContent value="preview">
+      <TabsContent value="preview" keepMounted>
         <div className="min-h-72 rounded-lg border border-border/60 bg-background p-4">
           {value.trim() ? (
             <ArticleMarkdown content={value} />
