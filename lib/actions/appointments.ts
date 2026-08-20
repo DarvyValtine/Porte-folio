@@ -2,21 +2,11 @@
 
 import { headers } from "next/headers"
 import { revalidatePath } from "next/cache"
-import { z } from "zod"
 import { eq } from "drizzle-orm"
 import { db } from "@/lib/db"
 import { appointments } from "@/lib/db/schema"
 import { auth } from "@/lib/auth"
-
-const appointmentSchema = z.object({
-  name: z.string().min(2, "Nom requis (min. 2 caractères)"),
-  email: z.string().email("Adresse email invalide"),
-  phone: z.string().optional(),
-  preferredDate: z.string().optional(),
-  typeId: z.coerce.number().optional(),
-  subject: z.string().optional(),
-  message: z.string().min(10, "Message requis (min. 10 caractères)"),
-})
+import { appointmentSchema } from "@/lib/schemas"
 
 export type ActionState = {
   success?: boolean

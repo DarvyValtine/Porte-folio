@@ -7,6 +7,7 @@ import { eq } from "drizzle-orm"
 import { db } from "@/lib/db"
 import { articles } from "@/lib/db/schema"
 import { auth } from "@/lib/auth"
+import { slugify } from "@/lib/slugify"
 
 export type ActionState = { error?: string } | undefined
 
@@ -16,15 +17,6 @@ async function requireUserId() {
   const session = await auth.api.getSession({ headers: await headers() })
   if (!session) throw new Error("Non autorisé")
   return session.user.id
-}
-
-function slugify(value: string) {
-  return value
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-+|-+$)/g, "")
 }
 
 export async function createArticle(_prev: ActionState, formData: FormData): Promise<ActionState> {

@@ -1,13 +1,10 @@
 import Link from "next/link";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
-import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
 import { ArrowLeft, Eye } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { SafeImage } from "@/components/safe-image";
+import { ArticleMarkdown } from "@/components/article-markdown";
 import { getArticleBySlug } from "@/lib/queries";
 import { ShareArticle } from "@/components/share-article";
 import { TrackView } from "@/components/track-view";
@@ -24,25 +21,6 @@ function formatDate(d: Date | string) {
     year: "numeric",
   });
 }
-
-const articleSchema: NonNullable<Parameters<typeof rehypeSanitize>[0]> = {
-  ...defaultSchema,
-  protocols: {
-    ...(defaultSchema.protocols ?? {}),
-    href: ["http", "https", "mailto", "tel"],
-    src: ["http", "https"],
-  },
-  attributes: {
-    ...(defaultSchema.attributes ?? {}),
-    a: [...((defaultSchema.attributes ?? {}).a ?? []), "title"],
-    img: [
-      ...((defaultSchema.attributes ?? {}).img ?? []),
-      "alt",
-      "width",
-      "height",
-    ],
-  },
-};
 
 export default async function ArticleDetailPage({
   params,
@@ -112,74 +90,8 @@ export default async function ArticleDetailPage({
           </figure>
         )}
 
-        <div className="mt-10 space-y-5 wrap-break-word leading-relaxed text-foreground/90">
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeRaw, [rehypeSanitize, articleSchema]]}
-            components={{
-              h2: ({ children }) => (
-                <h2 className="font-serif text-2xl font-semibold tracking-tight text-foreground">
-                  {children}
-                </h2>
-              ),
-              h3: ({ children }) => (
-                <h3 className="font-serif text-xl font-semibold tracking-tight text-foreground">
-                  {children}
-                </h3>
-              ),
-              p: ({ children }) => (
-                <p className="text-pretty wrap-break-word">{children}</p>
-              ),
-              ul: ({ children }) => (
-                <ul className="list-disc space-y-1 pl-6">{children}</ul>
-              ),
-              ol: ({ children }) => (
-                <ol className="list-decimal space-y-1 pl-6">{children}</ol>
-              ),
-              blockquote: ({ children }) => (
-                <blockquote className="border-l-4 border-primary/40 pl-4 italic text-muted-foreground">
-                  {children}
-                </blockquote>
-              ),
-              a: ({ children, href }) => (
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary underline underline-offset-4"
-                >
-                  {children}
-                </a>
-              ),
-              img: ({ src, alt }) => (
-                <img
-                  src={src}
-                  alt={alt}
-                  loading="lazy"
-                  decoding="async"
-                  className="mx-auto block h-auto max-h-[60vh] w-auto max-w-full rounded-lg border border-border/60"
-                />
-              ),
-              pre: ({ children }) => (
-                <pre className="overflow-x-auto rounded-lg border border-border/60 bg-muted p-4 text-sm text-foreground">
-                  {children}
-                </pre>
-              ),
-              code: ({ children }) => (
-                <code className="rounded bg-muted px-1.5 py-0.5 text-sm">
-                  {children}
-                </code>
-              ),
-              table: ({ children }) => (
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left text-sm">{children}</table>
-                </div>
-              ),
-              hr: () => <hr className="border-border/60" />,
-            }}
-          >
-            {article.content}
-          </ReactMarkdown>
+        <div className="mt-10">
+          <ArticleMarkdown content={article.content} />
         </div>
 
         <div className="mt-12 flex items-center gap-3 border-t border-border/60 pt-6">
