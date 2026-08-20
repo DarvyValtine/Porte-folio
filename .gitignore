@@ -13,3 +13,7 @@ __v0_jsx-dev-runtime.ts
 node_modules
 .next/
 .DS_Store
+
+# Lockfiles (pnpm is used; npm lockfile is generated accidentally)
+package-lock.json
+npm-shrinkwrap.json
