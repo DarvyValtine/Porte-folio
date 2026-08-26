@@ -62,12 +62,12 @@ export function SiteFooter() {
                 {site.email}
               </a>
             </li> */}
-            <li className="flex items-center gap-2">
+            {/* <li className="flex items-center gap-2">
               <Phone className="h-4 w-4 text-primary" />
               <a href={`tel:${site.phone}`} className="hover:text-primary">
                 {site.phone}
               </a>
-            </li>
+            </li> */}
             {/*<li className="flex items-center gap-2">
               <MapPin className="h-4 w-4 text-primary" />
               <span>{site.location}</span>

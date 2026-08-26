@@ -1,9 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1787202666598" clover="3.2.0">
-  <project timestamp="1787202666598" name="All files">
-    <metrics statements="336" coveredstatements="325" conditionals="237" coveredconditionals="198" methods="111" coveredmethods="104" elements="684" coveredelements="627" complexity="0" loc="336" ncloc="336" packages="3" files="17" classes="17"/>
+<coverage generated="1787259411179" clover="3.2.0">
+  <project timestamp="1787259411180" name="All files">
+    <metrics statements="790" coveredstatements="745" conditionals="511" coveredconditionals="452" methods="363" coveredmethods="324" elements="1664" coveredelements="1521" complexity="0" loc="790" ncloc="790" packages="10" files="57" classes="57"/>
+    <package name="app.api.admin.comments">
+      <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="route.ts" path="/home/rey/Porte-folio/app/api/admin/comments/route.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="app.api.comments">
+      <metrics statements="10" coveredstatements="10" conditionals="7" coveredconditionals="7" methods="2" coveredmethods="2"/>
+      <file name="route.ts" path="/home/rey/Porte-folio/app/api/comments/route.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="7" coveredconditionals="7" methods="2" coveredmethods="2"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="21" count="2" type="cond" truecount="5" falsecount="0"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="app.api.likes">
+      <metrics statements="15" coveredstatements="15" conditionals="10" coveredconditionals="10" methods="2" coveredmethods="2"/>
+      <file name="route.ts" path="/home/rey/Porte-folio/app/api/likes/route.ts">
+        <metrics statements="15" coveredstatements="15" conditionals="10" coveredconditionals="10" methods="2" coveredmethods="2"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="cond" truecount="4" falsecount="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="22" count="3" type="cond" truecount="4" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="32" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="app.api.track-view">
+      <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+      <file name="route.ts" path="/home/rey/Porte-folio/app/api/track-view/route.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="3" type="cond" truecount="4" falsecount="0"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="app.api.uploadthing">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="route.ts" path="/home/rey/Porte-folio/app/api/uploadthing/route.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+      </file>
+    </package>
     <package name="components">
-      <metrics statements="19" coveredstatements="18" conditionals="24" coveredconditionals="18" methods="14" coveredmethods="13"/>
+      <metrics statements="136" coveredstatements="129" conditionals="97" coveredconditionals="86" methods="72" coveredmethods="63"/>
+      <file name="admin-access.tsx" path="/home/rey/Porte-folio/components/admin-access.tsx">
+        <metrics statements="9" coveredstatements="9" conditionals="6" coveredconditionals="6" methods="4" coveredmethods="4"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="11" count="4" type="cond" truecount="6" falsecount="0"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="21" count="4" type="stmt"/>
+      </file>
+      <file name="article-card.tsx" path="/home/rey/Porte-folio/components/article-card.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="8" coveredconditionals="8" methods="2" coveredmethods="2"/>
+        <line num="17" count="5" type="stmt"/>
+        <line num="25" count="5" type="stmt"/>
+      </file>
       <file name="article-markdown.tsx" path="/home/rey/Porte-folio/components/article-markdown.tsx">
         <metrics statements="14" coveredstatements="13" conditionals="12" coveredconditionals="6" methods="13" coveredmethods="12"/>
         <line num="6" count="3" type="stmt"/>
@@ -21,6 +108,64 @@
         <line num="86" count="2" type="stmt"/>
         <line num="90" count="1" type="stmt"/>
       </file>
+      <file name="comments-section.tsx" path="/home/rey/Porte-folio/components/comments-section.tsx">
+        <metrics statements="24" coveredstatements="24" conditionals="14" coveredconditionals="12" methods="10" coveredmethods="9"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="17" count="24" type="stmt"/>
+        <line num="18" count="24" type="stmt"/>
+        <line num="19" count="24" type="stmt"/>
+        <line num="20" count="24" type="stmt"/>
+        <line num="22" count="24" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="24" count="3" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
+        <line num="29" count="24" type="stmt"/>
+        <line num="30" count="1" type="cond" truecount="4" falsecount="1"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="50" count="24" type="stmt"/>
+        <line num="61" count="3" type="stmt"/>
+        <line num="67" count="13" type="stmt"/>
+        <line num="83" count="2" type="stmt"/>
+      </file>
+      <file name="like-button.tsx" path="/home/rey/Porte-folio/components/like-button.tsx">
+        <metrics statements="24" coveredstatements="24" conditionals="10" coveredconditionals="8" methods="7" coveredmethods="6"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="7" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="9" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="17" count="10" type="stmt"/>
+        <line num="18" count="10" type="stmt"/>
+        <line num="20" count="10" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="24" count="3" type="stmt"/>
+        <line num="28" count="10" type="stmt"/>
+        <line num="29" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
+        <line num="46" count="10" type="stmt"/>
+      </file>
+      <file name="page-header.tsx" path="/home/rey/Porte-folio/components/page-header.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="10" count="2" type="stmt"/>
+      </file>
       <file name="rdv-form.tsx" path="/home/rey/Porte-folio/components/rdv-form.tsx">
         <metrics statements="5" coveredstatements="5" conditionals="12" coveredconditionals="12" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
@@ -29,9 +174,163 @@
         <line num="18" count="1" type="stmt"/>
         <line num="34" count="11" type="stmt"/>
       </file>
+      <file name="safe-image.tsx" path="/home/rey/Porte-folio/components/safe-image.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="2"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="27" count="8" type="stmt"/>
+        <line num="29" count="8" type="cond" truecount="4" falsecount="0"/>
+        <line num="31" count="6" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+      </file>
+      <file name="share-article.tsx" path="/home/rey/Porte-folio/components/share-article.tsx">
+        <metrics statements="22" coveredstatements="20" conditionals="12" coveredconditionals="11" methods="12" coveredmethods="10"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
+        <line num="31" count="7" type="stmt"/>
+        <line num="32" count="7" type="stmt"/>
+        <line num="33" count="7" type="stmt"/>
+        <line num="35" count="7" type="stmt"/>
+        <line num="37" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="41" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="42" count="6" type="stmt"/>
+        <line num="45" count="7" type="stmt"/>
+        <line num="46" count="7" type="stmt"/>
+        <line num="48" count="7" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+        <line num="75" count="7" type="stmt"/>
+        <line num="79" count="3" type="stmt"/>
+        <line num="89" count="12" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+      </file>
+      <file name="site-footer.tsx" path="/home/rey/Porte-folio/components/site-footer.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="42" count="18" type="stmt"/>
+      </file>
+      <file name="site-header.tsx" path="/home/rey/Porte-folio/components/site-header.tsx">
+        <metrics statements="19" coveredstatements="15" conditionals="12" coveredconditionals="12" methods="12" coveredmethods="8"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="13" count="7" type="stmt"/>
+        <line num="14" count="7" type="stmt"/>
+        <line num="16" count="7" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="20" count="7" type="stmt"/>
+        <line num="21" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="6" type="stmt"/>
+        <line num="23" count="6" type="stmt"/>
+        <line num="27" count="7" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="48" count="42" type="cond" truecount="2" falsecount="0"/>
+        <line num="51" count="42" type="stmt"/>
+        <line num="80" count="2" type="stmt"/>
+        <line num="93" count="0" type="stmt"/>
+        <line num="99" count="12" type="stmt"/>
+        <line num="102" count="0" type="stmt"/>
+      </file>
+      <file name="suggested-articles.tsx" path="/home/rey/Porte-folio/components/suggested-articles.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="10" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+      </file>
+      <file name="track-view.tsx" path="/home/rey/Porte-folio/components/track-view.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+      </file>
     </package>
     <package name="components.admin">
-      <metrics statements="259" coveredstatements="249" conditionals="157" coveredconditionals="130" methods="80" coveredmethods="74"/>
+      <metrics statements="491" coveredstatements="455" conditionals="301" coveredconditionals="260" methods="216" coveredmethods="188"/>
+      <file name="admin-header.tsx" path="/home/rey/Porte-folio/components/admin/admin-header.tsx">
+        <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="17" count="5" type="stmt"/>
+        <line num="19" count="5" type="stmt"/>
+        <line num="21" count="30" type="cond" truecount="4" falsecount="0"/>
+        <line num="27" count="5" type="stmt"/>
+      </file>
+      <file name="admin-sidebar.tsx" path="/home/rey/Porte-folio/components/admin/admin-sidebar.tsx">
+        <metrics statements="35" coveredstatements="33" conditionals="40" coveredconditionals="37" methods="11" coveredmethods="9"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="39" count="11" type="stmt"/>
+        <line num="40" count="11" type="stmt"/>
+        <line num="41" count="11" type="stmt"/>
+        <line num="42" count="11" type="stmt"/>
+        <line num="44" count="11" type="stmt"/>
+        <line num="45" count="8" type="stmt"/>
+        <line num="46" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="49" count="11" type="stmt"/>
+        <line num="50" count="10" type="stmt"/>
+        <line num="53" count="11" type="stmt"/>
+        <line num="54" count="8" type="stmt"/>
+        <line num="55" count="8" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="61" count="11" type="stmt"/>
+        <line num="62" count="8" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="64" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="65" count="8" type="stmt"/>
+        <line num="66" count="8" type="stmt"/>
+        <line num="67" count="8" type="stmt"/>
+        <line num="68" count="8" type="stmt"/>
+        <line num="69" count="8" type="stmt"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="75" count="1" type="stmt"/>
+        <line num="76" count="1" type="stmt"/>
+        <line num="80" count="11" type="stmt"/>
+        <line num="84" count="1" type="stmt"/>
+        <line num="102" count="99" type="cond" truecount="2" falsecount="0"/>
+        <line num="103" count="99" type="cond" truecount="2" falsecount="0"/>
+        <line num="104" count="99" type="cond" truecount="2" falsecount="0"/>
+        <line num="106" count="99" type="stmt"/>
+        <line num="153" count="11" type="stmt"/>
+      </file>
+      <file name="apropos-content-form.tsx" path="/home/rey/Porte-folio/components/admin/apropos-content-form.tsx">
+        <metrics statements="29" coveredstatements="28" conditionals="10" coveredconditionals="9" methods="22" coveredmethods="21"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="30" count="24" type="stmt"/>
+        <line num="31" count="24" type="stmt"/>
+        <line num="32" count="24" type="stmt"/>
+        <line num="34" count="24" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
+        <line num="51" count="25" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="66" count="1" type="stmt"/>
+        <line num="67" count="1" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
+        <line num="75" count="2" type="stmt"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="92" count="1" type="stmt"/>
+        <line num="94" count="1" type="stmt"/>
+        <line num="95" count="1" type="stmt"/>
+        <line num="102" count="1" type="stmt"/>
+        <line num="105" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="114" count="240" type="stmt"/>
+        <line num="118" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="120" count="5" type="stmt"/>
+      </file>
       <file name="article-content-editor.tsx" path="/home/rey/Porte-folio/components/admin/article-content-editor.tsx">
         <metrics statements="119" coveredstatements="119" conditionals="47" coveredconditionals="40" methods="38" coveredmethods="38"/>
         <line num="1" count="2" type="stmt"/>
@@ -43,10 +342,10 @@
         <line num="39" count="238" type="stmt"/>
         <line num="40" count="238" type="stmt"/>
         <line num="42" count="238" type="stmt"/>
-        <line num="43" count="400" type="stmt"/>
-        <line num="44" count="400" type="cond" truecount="1" falsecount="1"/>
-        <line num="45" count="400" type="stmt"/>
-        <line num="46" count="400" type="stmt"/>
+        <line num="43" count="402" type="stmt"/>
+        <line num="44" count="402" type="cond" truecount="1" falsecount="1"/>
+        <line num="45" count="402" type="stmt"/>
+        <line num="46" count="402" type="stmt"/>
         <line num="50" count="238" type="stmt"/>
         <line num="51" count="14" type="stmt"/>
         <line num="52" count="14" type="cond" truecount="1" falsecount="1"/>
@@ -184,6 +483,22 @@
         <line num="45" count="1" type="stmt"/>
         <line num="46" count="1" type="stmt"/>
       </file>
+      <file name="form-helpers.tsx" path="/home/rey/Porte-folio/components/admin/form-helpers.tsx">
+        <metrics statements="13" coveredstatements="13" conditionals="6" coveredconditionals="6" methods="4" coveredmethods="4"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="8" count="79" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="79" type="stmt"/>
+        <line num="13" count="15" type="stmt"/>
+        <line num="25" count="68" type="stmt"/>
+        <line num="27" count="68" type="stmt"/>
+        <line num="28" count="7" type="stmt"/>
+        <line num="29" count="7" type="stmt"/>
+        <line num="30" count="7" type="stmt"/>
+        <line num="31" count="7" type="stmt"/>
+        <line num="32" count="7" type="stmt"/>
+        <line num="33" count="7" type="stmt"/>
+        <line num="36" count="68" type="stmt"/>
+      </file>
       <file name="gallery-form.tsx" path="/home/rey/Porte-folio/components/admin/gallery-form.tsx">
         <metrics statements="8" coveredstatements="8" conditionals="8" coveredconditionals="8" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
@@ -194,6 +509,90 @@
         <line num="21" count="2" type="stmt"/>
         <line num="22" count="2" type="stmt"/>
         <line num="26" count="8" type="stmt"/>
+      </file>
+      <file name="home-content-form.tsx" path="/home/rey/Porte-folio/components/admin/home-content-form.tsx">
+        <metrics statements="81" coveredstatements="69" conditionals="44" coveredconditionals="36" methods="47" coveredmethods="39"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="15" count="63" type="cond" truecount="2" falsecount="0"/>
+        <line num="16" count="63" type="stmt"/>
+        <line num="20" count="7" type="stmt"/>
+        <line num="32" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="33" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="38" count="56" type="stmt"/>
+        <line num="39" count="56" type="stmt"/>
+        <line num="41" count="56" type="stmt"/>
+        <line num="42" count="5" type="stmt"/>
+        <line num="43" count="5" type="stmt"/>
+        <line num="44" count="5" type="stmt"/>
+        <line num="45" count="5" type="stmt"/>
+        <line num="46" count="5" type="stmt"/>
+        <line num="47" count="5" type="stmt"/>
+        <line num="48" count="5" type="stmt"/>
+        <line num="49" count="5" type="stmt"/>
+        <line num="50" count="5" type="stmt"/>
+        <line num="53" count="56" type="stmt"/>
+        <line num="67" count="7" type="stmt"/>
+        <line num="78" count="17" type="stmt"/>
+        <line num="79" count="17" type="stmt"/>
+        <line num="80" count="17" type="stmt"/>
+        <line num="82" count="17" type="stmt"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="86" count="0" type="stmt"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="89" count="1" type="stmt"/>
+        <line num="90" count="1" type="stmt"/>
+        <line num="93" count="1" type="stmt"/>
+        <line num="94" count="1" type="stmt"/>
+        <line num="100" count="1" type="stmt"/>
+        <line num="102" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="111" count="15" type="stmt"/>
+        <line num="112" count="15" type="stmt"/>
+        <line num="113" count="15" type="stmt"/>
+        <line num="115" count="15" type="stmt"/>
+        <line num="118" count="1" type="stmt"/>
+        <line num="119" count="1" type="stmt"/>
+        <line num="120" count="1" type="stmt"/>
+        <line num="125" count="1" type="stmt"/>
+        <line num="128" count="1" type="stmt"/>
+        <line num="129" count="1" type="stmt"/>
+        <line num="131" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="140" count="14" type="stmt"/>
+        <line num="141" count="14" type="stmt"/>
+        <line num="142" count="14" type="stmt"/>
+        <line num="144" count="14" type="stmt"/>
+        <line num="147" count="1" type="stmt"/>
+        <line num="148" count="0" type="stmt"/>
+        <line num="153" count="15" type="stmt"/>
+        <line num="158" count="0" type="stmt"/>
+        <line num="159" count="0" type="stmt"/>
+        <line num="160" count="0" type="stmt"/>
+        <line num="169" count="1" type="stmt"/>
+        <line num="170" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="171" count="1" type="stmt"/>
+        <line num="177" count="12" type="cond" truecount="1" falsecount="1"/>
+        <line num="178" count="12" type="stmt"/>
+        <line num="179" count="12" type="stmt"/>
+        <line num="190" count="300" type="stmt"/>
+        <line num="191" count="300" type="stmt"/>
+        <line num="205" count="1" type="stmt"/>
+        <line num="206" count="1" type="stmt"/>
+        <line num="207" count="1" type="stmt"/>
+        <line num="214" count="2" type="stmt"/>
+        <line num="224" count="1" type="stmt"/>
+        <line num="230" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="239" count="10" type="stmt"/>
+        <line num="240" count="10" type="stmt"/>
+        <line num="241" count="10" type="stmt"/>
+        <line num="243" count="10" type="stmt"/>
+        <line num="246" count="1" type="stmt"/>
+        <line num="247" count="0" type="stmt"/>
+        <line num="249" count="0" type="stmt"/>
+        <line num="250" count="0" type="stmt"/>
+        <line num="252" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="261" count="170" type="stmt"/>
+        <line num="265" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="267" count="9" type="stmt"/>
       </file>
       <file name="insert-image-dialog.tsx" path="/home/rey/Porte-folio/components/admin/insert-image-dialog.tsx">
         <metrics statements="54" coveredstatements="47" conditionals="32" coveredconditionals="21" methods="14" coveredmethods="11"/>
@@ -252,6 +651,76 @@
         <line num="187" count="6" type="stmt"/>
         <line num="201" count="1" type="stmt"/>
       </file>
+      <file name="page-header-content-form.tsx" path="/home/rey/Porte-folio/components/admin/page-header-content-form.tsx">
+        <metrics statements="12" coveredstatements="9" conditionals="10" coveredconditionals="9" methods="8" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="25" count="7" type="stmt"/>
+        <line num="26" count="7" type="stmt"/>
+        <line num="27" count="7" type="stmt"/>
+        <line num="29" count="7" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="47" count="21" type="stmt"/>
+        <line num="51" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="53" count="0" type="stmt"/>
+      </file>
+      <file name="page-layout.tsx" path="/home/rey/Porte-folio/components/admin/page-layout.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="16" count="4" type="stmt"/>
+      </file>
+      <file name="parcours-content-form.tsx" path="/home/rey/Porte-folio/components/admin/parcours-content-form.tsx">
+        <metrics statements="48" coveredstatements="40" conditionals="14" coveredconditionals="13" methods="38" coveredmethods="30"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="25" count="31" type="stmt"/>
+        <line num="26" count="31" type="stmt"/>
+        <line num="27" count="31" type="stmt"/>
+        <line num="29" count="31" type="stmt"/>
+        <line num="37" count="3" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="48" count="6" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="92" count="1" type="stmt"/>
+        <line num="95" count="4" type="stmt"/>
+        <line num="102" count="0" type="stmt"/>
+        <line num="105" count="2" type="stmt"/>
+        <line num="113" count="0" type="stmt"/>
+        <line num="116" count="1" type="stmt"/>
+        <line num="128" count="0" type="stmt"/>
+        <line num="131" count="0" type="stmt"/>
+        <line num="136" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="145" count="341" type="stmt"/>
+        <line num="149" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="151" count="6" type="stmt"/>
+        <line num="168" count="124" type="stmt"/>
+        <line num="171" count="35" type="stmt"/>
+        <line num="174" count="137" type="cond" truecount="2" falsecount="0"/>
+        <line num="181" count="1" type="stmt"/>
+        <line num="182" count="1" type="stmt"/>
+        <line num="183" count="1" type="stmt"/>
+        <line num="195" count="3" type="stmt"/>
+        <line num="196" count="3" type="stmt"/>
+        <line num="197" count="3" type="stmt"/>
+        <line num="206" count="2" type="stmt"/>
+        <line num="215" count="2" type="stmt"/>
+        <line num="235" count="93" type="stmt"/>
+        <line num="238" count="13" type="stmt"/>
+        <line num="244" count="1" type="stmt"/>
+        <line num="245" count="1" type="stmt"/>
+        <line num="246" count="1" type="stmt"/>
+        <line num="256" count="1" type="stmt"/>
+        <line num="257" count="1" type="stmt"/>
+        <line num="258" count="1" type="stmt"/>
+        <line num="265" count="1" type="stmt"/>
+        <line num="274" count="3" type="stmt"/>
+      </file>
       <file name="press-form.tsx" path="/home/rey/Porte-folio/components/admin/press-form.tsx">
         <metrics statements="8" coveredstatements="8" conditionals="8" coveredconditionals="8" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
@@ -262,6 +731,16 @@
         <line num="21" count="2" type="stmt"/>
         <line num="22" count="2" type="stmt"/>
         <line num="26" count="8" type="stmt"/>
+      </file>
+      <file name="publish-toggle.tsx" path="/home/rey/Porte-folio/components/admin/publish-toggle.tsx">
+        <metrics statements="7" coveredstatements="7" conditionals="10" coveredconditionals="10" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="14" count="18" type="stmt"/>
+        <line num="16" count="18" type="stmt"/>
+        <line num="21" count="4" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
+        <line num="23" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="24" count="3" type="cond" truecount="2" falsecount="0"/>
       </file>
       <file name="status-select.tsx" path="/home/rey/Porte-folio/components/admin/status-select.tsx">
         <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
@@ -319,16 +798,132 @@
         <line num="115" count="0" type="stmt"/>
       </file>
     </package>
+    <package name="components.home">
+      <metrics statements="12" coveredstatements="12" conditionals="12" coveredconditionals="12" methods="8" coveredmethods="8"/>
+      <file name="cta.tsx" path="/home/rey/Porte-folio/components/home/cta.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+      </file>
+      <file name="focus-areas.tsx" path="/home/rey/Porte-folio/components/home/focus-areas.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="30" count="4" type="stmt"/>
+        <line num="31" count="4" type="stmt"/>
+      </file>
+      <file name="hero.tsx" path="/home/rey/Porte-folio/components/home/hero.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="18" count="2" type="stmt"/>
+      </file>
+      <file name="intro-split.tsx" path="/home/rey/Porte-folio/components/home/intro-split.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="46" count="4" type="stmt"/>
+      </file>
+      <file name="latest-articles.tsx" path="/home/rey/Porte-folio/components/home/latest-articles.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="10" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.ui">
+      <metrics statements="53" coveredstatements="51" conditionals="22" coveredconditionals="21" methods="43" coveredmethods="41"/>
+      <file name="badge.tsx" path="/home/rey/Porte-folio/components/ui/badge.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="7" count="6" type="stmt"/>
+        <line num="36" count="28" type="stmt"/>
+      </file>
+      <file name="button.tsx" path="/home/rey/Porte-folio/components/ui/button.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="11" count="20" type="stmt"/>
+        <line num="56" count="3447" type="cond" truecount="4" falsecount="0"/>
+        <line num="57" count="22" type="stmt"/>
+        <line num="70" count="3425" type="stmt"/>
+      </file>
+      <file name="card.tsx" path="/home/rey/Porte-folio/components/ui/card.tsx">
+        <metrics statements="7" coveredstatements="7" conditionals="1" coveredconditionals="1" methods="7" coveredmethods="7"/>
+        <line num="10" count="6" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="73" count="5" type="stmt"/>
+        <line num="83" count="1" type="stmt"/>
+      </file>
+      <file name="dialog.tsx" path="/home/rey/Porte-folio/components/ui/dialog.tsx">
+        <metrics statements="11" coveredstatements="11" conditionals="6" coveredconditionals="5" methods="10" coveredmethods="10"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="11" count="289" type="stmt"/>
+        <line num="15" count="15" type="stmt"/>
+        <line num="19" count="289" type="stmt"/>
+        <line num="23" count="8" type="stmt"/>
+        <line num="30" count="50" type="stmt"/>
+        <line num="50" count="289" type="stmt"/>
+        <line num="84" count="50" type="stmt"/>
+        <line num="101" count="50" type="stmt"/>
+        <line num="121" count="50" type="stmt"/>
+        <line num="137" count="50" type="stmt"/>
+      </file>
+      <file name="input.tsx" path="/home/rey/Porte-folio/components/ui/input.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="7" count="698" type="stmt"/>
+      </file>
+      <file name="label.tsx" path="/home/rey/Porte-folio/components/ui/label.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="11" type="stmt"/>
+        <line num="8" count="1242" type="stmt"/>
+      </file>
+      <file name="select.tsx" path="/home/rey/Porte-folio/components/ui/select.tsx">
+        <metrics statements="11" coveredstatements="11" conditionals="6" coveredconditionals="6" methods="9" coveredmethods="9"/>
+        <line num="1" count="7" type="stmt"/>
+        <line num="9" count="7" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="22" count="74" type="stmt"/>
+        <line num="39" count="74" type="stmt"/>
+        <line num="73" count="74" type="stmt"/>
+        <line num="102" count="3" type="stmt"/>
+        <line num="116" count="140" type="stmt"/>
+        <line num="143" count="3" type="stmt"/>
+        <line num="156" count="25" type="stmt"/>
+        <line num="175" count="25" type="stmt"/>
+      </file>
+      <file name="table.tsx" path="/home/rey/Porte-folio/components/ui/table.tsx">
+        <metrics statements="8" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="6"/>
+        <line num="6" count="6" type="stmt"/>
+        <line num="18" count="6" type="stmt"/>
+        <line num="28" count="6" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="51" count="27" type="stmt"/>
+        <line num="64" count="6" type="stmt"/>
+        <line num="77" count="21" type="stmt"/>
+        <line num="93" count="0" type="stmt"/>
+      </file>
+      <file name="tabs.tsx" path="/home/rey/Porte-folio/components/ui/tabs.tsx">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="13" count="246" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="46" count="246" type="stmt"/>
+        <line num="57" count="508" type="stmt"/>
+        <line num="73" count="475" type="stmt"/>
+      </file>
+      <file name="textarea.tsx" path="/home/rey/Porte-folio/components/ui/textarea.tsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="6" count="336" type="stmt"/>
+      </file>
+    </package>
     <package name="lib">
       <metrics statements="58" coveredstatements="58" conditionals="56" coveredconditionals="50" methods="17" coveredmethods="17"/>
       <file name="focus-icons.ts" path="/home/rey/Porte-folio/lib/focus-icons.ts">
         <metrics statements="10" coveredstatements="10" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="48" count="1" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
+        <line num="48" count="3" type="stmt"/>
         <line num="51" count="29" type="stmt"/>
-        <line num="55" count="15" type="cond" truecount="2" falsecount="0"/>
-        <line num="57" count="13" type="stmt"/>
-        <line num="58" count="13" type="cond" truecount="2" falsecount="0"/>
+        <line num="55" count="31" type="cond" truecount="2" falsecount="0"/>
+        <line num="57" count="29" type="stmt"/>
+        <line num="58" count="29" type="cond" truecount="2" falsecount="0"/>
         <line num="60" count="5" type="stmt"/>
         <line num="61" count="5" type="stmt"/>
         <line num="62" count="24" type="cond" truecount="2" falsecount="0"/>
@@ -386,8 +981,8 @@
       </file>
       <file name="site.ts" path="/home/rey/Porte-folio/lib/site.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="15" count="2" type="stmt"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
       </file>
       <file name="slugify.ts" path="/home/rey/Porte-folio/lib/slugify.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -395,7 +990,7 @@
       </file>
       <file name="utils.ts" path="/home/rey/Porte-folio/lib/utils.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="5" count="6316" type="stmt"/>
+        <line num="5" count="8541" type="stmt"/>
       </file>
     </package>
   </project>

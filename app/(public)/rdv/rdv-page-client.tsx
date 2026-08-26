@@ -1,9 +1,8 @@
-"use client"
+"use client";
 
 import { PageHeader } from "@/components/page-header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { site } from "@/lib/site";
 import { Calendar, CheckCircle, Clock } from "lucide-react";
 import { useState } from "react";
 
