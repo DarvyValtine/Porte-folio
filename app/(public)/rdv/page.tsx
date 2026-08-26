@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Rendez-vous — Grâce Estia",
-  description: "Prendre rendez-vous ou contacter Grâce Estia Otilibili.",
+  description: "Prendre rendez-vous ou contacter Grâce Estia.",
 };
 
 export default async function RdvPage() {
