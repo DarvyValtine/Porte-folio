@@ -75,7 +75,7 @@ export function ArticleMarkdown({ content }: { content: string }) {
                   width={Number(width) || undefined}
                   height={Number(height) || undefined}
                   fit="cover"
-                  maxHeight="200px"
+                  maxHeight="170px"
                   className="max-w-xl"
                 />
                 {alt && (
