@@ -49,7 +49,12 @@ export function FullWidthImage({
         alt={alt}
         loading="lazy"
         decoding="async"
-        className={`mx-auto my-1 block h-auto max-h-[60vh] w-full rounded-lg ${frame}`}
+        className={`mx-auto my-1 block w-full rounded-xl ${frame}`}
+        style={{
+          height: "auto",
+          maxHeight: maxHeight ?? "60vh",
+          objectFit: fit,
+        }}
       />
     );
   }
@@ -76,7 +81,7 @@ export function FullWidthImage({
   if (!dims) {
     return (
       <span
-        className={`relative mx-auto my-1 block w-full overflow-hidden rounded-lg ${frame}`}
+        className={`relative mx-auto my-1 block w-full overflow-hidden rounded-xl ${frame}`}
         style={{ minHeight: "12rem" }}
       >
         <Image
@@ -86,7 +91,7 @@ export function FullWidthImage({
           fill
           loading="lazy"
           decoding="async"
-          className="object-cover"
+          className={fit === "cover" ? "object-cover" : "object-contain"}
           sizes={sizes}
           onLoad={(e) => {
             const img = e.currentTarget;
@@ -107,8 +112,7 @@ export function FullWidthImage({
       height={dims.h}
       loading="lazy"
       decoding="async"
-      className={`mx-auto block h-auto w-full rounded-lg ${frame}`}
-      style={maxHeight ? { maxHeight } : undefined}
+      className={`mx-auto block h-auto w-full rounded-xl ${frame}`}
       sizes={sizes}
     />
   );

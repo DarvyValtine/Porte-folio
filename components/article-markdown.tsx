@@ -1,8 +1,8 @@
 import { FullWidthImage } from "@/components/full-width-image";
 import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
+import remarkGfm from "remark-gfm";
 
 const articleSchema: NonNullable<Parameters<typeof rehypeSanitize>[0]> = {
   ...defaultSchema,
@@ -75,7 +75,7 @@ export function ArticleMarkdown({ content }: { content: string }) {
                   width={Number(width) || undefined}
                   height={Number(height) || undefined}
                   fit="cover"
-                  maxHeight="220px"
+                  maxHeight="300px"
                   bordered
                 />
                 {alt && (
