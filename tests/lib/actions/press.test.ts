@@ -60,7 +60,7 @@ describe("createPressItem", () => {
   beforeEach(() => {
     vi.clearAllMocks()
     db.state.insertCount = 0
-    vi.mocked(auth.api.getSession).mockResolvedValue({ user: { id: "u1" } })
+    vi.mocked(auth.api.getSession).mockResolvedValue({ user: { id: "u1" } } as any)
   })
 
   it("throws when unauthenticated", async () => {
@@ -86,7 +86,7 @@ describe("deletePressItem", () => {
   beforeEach(() => {
     vi.clearAllMocks()
     db.state.deleteCount = 0
-    vi.mocked(auth.api.getSession).mockResolvedValue({ user: { id: "u1" } })
+    vi.mocked(auth.api.getSession).mockResolvedValue({ user: { id: "u1" } } as any)
   })
 
   it("throws when unauthenticated", async () => {
