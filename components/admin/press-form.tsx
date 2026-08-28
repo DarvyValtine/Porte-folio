@@ -11,7 +11,7 @@ import { toast } from "sonner"
 
 export function PressForm() {
   const formRef = useRef<HTMLFormElement>(null)
-  const [state, formAction, pending] = useActionState<ActionState>(
+  const [state, formAction, pending] = useActionState<ActionState, FormData>(
     createPressItem,
     undefined
   )

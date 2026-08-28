@@ -1,7 +1,8 @@
+import { FullWidthImage } from "@/components/full-width-image";
 import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
+import remarkGfm from "remark-gfm";
 
 const articleSchema: NonNullable<Parameters<typeof rehypeSanitize>[0]> = {
   ...defaultSchema,
@@ -24,7 +25,7 @@ const articleSchema: NonNullable<Parameters<typeof rehypeSanitize>[0]> = {
 
 export function ArticleMarkdown({ content }: { content: string }) {
   return (
-    <div className="space-y-5 wrap-break-word leading-relaxed text-foreground/90">
+    <div className="space-y-6 wrap-break-word text-[1.125rem] leading-[1.8] text-foreground/90 [&>p:first-of-type]:first-letter:float-left [&>p:first-of-type]:first-letter:mr-3 [&>p:first-of-type]:first-letter:font-serif [&>p:first-of-type]:first-letter:text-6xl [&>p:first-of-type]:first-letter:font-semibold [&>p:first-of-type]:first-letter:leading-[0.85] [&>p:first-of-type]:first-letter:text-primary">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw, [rehypeSanitize, articleSchema]]}
@@ -63,15 +64,28 @@ export function ArticleMarkdown({ content }: { content: string }) {
               {children}
             </a>
           ),
-          img: ({ src, alt }) => (
-            <img
-              src={src}
-              alt={alt}
-              loading="lazy"
-              decoding="async"
-              className="mx-auto block h-auto max-h-[60vh] w-auto max-w-full rounded-lg border border-border/60"
-            />
-          ),
+          img: ({ src, alt, width, height }) => {
+            const srcString = typeof src === "string" ? src : "";
+            if (!srcString) return null;
+            return (
+              <figure className="my-8">
+                <FullWidthImage
+                  src={srcString}
+                  alt={alt || ""}
+                  width={Number(width) || undefined}
+                  height={Number(height) || undefined}
+                  fit="cover"
+                  maxHeight="170px"
+                  className="max-w-xl"
+                />
+                {alt && (
+                  <figcaption className="mt-2 text-center text-xs text-muted-foreground italic">
+                    {alt}
+                  </figcaption>
+                )}
+              </figure>
+            );
+          },
           pre: ({ children }) => (
             <pre className="overflow-x-auto rounded-lg border border-border/60 bg-muted p-4 text-sm text-foreground">
               {children}

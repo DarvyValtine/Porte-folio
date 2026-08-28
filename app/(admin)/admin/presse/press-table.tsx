@@ -83,10 +83,11 @@ export function PressTable({ items }: { items: PressItem[] }) {
               confirmMessage={`Supprimer « ${row.original.title} » ?`}
               onDelete={async () => {
                 const result = await deletePressItem(row.original.id)
-                if (result.success) {
+                if (result?.success) {
                   toast.success("Article de presse supprimé")
                   router.refresh()
                 }
+                return result
               }}
             />
           </div>

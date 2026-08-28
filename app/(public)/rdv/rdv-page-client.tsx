@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -57,7 +58,7 @@ export function RdvPageClient({ types }: { types: AppointmentType[] }) {
                 l&apos;horaire.
               </p>
               <Button asChild variant="outline" className="rounded-full">
-                <a href="/">Retour a l&apos;accueil</a>
+                <Link href="/">Retour a l&apos;accueil</Link>
               </Button>
             </CardContent>
           </Card>
