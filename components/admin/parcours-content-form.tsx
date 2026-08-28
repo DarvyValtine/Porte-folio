@@ -124,7 +124,7 @@ export function ParcoursContentForm({ data }: { data: ParcoursData }) {
         </div>
 
         <div className="rounded-lg border border-border/60 p-3">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Domaines d'expertise</p>
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Domaines d&apos;expertise</p>
           <Field label="Titre de section" value={form.expertise.heading} onChange={(v) => setForm({ ...form, expertise: { ...form.expertise, heading: v } })} />
           <StringArrayEditor
             items={form.expertise.items}
