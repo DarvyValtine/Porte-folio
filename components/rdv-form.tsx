@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { createAppointment, type ActionState } from "@/lib/actions/appointments"
 
 export function RdvForm() {
-  const [state, formAction, pending] = useActionState<ActionState>(
+  const [state, formAction, pending] = useActionState<ActionState, FormData>(
     createAppointment,
     undefined
   )

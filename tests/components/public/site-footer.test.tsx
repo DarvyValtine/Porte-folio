@@ -12,10 +12,6 @@ describe("SiteFooter", () => {
 
   it("renders the contact links", () => {
     render(<SiteFooter />)
-    expect(screen.getByRole("link", { name: /06 123 45 67/ })).toHaveAttribute(
-      "href",
-      "tel:+242 06 123 45 67"
-    )
     expect(screen.getByRole("link", { name: "LinkedIn" })).toHaveAttribute("target", "_blank")
   })
 

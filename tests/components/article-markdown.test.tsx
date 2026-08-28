@@ -22,9 +22,20 @@ describe("ArticleMarkdown", () => {
     const link = screen.getByRole("link", { name: "Visiter" })
     expect(link).toHaveAttribute("href", "https://exemple.fr")
     expect(link).toHaveAttribute("target", "_blank")
-    const img = screen.getByRole("img", { name: "Description" })
-    expect(img).toHaveAttribute("src", "https://exemple.fr/i.jpg")
+    const img = screen.getByRole("img", { name: "Description" }) as HTMLImageElement
     expect(img).toHaveAttribute("loading", "lazy")
+    expect(img.src).toContain("_next/image")
+    expect(decodeURIComponent(img.src)).toContain("exemple.fr/i.jpg")
+  })
+
+  it("keeps SVG images unoptimized (native img)", () => {
+    render(
+      <ArticleMarkdown
+        content={"![Logo](https://exemple.fr/logo.svg)"}
+      />
+    )
+    const img = screen.getByRole("img", { name: "Logo" }) as HTMLImageElement
+    expect(img.src).toBe("https://exemple.fr/logo.svg")
   })
 
   it("renders lists and blockquotes", () => {

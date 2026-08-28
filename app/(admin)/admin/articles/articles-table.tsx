@@ -129,10 +129,11 @@ export function ArticlesTable({ articles }: { articles: Article[] }) {
               confirmMessage={`Supprimer « ${row.original.title} » ?`}
               onDelete={async () => {
                 const result = await deleteArticle(row.original.id)
-                if (result.success) {
+                if (result?.success) {
                   toast.success("Article supprimé")
                   router.refresh()
                 }
+                return result
               }}
             />
           </div>

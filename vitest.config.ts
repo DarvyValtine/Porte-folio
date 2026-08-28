@@ -20,6 +20,7 @@ export default defineConfig({
         "lib/site.ts",
         "lib/focus-icons.ts",
         "lib/paste-to-markdown.ts",
+        "lib/actions/**/*.ts",
         "components/**/*.{ts,tsx}",
         "app/(admin)/admin/rdv/rdv-manager.tsx",
         "app/api/likes/route.ts",
