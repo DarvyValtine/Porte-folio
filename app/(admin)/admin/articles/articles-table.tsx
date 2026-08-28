@@ -1,31 +1,31 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { useMemo, useTransition } from "react"
-import { Pencil, Heart, MessageSquare, MessageCircle } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { DataTable } from "@/components/admin/data-table"
-import { DeleteButton } from "@/components/admin/delete-button"
-import { toggleArticlePublished, deleteArticle } from "@/lib/actions/articles"
-import { toast } from "sonner"
-import type { ColumnDef } from "@tanstack/react-table"
+import { DataTable } from "@/components/admin/data-table";
+import { DeleteButton } from "@/components/admin/delete-button";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { deleteArticle, toggleArticlePublished } from "@/lib/actions/articles";
+import type { ColumnDef } from "@tanstack/react-table";
+import { Heart, MessageSquare, Pencil } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useMemo, useTransition } from "react";
+import { toast } from "sonner";
 
 type Article = {
-  id: number
-  title: string
-  slug: string
-  category: string | null
-  published: boolean
-  views: number
-  likes: number
-  comments: number
-}
+  id: number;
+  title: string;
+  slug: string;
+  category: string | null;
+  published: boolean;
+  views: number;
+  likes: number;
+  comments: number;
+};
 
 export function ArticlesTable({ articles }: { articles: Article[] }) {
-  const router = useRouter()
-  const [, startTransition] = useTransition()
+  const router = useRouter();
+  const [, startTransition] = useTransition();
 
   const columns: ColumnDef<Article>[] = useMemo(
     () => [
@@ -91,13 +91,13 @@ export function ArticlesTable({ articles }: { articles: Article[] }) {
               startTransition(async () => {
                 const result = await toggleArticlePublished(
                   row.original.id,
-                  !row.original.published
-                )
+                  !row.original.published,
+                );
                 if (result.success) {
                   toast.success(
-                    row.original.published ? "Passé en brouillon" : "Publié"
-                  )
-                  router.refresh()
+                    row.original.published ? "Passé en brouillon" : "Publié",
+                  );
+                  router.refresh();
                 }
               })
             }
@@ -128,20 +128,20 @@ export function ArticlesTable({ articles }: { articles: Article[] }) {
             <DeleteButton
               confirmMessage={`Supprimer « ${row.original.title} » ?`}
               onDelete={async () => {
-                const result = await deleteArticle(row.original.id)
+                const result = await deleteArticle(row.original.id);
                 if (result?.success) {
-                  toast.success("Article supprimé")
-                  router.refresh()
+                  toast.success("Article supprimé");
+                  router.refresh();
                 }
-                return result
+                return result;
               }}
             />
           </div>
         ),
       },
     ],
-    [router]
-  )
+    [router],
+  );
 
   return (
     <DataTable
@@ -150,5 +150,5 @@ export function ArticlesTable({ articles }: { articles: Article[] }) {
       searchKey="title"
       searchPlaceholder="Rechercher par titre..."
     />
-  )
+  );
 }
