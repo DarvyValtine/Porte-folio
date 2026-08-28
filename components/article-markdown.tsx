@@ -25,7 +25,7 @@ const articleSchema: NonNullable<Parameters<typeof rehypeSanitize>[0]> = {
 
 export function ArticleMarkdown({ content }: { content: string }) {
   return (
-    <div className="space-y-5 wrap-break-word leading-relaxed text-foreground/90">
+    <div className="space-y-6 wrap-break-word text-[1.125rem] leading-[1.8] text-foreground/90 [&>p:first-of-type]:first-letter:float-left [&>p:first-of-type]:first-letter:mr-3 [&>p:first-of-type]:first-letter:font-serif [&>p:first-of-type]:first-letter:text-6xl [&>p:first-of-type]:first-letter:font-semibold [&>p:first-of-type]:first-letter:leading-[0.85] [&>p:first-of-type]:first-letter:text-primary">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw, [rehypeSanitize, articleSchema]]}
@@ -68,15 +68,15 @@ export function ArticleMarkdown({ content }: { content: string }) {
             const srcString = typeof src === "string" ? src : "";
             if (!srcString) return null;
             return (
-              <figure className="my-6">
+              <figure className="my-8">
                 <FullWidthImage
                   src={srcString}
                   alt={alt || ""}
                   width={Number(width) || undefined}
                   height={Number(height) || undefined}
                   fit="cover"
-                  maxHeight="360px"
-                  bordered
+                  maxHeight="200px"
+                  className="max-w-xl"
                 />
                 {alt && (
                   <figcaption className="mt-2 text-center text-xs text-muted-foreground italic">
