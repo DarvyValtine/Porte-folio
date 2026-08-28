@@ -3,8 +3,8 @@ import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Eye } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { SafeImage } from "@/components/safe-image";
 import { ArticleMarkdown } from "@/components/article-markdown";
+import { FullWidthImage } from "@/components/full-width-image";
 import { getArticleBySlug } from "@/lib/queries";
 import { ShareArticle } from "@/components/share-article";
 import { TrackView } from "@/components/track-view";
@@ -74,12 +74,11 @@ export default async function ArticleDetailPage({
 
         {article.coverImage && (
           <figure className="mt-8 overflow-hidden rounded-2xl border border-border/60">
-            <SafeImage
+            <FullWidthImage
               src={article.coverImage}
               alt={article.title}
-              className="mx-auto block h-auto max-h-[50vh] w-full object-contain"
-              width={900}
-              height={506}
+              fit="cover"
+              maxHeight="480px"
               sizes="(max-width: 768px) 100vw, 768px"
             />
             {article.coverImageCredit && (

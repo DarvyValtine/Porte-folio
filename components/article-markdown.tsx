@@ -1,4 +1,4 @@
-import { MarkdownImage } from "@/components/markdown-image";
+import { FullWidthImage } from "@/components/full-width-image";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -65,16 +65,26 @@ export function ArticleMarkdown({ content }: { content: string }) {
             </a>
           ),
           img: ({ src, alt, width, height }) => {
-            const srcString = typeof src === "string" ? src : ""
-            if (!srcString) return null
+            const srcString = typeof src === "string" ? src : "";
+            if (!srcString) return null;
             return (
-              <MarkdownImage
-                src={srcString}
-                alt={alt || ""}
-                width={Number(width) || undefined}
-                height={Number(height) || undefined}
-              />
-            )
+              <figure className="my-6">
+                <FullWidthImage
+                  src={srcString}
+                  alt={alt || ""}
+                  width={Number(width) || undefined}
+                  height={Number(height) || undefined}
+                  fit="cover"
+                  maxHeight="220px"
+                  bordered
+                />
+                {alt && (
+                  <figcaption className="mt-2 text-center text-xs text-muted-foreground italic">
+                    {alt}
+                  </figcaption>
+                )}
+              </figure>
+            );
           },
           pre: ({ children }) => (
             <pre className="overflow-x-auto rounded-lg border border-border/60 bg-muted p-4 text-sm text-foreground">
