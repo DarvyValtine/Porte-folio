@@ -74,10 +74,10 @@ export default async function ArticleDetailPage({
 
         {article.coverImage && (
           <figure className="mt-8 overflow-hidden rounded-2xl border border-border/60">
-<SafeImage
+            <SafeImage
               src={article.coverImage}
               alt={article.title}
-              className="aspect-[16/9] max-h-[40vh] w-full object-cover"
+              className="mx-auto block h-auto max-h-[50vh] w-full object-contain"
               width={900}
               height={506}
               sizes="(max-width: 768px) 100vw, 768px"

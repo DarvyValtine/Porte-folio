@@ -64,7 +64,7 @@ describe("createAppointment", () => {
   beforeEach(() => {
     vi.clearAllMocks()
     db.state.insertCount = 0
-    vi.mocked(auth.api.getSession).mockResolvedValue({ user: { id: "u1" } })
+    vi.mocked(auth.api.getSession).mockResolvedValue({ user: { id: "u1" } } as any)
   })
 
   it("returns fieldErrors on invalid data", async () => {
@@ -96,7 +96,7 @@ describe("updateAppointmentStatus", () => {
   beforeEach(() => {
     vi.clearAllMocks()
     db.state.updateCount = 0
-    vi.mocked(auth.api.getSession).mockResolvedValue({ user: { id: "u1" } })
+    vi.mocked(auth.api.getSession).mockResolvedValue({ user: { id: "u1" } } as any)
   })
 
   it("throws when unauthenticated", async () => {
@@ -116,7 +116,7 @@ describe("deleteAppointment", () => {
   beforeEach(() => {
     vi.clearAllMocks()
     db.state.deleteCount = 0
-    vi.mocked(auth.api.getSession).mockResolvedValue({ user: { id: "u1" } })
+    vi.mocked(auth.api.getSession).mockResolvedValue({ user: { id: "u1" } } as any)
   })
 
   it("throws when unauthenticated", async () => {

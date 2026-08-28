@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { MarkdownImage } from "@/components/markdown-image";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -66,39 +66,14 @@ export function ArticleMarkdown({ content }: { content: string }) {
           ),
           img: ({ src, alt, width, height }) => {
             const srcString = typeof src === "string" ? src : ""
-            const isSvg = /\.svg($|\?)/i.test(srcString)
-            const w = Number(width) || 800
-            const h = Number(height) || 450
-
-            if (isSvg) {
-              return (
-                <img
-                  src={srcString}
-                  alt={alt}
-                  loading="lazy"
-                  decoding="async"
-                  className="mx-auto block h-auto max-h-[60vh] w-auto max-w-full rounded-lg border border-border/60"
-                />
-              )
-            }
-
             if (!srcString) return null
-
             return (
-              <span
-                className="relative mx-auto my-1 block max-h-[60vh] w-full overflow-hidden rounded-lg border border-border/60"
-                style={{ aspectRatio: `${w} / ${h}` }}
-              >
-                <Image
-                  src={srcString}
-                  alt={alt || ""}
-                  fill
-                  loading="lazy"
-                  decoding="async"
-                  className="object-contain"
-                  sizes="(max-width: 768px) 100vw, 768px"
-                />
-              </span>
+              <MarkdownImage
+                src={srcString}
+                alt={alt || ""}
+                width={Number(width) || undefined}
+                height={Number(height) || undefined}
+              />
             )
           },
           pre: ({ children }) => (

@@ -72,7 +72,7 @@ describe("createArticle", () => {
     vi.clearAllMocks()
     db.state.selectRows = []
     db.state.insertCount = 0
-    vi.mocked(auth.api.getSession).mockResolvedValue({ user: { id: "u1" } })
+    vi.mocked(auth.api.getSession).mockResolvedValue({ user: { id: "u1" } } as any)
     vi.mocked(redirect).mockImplementation((url: string) => {
       throw new Error("REDIRECT:" + url)
     })
@@ -117,7 +117,7 @@ describe("updateArticle", () => {
     vi.clearAllMocks()
     db.state.selectRows = []
     db.state.updateCount = 0
-    vi.mocked(auth.api.getSession).mockResolvedValue({ user: { id: "u1" } })
+    vi.mocked(auth.api.getSession).mockResolvedValue({ user: { id: "u1" } } as any)
     vi.mocked(redirect).mockImplementation((url: string) => {
       throw new Error("REDIRECT:" + url)
     })
@@ -155,7 +155,7 @@ describe("deleteArticle", () => {
   beforeEach(() => {
     vi.clearAllMocks()
     db.state.deleteCount = 0
-    vi.mocked(auth.api.getSession).mockResolvedValue({ user: { id: "u1" } })
+    vi.mocked(auth.api.getSession).mockResolvedValue({ user: { id: "u1" } } as any)
   })
 
   it("throws when unauthenticated", async () => {
@@ -175,7 +175,7 @@ describe("toggleArticlePublished", () => {
   beforeEach(() => {
     vi.clearAllMocks()
     db.state.updateCount = 0
-    vi.mocked(auth.api.getSession).mockResolvedValue({ user: { id: "u1" } })
+    vi.mocked(auth.api.getSession).mockResolvedValue({ user: { id: "u1" } } as any)
   })
 
   it("throws when unauthenticated", async () => {
