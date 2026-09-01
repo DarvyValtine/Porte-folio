@@ -40,4 +40,21 @@ describe("FullWidthImage rendered size", () => {
     const img = container.querySelector("img") as HTMLElement
     expect(img.className).toContain("object-cover")
   })
+
+  it("fillFrame false: caps height without a full-width crop frame", () => {
+    const { container } = render(
+      <FullWidthImage
+        src="https://exemple.fr/photo.jpg"
+        alt="photo"
+        fit="contain"
+        fillFrame={false}
+        maxHeight="min(18rem, 42vh)"
+      />
+    )
+    expect(container.querySelector("div")).toBeNull()
+    const img = container.querySelector("img") as HTMLElement
+    expect(img.style.maxHeight).toBe("min(18rem, 42vh)")
+    expect(img.className).toContain("max-w-full")
+    expect(img.className).toContain("h-auto")
+  })
 })

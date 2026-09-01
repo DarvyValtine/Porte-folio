@@ -14,6 +14,7 @@ export function FullWidthImage({
   sizes = "(max-width: 768px) 100vw, 768px",
   fit = "contain",
   maxHeight,
+  fillFrame = true,
   bordered = false,
 }: {
   src: string;
@@ -24,6 +25,8 @@ export function FullWidthImage({
   sizes?: string;
   fit?: "contain" | "cover";
   maxHeight?: string;
+  /** When true (default), `maxHeight` becomes a fixed frame. When false, it caps height and keeps the natural ratio. */
+  fillFrame?: boolean;
   bordered?: boolean;
 }) {
   const isSvg = /\.svg($|\?)/i.test(src);
@@ -59,7 +62,7 @@ export function FullWidthImage({
     );
   }
 
-  if (maxHeight) {
+  if (maxHeight && fillFrame) {
     return (
       <div
         className={`relative mx-auto my-1 block w-full overflow-hidden rounded-xl ${frame}`}
@@ -75,6 +78,22 @@ export function FullWidthImage({
           sizes={sizes}
         />
       </div>
+    );
+  }
+
+  if (maxHeight && !fillFrame) {
+    return (
+      <Image
+        src={src}
+        alt={alt}
+        width={dims?.w ?? width ?? 1600}
+        height={dims?.h ?? height ?? 900}
+        loading="lazy"
+        decoding="async"
+        className={`mx-auto my-1 block h-auto w-auto max-w-full rounded-xl ${frame}`}
+        style={{ maxHeight, objectFit: fit }}
+        sizes={sizes}
+      />
     );
   }
 

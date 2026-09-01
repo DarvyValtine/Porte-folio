@@ -48,7 +48,7 @@ export default async function ArticleDetailPage({
     <>
       <TrackView slug={slug} />
       <ReadingProgress />
-      <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 md:py-16">
+      <article className="mx-auto max-w-[42rem] px-5 py-10 sm:px-6 md:py-14">
         <Link
           href="/articles"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
@@ -57,12 +57,25 @@ export default async function ArticleDetailPage({
           Tous les articles
         </Link>
 
-        <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
-          {article.category && (
+        {article.category && (
+          <div className="mt-8">
             <Badge variant="secondary" className="rounded-full font-normal">
               {article.category}
             </Badge>
-          )}
+          </div>
+        )}
+
+        <h1 className="mt-4 font-serif text-[2.15rem] font-semibold leading-[1.15] tracking-tight text-foreground text-balance sm:text-[2.75rem]">
+          {article.title}
+        </h1>
+
+        {article.excerpt && (
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground text-pretty sm:text-xl">
+            {article.excerpt}
+          </p>
+        )}
+
+        <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
           <span>{site.name}</span>
           <span aria-hidden>·</span>
           <span>{formatDate(article.createdAt)}</span>
@@ -78,27 +91,19 @@ export default async function ArticleDetailPage({
           </span>
         </div>
 
-        <h1 className="mt-4 font-serif text-4xl font-semibold leading-tight tracking-tight text-foreground text-balance sm:text-5xl">
-          {article.title}
-        </h1>
-
-        {article.excerpt && (
-          <p className="mt-5 text-lg leading-relaxed text-muted-foreground text-pretty sm:text-xl">
-            {article.excerpt}
-          </p>
-        )}
-
         {article.coverImage && (
-          <figure className="mt-8 overflow-hidden rounded-3xl border border-border/60 shadow-sm">
+          <figure className="mt-8">
             <FullWidthImage
               src={article.coverImage}
               alt={article.title}
-              fit="cover"
-              maxHeight="520px"
-              sizes="(max-width: 768px) 100vw, 768px"
+              fit="contain"
+              fillFrame={false}
+              maxHeight="min(12.5rem, 30vh)"
+              sizes="(max-width: 680px) 100vw, 448px"
+              className="rounded-lg max-w-md"
             />
             {article.coverImageCredit && (
-              <figcaption className="px-4 py-2 text-xs text-muted-foreground">
+              <figcaption className="mt-2 text-center text-xs text-muted-foreground">
                 {article.coverImageCredit}
               </figcaption>
             )}

@@ -25,7 +25,7 @@ const articleSchema: NonNullable<Parameters<typeof rehypeSanitize>[0]> = {
 
 export function ArticleMarkdown({ content }: { content: string }) {
   return (
-    <div className="space-y-6 wrap-break-word text-[1.125rem] leading-[1.8] text-foreground/90 [&>p:first-of-type]:first-letter:float-left [&>p:first-of-type]:first-letter:mr-3 [&>p:first-of-type]:first-letter:font-serif [&>p:first-of-type]:first-letter:text-6xl [&>p:first-of-type]:first-letter:font-semibold [&>p:first-of-type]:first-letter:leading-[0.85] [&>p:first-of-type]:first-letter:text-primary">
+    <div className="space-y-7 wrap-break-word text-[1.125rem] leading-[1.75] text-foreground/90 sm:text-[1.1875rem] sm:leading-[1.8] [&>p:first-of-type]:first-letter:float-left [&>p:first-of-type]:first-letter:mr-3 [&>p:first-of-type]:first-letter:mt-1 [&>p:first-of-type]:first-letter:font-serif [&>p:first-of-type]:first-letter:text-5xl [&>p:first-of-type]:first-letter:font-semibold [&>p:first-of-type]:first-letter:leading-[0.85] [&>p:first-of-type]:first-letter:text-primary">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw, [rehypeSanitize, articleSchema]]}
@@ -68,18 +68,19 @@ export function ArticleMarkdown({ content }: { content: string }) {
             const srcString = typeof src === "string" ? src : "";
             if (!srcString) return null;
             return (
-              <figure className="my-8">
+              <figure className="my-10">
                 <FullWidthImage
                   src={srcString}
                   alt={alt || ""}
                   width={Number(width) || undefined}
                   height={Number(height) || undefined}
-                  fit="cover"
-                  maxHeight="170px"
-                  className="max-w-xl"
+                  fit="contain"
+                  fillFrame={false}
+                  maxHeight="min(16rem, 38vh)"
+                  sizes="(max-width: 680px) 100vw, 672px"
                 />
                 {alt && (
-                  <figcaption className="mt-2 text-center text-xs text-muted-foreground italic">
+                  <figcaption className="mx-auto mt-3 max-w-md text-center text-[0.8rem] leading-snug text-muted-foreground">
                     {alt}
                   </figcaption>
                 )}
