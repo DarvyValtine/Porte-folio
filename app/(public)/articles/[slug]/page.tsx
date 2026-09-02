@@ -98,7 +98,7 @@ export default async function ArticleDetailPage({
               alt={article.title}
               fit="contain"
               fillFrame={false}
-              maxHeight="min(20rem, 45vh)"
+              maxHeight="min(24rem, 50vh)"
               sizes="(max-width: 680px) 100vw, 672px"
               className="rounded-lg max-w-2xl"
             />
