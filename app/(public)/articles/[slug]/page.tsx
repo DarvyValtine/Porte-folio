@@ -48,7 +48,7 @@ export default async function ArticleDetailPage({
     <>
       <TrackView slug={slug} />
       <ReadingProgress />
-      <article className="mx-auto max-w-[42rem] px-5 py-10 sm:px-6 md:py-14">
+      <article className="mx-auto max-w-2xl px-5 py-10 sm:px-6 md:py-14">
         <Link
           href="/articles"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
@@ -98,9 +98,9 @@ export default async function ArticleDetailPage({
               alt={article.title}
               fit="contain"
               fillFrame={false}
-              maxHeight="min(12.5rem, 30vh)"
-              sizes="(max-width: 680px) 100vw, 448px"
-              className="rounded-lg max-w-md"
+              maxHeight="min(20rem, 45vh)"
+              sizes="(max-width: 680px) 100vw, 672px"
+              className="rounded-lg max-w-2xl"
             />
             {article.coverImageCredit && (
               <figcaption className="mt-2 text-center text-xs text-muted-foreground">
