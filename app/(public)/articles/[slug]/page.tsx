@@ -92,15 +92,16 @@ export default async function ArticleDetailPage({
         </div>
 
         {article.coverImage && (
-          <figure className="mt-8">
-            <FullWidthImage
+          <figure className="mt-8 w-full">
+            <img
               src={article.coverImage}
               alt={article.title}
-              fit="contain"
-              fillFrame={false}
-              maxHeight="min(24rem, 50vh)"
-              sizes="(max-width: 680px) 100vw, 672px"
-              className="rounded-lg max-w-2xl"
+              className="w-full h-auto rounded-lg"
+              style={{
+                maxHeight: "min(24rem, 50vh)",
+                objectFit: "cover",
+                width: "100%",
+              }}
             />
             {article.coverImageCredit && (
               <figcaption className="mt-2 text-center text-xs text-muted-foreground">

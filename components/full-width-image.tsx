@@ -90,7 +90,7 @@ export function FullWidthImage({
         height={dims?.h ?? height ?? 900}
         loading="lazy"
         decoding="async"
-        className={`mx-auto my-1 block h-auto w-auto max-w-full rounded-xl ${frame}`}
+        className={`mx-auto my-1 block h-auto w-full rounded-xl ${frame}`}
         style={{ maxHeight, objectFit: fit }}
         sizes={sizes}
       />
