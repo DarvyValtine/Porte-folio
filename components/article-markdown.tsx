@@ -20,7 +20,19 @@ const articleSchema: NonNullable<Parameters<typeof rehypeSanitize>[0]> = {
       "width",
       "height",
     ],
+    div: [...((defaultSchema.attributes ?? {}).div ?? []), "style", "class"],
+    u: [...((defaultSchema.attributes ?? {}).u ?? []), "style"],
+    sub: [...((defaultSchema.attributes ?? {}).sub ?? []), "style"],
+    sup: [...((defaultSchema.attributes ?? {}).sup ?? []), "style"],
   },
+  tagNames: [
+    ...(defaultSchema.tagNames ?? []),
+    "u",
+    "sub",
+    "sup",
+    "div",
+    "del",
+  ],
 };
 
 export function ArticleMarkdown({ content }: { content: string }) {
@@ -76,7 +88,7 @@ export function ArticleMarkdown({ content }: { content: string }) {
                   height={Number(height) || undefined}
                   fit="contain"
                   fillFrame={false}
-                  maxHeight="min(16rem, 38vh)"
+                  maxHeight="min(32rem, 60vh)"
                   sizes="(max-width: 680px) 100vw, 672px"
                 />
                 {alt && (
@@ -97,6 +109,36 @@ export function ArticleMarkdown({ content }: { content: string }) {
               {children}
             </code>
           ),
+          u: ({ children }) => (
+            <u className="underline decoration-2 underline-offset-4">
+              {children}
+            </u>
+          ),
+          sub: ({ children }) => (
+            <sub className="text-xs align-sub">{children}</sub>
+          ),
+          sup: ({ children }) => (
+            <sup className="text-xs align-super">{children}</sup>
+          ),
+          div: ({ children, style, className }) => {
+            const divStyle = style as React.CSSProperties;
+            const combinedClassName = className || "";
+            // Handle alignment classes
+            const alignClass = combinedClassName.includes("text-center")
+              ? "text-center"
+              : combinedClassName.includes("text-right")
+                ? "text-right"
+                : "";
+            return (
+              <div style={divStyle} className={alignClass}>
+                {children}
+              </div>
+            );
+          },
+          del: ({ children }) => (
+            <del className="line-through decoration-2">{children}</del>
+          ),
+
           table: ({ children }) => (
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm">{children}</table>
