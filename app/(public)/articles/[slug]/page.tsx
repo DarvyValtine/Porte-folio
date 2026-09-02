@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Clock, Eye } from "lucide-react";
@@ -93,16 +94,15 @@ export default async function ArticleDetailPage({
 
         {article.coverImage && (
           <figure className="mt-8 w-full">
-            <img
-              src={article.coverImage}
-              alt={article.title}
-              className="w-full h-auto rounded-lg"
-              style={{
-                maxHeight: "min(24rem, 50vh)",
-                objectFit: "cover",
-                width: "100%",
-              }}
-            />
+            <div className="relative w-full" style={{ height: "min(24rem, 50vh)" }}>
+              <Image
+                src={article.coverImage}
+                alt={article.title}
+                fill
+                className="rounded-lg object-cover"
+                sizes="(max-width: 680px) 100vw, 672px"
+              />
+            </div>
             {article.coverImageCredit && (
               <figcaption className="mt-2 text-center text-xs text-muted-foreground">
                 {article.coverImageCredit}
